@@ -1,0 +1,501 @@
+member_id,age,gender,region,plan_type,chronic_condition_count,engagement_score,ed_visits,ip_admits,monthly_cost,awv_completed,engagement_group,age_group
+M00001,69,Female,Rural,DSNP,3,72.6,1,1,2634.13,0,Q4,65-79
+M00002,32,Female,Suburban,Medicare Advantage,0,71.5,0,1,1632.38,1,Q4,18-34
+M00003,89,Male,Suburban,Medicaid,2,32.6,0,0,978.36,1,Q1,80+
+M00004,78,Male,Suburban,Medicare Advantage,7,56.0,3,0,2761.83,1,Q3,65-79
+M00005,38,Female,Urban,DSNP,2,42.2,0,1,2001.45,1,Q1,35-49
+M00006,41,Male,Rural,Medicare Advantage,2,32.3,1,0,1496.87,0,Q1,35-49
+M00007,20,Female,Urban,Medicaid,2,51.1,2,0,1181.25,0,Q2,18-34
+M00008,39,Female,Urban,DSNP,1,49.4,0,0,1067.05,0,Q2,35-49
+M00009,70,Female,Suburban,Medicare Advantage,2,98.7,0,0,1318.57,1,Q4,65-79
+M00010,19,Female,Urban,Medicare Advantage,0,62.8,0,0,485.6,1,Q3,18-34
+M00011,47,Female,Urban,Medicaid,2,30.2,0,0,1078.09,1,Q1,35-49
+M00012,55,Female,Suburban,Medicare Advantage,3,44.8,1,0,1410.62,1,Q2,50-64
+M00013,19,Female,Urban,Medicaid,3,73.4,1,0,1246.6,1,Q4,18-34
+M00014,81,Male,Suburban,Medicare Advantage,4,92.6,1,1,2575.28,1,Q4,80+
+M00015,77,Male,Urban,Medicaid,2,26.5,0,0,835.28,0,Q1,65-79
+M00016,38,Male,Urban,Medicare Advantage,0,21.2,1,0,901.75,1,Q1,35-49
+M00017,50,Male,Urban,DSNP,3,88.7,1,0,1766.79,1,Q4,50-64
+M00018,75,Female,Urban,Medicaid,4,62.0,2,0,1632.09,0,Q3,65-79
+M00019,39,Female,Suburban,DSNP,1,39.4,0,0,1029.15,1,Q1,35-49
+M00020,66,Male,Urban,Medicaid,5,64.6,2,0,2078.09,1,Q3,65-79
+M00021,76,Female,Suburban,DSNP,2,7.6,4,0,2346.01,0,Q1,65-79
+M00022,59,Male,Urban,Medicare Advantage,2,55.1,0,0,1028.57,1,Q3,50-64
+M00023,77,Female,Suburban,Medicare Advantage,4,60.9,2,0,1876.3,0,Q3,65-79
+M00024,32,Male,Rural,Medicare Advantage,1,71.6,0,0,1021.79,1,Q4,18-34
+M00025,79,Female,Suburban,DSNP,4,36.7,2,1,2932.37,0,Q1,65-79
+M00026,79,Male,Urban,Medicaid,3,56.5,3,0,1838.9,1,Q3,65-79
+M00027,64,Female,Urban,Medicaid,1,38.3,0,0,590.24,1,Q1,50-64
+M00028,79,Male,Urban,Medicare Advantage,3,59.6,1,1,2613.78,0,Q3,65-79
+M00029,68,Female,Suburban,Medicare Advantage,3,38.9,2,0,1731.15,1,Q1,65-79
+M00030,72,Male,Urban,Medicare Advantage,4,47.7,1,0,1729.38,1,Q2,65-79
+M00031,81,Male,Urban,Medicare Advantage,6,37.1,1,0,2436.27,1,Q1,80+
+M00032,20,Female,Suburban,Medicaid,1,66.7,0,0,518.78,1,Q4,18-34
+M00033,68,Male,Urban,Medicare Advantage,4,70.5,0,1,2581.83,1,Q4,65-79
+M00034,24,Male,Suburban,Medicaid,1,50.8,2,0,999.11,0,Q2,18-34
+M00035,38,Female,Urban,Medicare Advantage,3,55.7,1,0,1363.98,1,Q3,35-49
+M00036,56,Male,Urban,Medicaid,2,28.9,3,0,1890.58,0,Q1,50-64
+M00037,35,Male,Suburban,Medicaid,0,49.6,1,0,670.67,0,Q2,35-49
+M00038,21,Male,Urban,Medicaid,1,54.1,1,0,649.08,1,Q2,18-34
+M00039,77,Female,Suburban,Medicaid,5,100.0,3,1,3131.83,1,Q4,65-79
+M00040,31,Female,Urban,Medicare Advantage,2,35.0,1,0,1163.27,0,Q1,18-34
+M00041,26,Male,Urban,Medicaid,2,81.4,1,1,1958.05,1,Q4,18-34
+M00042,70,Male,Rural,Medicaid,3,72.9,0,1,2033.97,0,Q4,65-79
+M00043,19,Female,Suburban,Medicaid,0,60.1,0,0,671.87,1,Q3,18-34
+M00044,77,Male,Suburban,Medicaid,6,86.7,1,0,2004.81,1,Q4,65-79
+M00045,88,Female,Urban,Medicaid,4,61.7,0,0,1273.0,1,Q3,80+
+M00046,61,Female,Suburban,Medicaid,3,62.0,1,0,1348.95,1,Q3,50-64
+M00047,25,Female,Urban,Medicare Advantage,0,54.0,1,0,704.04,1,Q2,18-34
+M00048,64,Female,Urban,Medicare Advantage,2,77.0,0,1,1966.27,1,Q4,50-64
+M00049,52,Male,Rural,Medicare Advantage,2,74.7,0,0,938.75,0,Q4,50-64
+M00050,53,Female,Urban,Medicaid,3,43.7,0,0,1334.85,1,Q2,50-64
+M00051,67,Male,Rural,Medicaid,2,31.3,1,0,1095.03,0,Q1,65-79
+M00052,21,Male,Urban,DSNP,3,51.3,0,0,1436.51,0,Q2,18-34
+M00053,19,Male,Urban,Medicare Advantage,3,40.6,0,0,1057.18,1,Q1,18-34
+M00054,23,Female,Suburban,Medicaid,0,53.9,0,0,282.99,1,Q2,18-34
+M00055,71,Female,Rural,Medicaid,5,77.3,2,0,1977.72,0,Q4,65-79
+M00056,21,Male,Suburban,Medicaid,0,46.8,0,0,462.08,0,Q2,18-34
+M00057,71,Male,Rural,Medicaid,4,54.2,3,0,2061.04,1,Q2,65-79
+M00058,80,Female,Suburban,Medicaid,4,56.0,0,0,1055.33,1,Q3,80+
+M00059,35,Male,Suburban,Medicare Advantage,1,70.3,0,0,651.82,1,Q4,35-49
+M00060,61,Male,Rural,Medicare Advantage,5,14.6,1,0,1958.91,1,Q1,50-64
+M00061,51,Male,Urban,Medicare Advantage,3,44.1,1,0,1333.17,1,Q2,50-64
+M00062,79,Male,Urban,Medicare Advantage,4,58.8,1,1,2660.35,1,Q3,65-79
+M00063,31,Male,Urban,Medicare Advantage,2,76.6,0,0,813.04,1,Q4,18-34
+M00064,65,Female,Rural,Medicare Advantage,3,46.1,1,0,1587.79,1,Q2,65-79
+M00065,32,Male,Rural,DSNP,0,21.2,1,0,1189.75,0,Q1,18-34
+M00066,89,Male,Urban,Medicaid,2,66.2,0,0,1133.83,1,Q3,80+
+M00067,79,Female,Suburban,Medicaid,4,43.6,1,0,1709.91,1,Q2,65-79
+M00068,57,Female,Rural,Medicaid,3,33.6,1,0,1505.67,1,Q1,50-64
+M00069,70,Female,Urban,Medicare Advantage,6,43.8,1,0,1919.11,1,Q2,65-79
+M00070,41,Male,Suburban,DSNP,3,51.7,2,2,3579.36,1,Q2,35-49
+M00071,43,Male,Rural,Medicaid,2,44.1,0,0,969.71,1,Q2,35-49
+M00072,77,Female,Urban,DSNP,2,15.3,0,0,1533.63,0,Q1,65-79
+M00073,58,Male,Suburban,Medicaid,3,71.1,2,0,1461.08,1,Q4,50-64
+M00074,46,Female,Urban,DSNP,1,77.9,0,1,1904.73,1,Q4,35-49
+M00075,32,Male,Rural,Medicaid,1,66.7,0,0,559.73,1,Q4,18-34
+M00076,62,Male,Rural,Medicaid,5,34.5,1,0,1505.39,0,Q1,50-64
+M00077,82,Male,Rural,Medicaid,4,51.4,0,1,2125.43,1,Q2,80+
+M00078,88,Female,Urban,Medicaid,3,54.9,1,1,2192.32,1,Q3,80+
+M00079,26,Female,Rural,Medicaid,2,65.8,1,0,978.71,0,Q3,18-34
+M00080,18,Female,Rural,Medicaid,2,67.0,0,0,794.5,1,Q4,18-34
+M00081,25,Female,Urban,Medicare Advantage,1,41.8,0,0,812.02,1,Q1,18-34
+M00082,80,Male,Rural,Medicare Advantage,3,56.5,1,3,4198.97,1,Q3,80+
+M00083,28,Male,Urban,Medicaid,3,63.2,3,0,1583.92,1,Q3,18-34
+M00084,25,Male,Suburban,Medicare Advantage,4,81.2,0,0,1314.84,1,Q4,18-34
+M00085,52,Male,Urban,Medicare Advantage,2,67.7,0,0,868.48,1,Q4,50-64
+M00086,52,Male,Urban,Medicaid,2,69.2,0,0,1013.13,1,Q4,50-64
+M00087,50,Male,Urban,Medicaid,1,56.5,0,0,864.25,0,Q3,50-64
+M00088,22,Male,Suburban,Medicaid,1,80.4,1,0,742.93,1,Q4,18-34
+M00089,58,Male,Urban,Medicaid,3,62.4,0,0,1054.19,0,Q3,50-64
+M00090,45,Female,Suburban,Medicare Advantage,2,39.5,0,0,1169.2,1,Q1,35-49
+M00091,24,Female,Urban,Medicaid,0,80.3,0,0,411.23,1,Q4,18-34
+M00092,89,Female,Urban,Medicare Advantage,2,67.6,0,0,1266.59,1,Q4,80+
+M00093,29,Male,Suburban,Medicare Advantage,1,47.0,1,0,984.92,0,Q2,18-34
+M00094,51,Male,Suburban,Medicaid,6,46.4,3,0,2460.76,1,Q2,50-64
+M00095,50,Female,Urban,Medicare Advantage,4,60.3,1,0,1678.81,1,Q3,50-64
+M00096,65,Male,Suburban,Medicaid,3,63.3,3,0,1855.72,1,Q3,65-79
+M00097,40,Male,Rural,DSNP,2,58.6,0,0,1317.96,1,Q3,35-49
+M00098,79,Female,Suburban,Medicaid,3,60.6,0,0,1119.39,1,Q3,65-79
+M00099,54,Female,Urban,Medicare Advantage,2,85.6,1,0,1220.41,1,Q4,50-64
+M00100,61,Male,Urban,Medicare Advantage,3,74.3,1,0,1576.31,1,Q4,50-64
+M00101,52,Female,Rural,Medicaid,4,58.4,0,0,1273.17,1,Q3,50-64
+M00102,82,Male,Urban,Medicare Advantage,3,71.9,1,0,1426.69,1,Q4,80+
+M00103,64,Female,Rural,DSNP,3,36.4,4,0,2630.77,0,Q1,50-64
+M00104,20,Male,Suburban,Medicare Advantage,2,62.2,1,0,1257.37,0,Q3,18-34
+M00105,18,Male,Rural,Medicare Advantage,0,87.6,0,0,556.52,1,Q4,18-34
+M00106,22,Male,Suburban,DSNP,2,51.1,1,0,1365.18,1,Q2,18-34
+M00107,31,Male,Rural,Medicaid,1,39.7,0,0,657.84,1,Q1,18-34
+M00108,44,Female,Urban,Medicaid,1,43.3,0,0,748.1,0,Q1,35-49
+M00109,26,Female,Suburban,Medicare Advantage,1,35.4,0,0,520.04,1,Q1,18-34
+M00110,32,Female,Urban,Medicaid,1,40.9,1,0,1111.48,0,Q1,18-34
+M00111,59,Male,Urban,Medicare Advantage,1,48.3,2,0,1241.21,1,Q2,50-64
+M00112,68,Male,Suburban,DSNP,7,29.7,2,0,2701.77,1,Q1,65-79
+M00113,80,Male,Rural,Medicaid,2,55.3,1,0,1234.18,1,Q3,80+
+M00114,69,Female,Rural,Medicaid,3,71.2,2,0,1825.62,1,Q4,65-79
+M00115,21,Female,Suburban,Medicare Advantage,0,38.7,0,0,553.43,0,Q1,18-34
+M00116,40,Female,Urban,Medicaid,4,82.3,1,0,1620.62,1,Q4,35-49
+M00117,32,Female,Urban,Medicare Advantage,2,64.2,1,0,1236.81,0,Q3,18-34
+M00118,60,Male,Suburban,Medicaid,1,73.6,0,0,634.57,0,Q4,50-64
+M00119,46,Female,Urban,Medicare Advantage,5,43.2,3,0,2240.16,1,Q1,35-49
+M00120,53,Female,Urban,Medicaid,2,70.4,1,0,1107.78,1,Q4,50-64
+M00121,30,Male,Urban,Medicare Advantage,2,35.3,1,1,1949.91,0,Q1,18-34
+M00122,49,Female,Urban,Medicaid,3,71.0,1,0,1328.93,1,Q4,35-49
+M00123,88,Female,Urban,Medicare Advantage,4,58.1,1,0,1774.65,1,Q3,80+
+M00124,76,Male,Urban,Medicaid,3,65.0,0,0,1240.77,1,Q3,65-79
+M00125,45,Female,Urban,Medicare Advantage,1,33.8,1,1,1983.2,1,Q1,35-49
+M00126,83,Male,Urban,DSNP,6,38.9,2,1,3403.87,1,Q1,80+
+M00127,59,Male,Rural,Medicaid,2,65.8,0,0,1018.2,1,Q3,50-64
+M00128,62,Male,Urban,Medicaid,2,37.9,0,0,863.07,0,Q1,50-64
+M00129,79,Female,Urban,Medicaid,3,63.3,2,1,2154.04,1,Q3,65-79
+M00130,74,Male,Suburban,Medicare Advantage,2,30.4,1,0,1371.44,0,Q1,65-79
+M00131,23,Female,Urban,Medicare Advantage,2,70.3,1,0,1085.51,1,Q4,18-34
+M00132,45,Female,Rural,Medicare Advantage,1,32.8,0,0,885.86,1,Q1,35-49
+M00133,45,Female,Suburban,Medicaid,1,64.9,0,0,929.86,1,Q3,35-49
+M00134,61,Male,Urban,Medicaid,1,66.3,0,0,997.33,1,Q3,50-64
+M00135,47,Female,Urban,Medicare Advantage,1,42.5,0,0,828.19,0,Q1,35-49
+M00136,79,Female,Rural,Medicaid,2,65.5,0,0,906.82,1,Q3,65-79
+M00137,79,Male,Rural,DSNP,2,59.7,0,0,1476.16,1,Q3,65-79
+M00138,18,Female,Urban,Medicaid,0,45.3,0,1,1257.57,0,Q2,18-34
+M00139,44,Female,Suburban,Medicare Advantage,0,36.8,0,0,703.01,0,Q1,35-49
+M00140,79,Female,Urban,Medicaid,4,19.7,1,1,2406.7,1,Q1,65-79
+M00141,20,Female,Rural,Medicaid,1,61.3,0,0,620.08,0,Q3,18-34
+M00142,87,Female,Urban,Medicare Advantage,4,26.8,2,0,1890.56,1,Q1,80+
+M00143,89,Female,Rural,Medicare Advantage,3,56.7,2,0,1958.11,1,Q3,80+
+M00144,44,Male,Suburban,DSNP,1,50.3,0,0,1015.2,1,Q2,35-49
+M00145,26,Female,Suburban,Medicaid,4,67.2,0,1,2133.33,1,Q4,18-34
+M00146,79,Female,Suburban,Medicaid,3,49.6,0,0,1034.23,1,Q2,65-79
+M00147,54,Male,Urban,Medicare Advantage,2,49.1,1,1,2269.74,0,Q2,50-64
+M00148,68,Female,Urban,Medicare Advantage,5,68.2,2,0,1976.03,1,Q4,65-79
+M00149,61,Male,Urban,Medicaid,4,61.0,1,0,1545.34,1,Q3,50-64
+M00150,41,Female,Urban,Medicaid,1,60.7,0,0,796.78,1,Q3,35-49
+M00151,76,Female,Suburban,Medicaid,3,63.4,3,0,1810.0,1,Q3,65-79
+M00152,49,Female,Urban,DSNP,2,27.4,2,0,1602.5,0,Q1,35-49
+M00153,69,Female,Urban,Medicaid,3,68.6,0,1,2105.62,1,Q4,65-79
+M00154,79,Female,Rural,Medicaid,3,66.0,0,0,1085.08,1,Q3,65-79
+M00155,75,Female,Rural,Medicaid,4,36.7,0,1,2201.49,1,Q1,65-79
+M00156,69,Female,Rural,Medicaid,2,50.6,1,1,2117.86,1,Q2,65-79
+M00157,29,Female,Rural,Medicaid,3,54.3,1,0,1369.28,1,Q2,18-34
+M00158,56,Female,Urban,Medicare Advantage,2,52.6,1,0,1287.19,1,Q2,50-64
+M00159,19,Female,Urban,Medicaid,0,61.0,0,0,408.74,1,Q3,18-34
+M00160,20,Female,Suburban,Medicare Advantage,5,80.8,1,1,2668.5,1,Q4,18-34
+M00161,73,Female,Suburban,Medicaid,3,74.5,0,0,1168.04,0,Q4,65-79
+M00162,76,Male,Urban,Medicare Advantage,3,31.4,0,0,1400.26,0,Q1,65-79
+M00163,19,Female,Rural,DSNP,0,66.2,2,0,1375.42,0,Q3,18-34
+M00164,19,Male,Urban,Medicare Advantage,1,78.9,0,0,696.67,1,Q4,18-34
+M00165,71,Male,Urban,Medicare Advantage,4,62.0,2,1,2431.0,0,Q3,65-79
+M00166,18,Female,Suburban,Medicaid,0,74.6,0,0,303.85,0,Q4,18-34
+M00167,36,Male,Suburban,Medicaid,1,91.2,0,0,799.04,1,Q4,35-49
+M00168,19,Male,Suburban,Medicare Advantage,4,73.4,1,0,1491.95,1,Q4,18-34
+M00169,70,Female,Urban,DSNP,3,59.5,0,0,1509.3,1,Q3,65-79
+M00170,61,Female,Rural,Medicare Advantage,3,73.8,0,0,1404.01,1,Q4,50-64
+M00171,49,Male,Urban,Medicare Advantage,4,57.6,3,0,2043.84,1,Q3,35-49
+M00172,87,Male,Urban,Medicare Advantage,3,55.4,1,1,2236.9,1,Q3,80+
+M00173,49,Female,Rural,Medicaid,1,48.7,0,0,525.36,1,Q2,35-49
+M00174,85,Female,Rural,Medicaid,4,83.1,1,1,2560.24,1,Q4,80+
+M00175,72,Female,Rural,Medicare Advantage,2,40.3,0,1,2019.97,1,Q1,65-79
+M00176,73,Female,Rural,DSNP,3,82.6,0,0,1736.56,1,Q4,65-79
+M00177,34,Male,Suburban,Medicaid,2,64.0,0,1,1638.01,1,Q3,18-34
+M00178,55,Female,Suburban,Medicare Advantage,1,29.8,0,0,842.86,1,Q1,50-64
+M00179,41,Female,Urban,Medicaid,2,61.6,0,0,747.86,1,Q3,35-49
+M00180,86,Male,Urban,Medicare Advantage,2,17.2,0,0,1121.53,1,Q1,80+
+M00181,87,Female,Urban,Medicaid,3,66.3,2,0,1430.97,1,Q3,80+
+M00182,28,Female,Urban,Medicaid,2,70.9,3,0,1415.72,0,Q4,18-34
+M00183,33,Male,Suburban,Medicare Advantage,0,44.3,0,0,605.78,0,Q2,18-34
+M00184,76,Male,Urban,Medicaid,5,57.2,1,0,1737.64,1,Q3,65-79
+M00185,87,Female,Urban,Medicare Advantage,3,90.2,2,1,2965.95,1,Q4,80+
+M00186,20,Female,Urban,Medicare Advantage,2,45.9,0,0,1140.02,1,Q2,18-34
+M00187,37,Female,Suburban,DSNP,0,35.9,0,0,787.89,0,Q1,35-49
+M00188,76,Female,Urban,Medicaid,2,81.7,0,0,748.73,1,Q4,65-79
+M00189,53,Female,Rural,Medicaid,2,90.3,1,0,1110.1,1,Q4,50-64
+M00190,36,Female,Urban,Medicaid,0,55.1,0,0,519.18,1,Q3,35-49
+M00191,84,Female,Urban,DSNP,4,73.2,3,0,2342.74,1,Q4,80+
+M00192,36,Female,Suburban,DSNP,1,79.1,1,0,1176.68,0,Q4,35-49
+M00193,37,Female,Rural,Medicare Advantage,3,41.6,0,0,1357.91,0,Q1,35-49
+M00194,88,Female,Urban,Medicare Advantage,6,46.3,1,1,3001.09,1,Q2,80+
+M00195,69,Female,Suburban,Medicare Advantage,3,77.2,2,0,1815.47,1,Q4,65-79
+M00196,50,Female,Suburban,Medicare Advantage,2,85.3,0,0,928.36,1,Q4,50-64
+M00197,57,Female,Urban,Medicaid,4,65.1,1,0,1491.17,1,Q3,50-64
+M00198,56,Male,Rural,Medicare Advantage,2,39.2,1,1,2143.64,1,Q1,50-64
+M00199,18,Male,Suburban,Medicaid,1,90.8,0,0,500.96,1,Q4,18-34
+M00200,28,Male,Suburban,Medicare Advantage,0,45.4,0,0,730.64,1,Q2,18-34
+M00201,74,Male,Rural,Medicare Advantage,3,49.0,0,0,1149.33,1,Q2,65-79
+M00202,67,Female,Rural,Medicare Advantage,4,61.2,0,0,1504.01,0,Q3,65-79
+M00203,40,Female,Suburban,Medicaid,1,83.0,1,0,847.39,1,Q4,35-49
+M00204,48,Female,Rural,Medicaid,2,70.4,0,0,931.78,0,Q4,35-49
+M00205,59,Male,Suburban,Medicaid,4,62.5,2,0,1685.01,1,Q3,50-64
+M00206,24,Male,Suburban,Medicaid,2,63.3,1,0,1110.06,1,Q3,18-34
+M00207,33,Female,Suburban,Medicaid,1,55.8,0,0,529.24,0,Q3,18-34
+M00208,77,Female,Suburban,DSNP,4,65.0,1,1,3016.91,1,Q3,65-79
+M00209,19,Female,Urban,Medicare Advantage,5,9.5,4,0,2332.54,0,Q1,18-34
+M00210,18,Female,Rural,Medicaid,1,49.7,1,0,642.58,1,Q2,18-34
+M00211,65,Male,Rural,Medicaid,3,59.3,0,0,1211.63,0,Q3,65-79
+M00212,29,Male,Urban,Medicaid,2,34.3,1,0,1002.14,0,Q1,18-34
+M00213,86,Female,Rural,Medicare Advantage,4,62.0,2,0,1779.06,1,Q3,80+
+M00214,54,Male,Urban,Medicare Advantage,3,51.3,0,0,1275.9,0,Q2,50-64
+M00215,49,Male,Urban,DSNP,1,86.6,0,0,1226.79,1,Q4,35-49
+M00216,26,Female,Suburban,Medicaid,2,83.3,2,0,1387.86,1,Q4,18-34
+M00217,36,Female,Urban,DSNP,4,46.6,1,0,1768.6,0,Q2,35-49
+M00218,65,Female,Rural,DSNP,6,52.3,2,0,2527.44,0,Q2,65-79
+M00219,20,Female,Rural,Medicaid,0,53.7,1,0,636.06,0,Q2,18-34
+M00220,37,Female,Suburban,DSNP,4,46.9,0,1,2676.78,0,Q2,35-49
+M00221,41,Female,Urban,Medicaid,2,58.5,2,0,1196.74,1,Q3,35-49
+M00222,71,Female,Urban,Medicare Advantage,4,41.4,0,1,2328.24,0,Q1,65-79
+M00223,50,Female,Suburban,Medicaid,4,34.6,1,1,2269.83,0,Q1,50-64
+M00224,41,Male,Rural,DSNP,0,66.2,0,0,720.1,1,Q3,35-49
+M00225,89,Female,Suburban,DSNP,3,66.3,2,0,2095.73,1,Q3,80+
+M00226,53,Female,Urban,Medicare Advantage,3,40.5,1,0,1644.16,0,Q1,50-64
+M00227,55,Female,Suburban,Medicare Advantage,2,71.1,0,0,1036.18,0,Q4,50-64
+M00228,42,Male,Suburban,Medicaid,3,43.6,2,0,1372.17,0,Q2,35-49
+M00229,35,Female,Suburban,Medicaid,0,59.6,0,0,492.42,1,Q3,35-49
+M00230,83,Female,Urban,Medicaid,5,69.8,2,0,2072.69,1,Q4,80+
+M00231,71,Male,Suburban,Medicaid,7,54.4,4,0,2735.24,1,Q2,65-79
+M00232,52,Male,Suburban,Medicare Advantage,1,63.2,0,0,1036.42,0,Q3,50-64
+M00233,78,Male,Rural,Medicaid,3,45.7,2,0,1524.52,0,Q2,65-79
+M00234,58,Female,Urban,DSNP,2,51.5,0,0,1287.56,1,Q2,50-64
+M00235,50,Female,Suburban,Medicare Advantage,1,51.3,0,1,1795.52,1,Q2,50-64
+M00236,85,Male,Rural,Medicare Advantage,3,41.6,1,1,2527.16,1,Q1,80+
+M00237,50,Male,Urban,Medicaid,3,51.8,1,0,1295.67,1,Q2,50-64
+M00238,31,Male,Rural,DSNP,2,27.1,0,0,1060.59,1,Q1,18-34
+M00239,38,Male,Suburban,DSNP,0,46.2,0,0,1162.56,0,Q2,35-49
+M00240,65,Female,Urban,Medicaid,5,49.9,3,0,2121.68,1,Q2,65-79
+M00241,37,Male,Urban,Medicare Advantage,0,50.4,1,0,861.23,1,Q2,35-49
+M00242,25,Female,Suburban,Medicare Advantage,1,50.7,0,0,834.01,1,Q2,18-34
+M00243,24,Female,Urban,Medicaid,1,53.9,0,0,529.62,0,Q2,18-34
+M00244,84,Female,Suburban,Medicare Advantage,6,63.6,2,0,2342.83,1,Q3,80+
+M00245,34,Female,Urban,Medicaid,1,70.7,0,0,564.74,1,Q4,18-34
+M00246,50,Female,Suburban,Medicaid,4,43.3,0,0,1299.87,1,Q1,50-64
+M00247,65,Female,Urban,Medicaid,3,33.3,1,1,2216.88,0,Q1,65-79
+M00248,76,Male,Rural,Medicaid,4,36.2,0,0,1386.25,1,Q1,65-79
+M00249,39,Female,Rural,Medicaid,2,46.2,2,0,1160.42,0,Q2,35-49
+M00250,47,Male,Rural,Medicaid,1,48.7,1,0,818.53,1,Q2,35-49
+M00251,55,Female,Suburban,DSNP,5,41.1,3,0,2346.18,1,Q1,50-64
+M00252,68,Female,Urban,Medicare Advantage,2,31.7,0,0,1026.74,1,Q1,65-79
+M00253,71,Female,Suburban,DSNP,3,46.8,1,0,1465.18,1,Q2,65-79
+M00254,25,Female,Urban,Medicaid,1,58.3,2,0,1013.15,1,Q3,18-34
+M00255,44,Female,Urban,Medicaid,0,65.7,0,0,441.89,1,Q3,35-49
+M00256,44,Female,Urban,Medicare Advantage,1,45.0,0,0,854.11,0,Q2,35-49
+M00257,38,Female,Urban,Medicaid,2,47.6,0,0,847.35,0,Q2,35-49
+M00258,47,Male,Suburban,Medicaid,1,38.3,0,0,848.85,1,Q1,35-49
+M00259,45,Female,Suburban,Medicare Advantage,1,54.4,1,0,1371.32,1,Q2,35-49
+M00260,81,Male,Urban,Medicaid,2,39.7,1,0,1370.5,1,Q1,80+
+M00261,86,Female,Urban,Medicare Advantage,3,65.3,2,0,1749.63,1,Q3,80+
+M00262,78,Male,Rural,Medicare Advantage,3,22.9,1,0,1492.79,0,Q1,65-79
+M00263,65,Male,Urban,Medicaid,3,48.5,1,1,2354.24,1,Q2,65-79
+M00264,36,Male,Urban,Medicaid,1,60.4,0,0,452.0,1,Q3,35-49
+M00265,21,Female,Urban,Medicare Advantage,2,58.3,0,0,886.18,0,Q3,18-34
+M00266,52,Female,Suburban,Medicaid,4,100.0,1,0,1449.42,1,Q4,50-64
+M00267,81,Female,Suburban,Medicaid,3,61.3,0,0,1264.1,1,Q3,80+
+M00268,66,Male,Urban,DSNP,4,36.9,2,1,3127.66,1,Q1,65-79
+M00269,34,Male,Urban,Medicaid,2,53.3,0,0,736.65,1,Q2,18-34
+M00270,61,Male,Suburban,Medicare Advantage,1,23.0,0,0,854.28,1,Q1,50-64
+M00271,47,Female,Suburban,DSNP,6,53.5,0,0,2051.41,0,Q2,35-49
+M00272,63,Male,Urban,Medicaid,1,40.0,2,0,1106.13,0,Q1,50-64
+M00273,23,Male,Rural,Medicaid,2,71.5,0,0,926.73,0,Q4,18-34
+M00274,54,Female,Urban,Medicaid,3,45.1,3,0,1819.1,1,Q2,50-64
+M00275,41,Female,Urban,Medicaid,1,52.9,1,0,914.58,0,Q2,35-49
+M00276,63,Male,Rural,Medicaid,1,43.6,0,0,808.91,1,Q2,50-64
+M00277,70,Male,Urban,Medicare Advantage,3,86.3,2,0,1683.97,1,Q4,65-79
+M00278,77,Male,Suburban,Medicaid,2,49.2,0,0,922.85,1,Q2,65-79
+M00279,80,Female,Urban,Medicare Advantage,6,88.0,2,1,3169.03,1,Q4,80+
+M00280,49,Male,Urban,DSNP,3,69.7,0,0,1526.0,1,Q4,35-49
+M00281,50,Female,Rural,Medicare Advantage,3,63.7,2,0,1684.12,1,Q3,50-64
+M00282,84,Female,Urban,Medicare Advantage,2,61.6,0,0,1125.27,1,Q3,80+
+M00283,35,Female,Rural,Medicaid,2,62.1,1,0,1139.95,1,Q3,35-49
+M00284,42,Male,Urban,Medicare Advantage,2,20.3,0,0,987.13,0,Q1,35-49
+M00285,71,Male,Urban,Medicare Advantage,2,50.0,0,0,1040.8,1,Q2,65-79
+M00286,75,Female,Urban,Medicaid,4,70.2,0,0,1380.52,1,Q4,65-79
+M00287,84,Female,Suburban,Medicaid,2,54.1,0,0,904.44,0,Q2,80+
+M00288,63,Male,Urban,DSNP,1,29.7,0,0,959.53,1,Q1,50-64
+M00289,41,Female,Rural,Medicaid,1,54.1,0,0,673.39,1,Q2,35-49
+M00290,49,Male,Urban,Medicaid,1,85.7,0,0,627.11,1,Q4,35-49
+M00291,64,Female,Rural,Medicaid,2,77.4,1,0,1135.5,1,Q4,50-64
+M00292,40,Female,Urban,Medicaid,0,53.9,0,0,373.99,1,Q2,35-49
+M00293,83,Female,Rural,Medicare Advantage,2,72.1,1,0,1537.07,1,Q4,80+
+M00294,44,Female,Suburban,Medicare Advantage,1,48.4,0,0,756.62,1,Q2,35-49
+M00295,19,Male,Suburban,Medicare Advantage,1,24.3,0,0,684.16,0,Q1,18-34
+M00296,34,Female,Rural,Medicaid,1,38.4,0,0,691.35,1,Q1,18-34
+M00297,50,Female,Suburban,Medicaid,4,83.1,3,0,1744.81,1,Q4,50-64
+M00298,26,Male,Suburban,Medicaid,2,50.1,1,0,839.93,0,Q2,18-34
+M00299,60,Female,Urban,Medicaid,3,50.6,0,0,1155.71,1,Q2,50-64
+M00300,65,Female,Urban,Medicaid,2,49.6,0,0,896.61,0,Q2,65-79
+M00301,56,Male,Rural,Medicare Advantage,3,89.3,0,2,2935.82,1,Q4,50-64
+M00302,59,Male,Suburban,Medicaid,2,84.3,1,0,1218.4,1,Q4,50-64
+M00303,43,Female,Suburban,Medicare Advantage,2,94.9,0,0,914.57,1,Q4,35-49
+M00304,67,Male,Urban,Medicaid,3,52.1,2,0,1545.06,1,Q2,65-79
+M00305,42,Male,Urban,Medicaid,0,60.3,0,0,390.46,1,Q3,35-49
+M00306,41,Female,Urban,Medicaid,1,27.7,0,0,710.41,1,Q1,35-49
+M00307,30,Female,Suburban,DSNP,2,81.6,0,0,1369.85,0,Q4,18-34
+M00308,77,Male,Urban,Medicare Advantage,6,34.0,0,1,2544.68,0,Q1,65-79
+M00309,24,Male,Urban,DSNP,1,58.9,0,0,1019.52,1,Q3,18-34
+M00310,74,Female,Urban,Medicaid,3,35.2,0,1,2168.79,1,Q1,65-79
+M00311,53,Male,Urban,Medicaid,3,44.4,2,0,1471.42,1,Q2,50-64
+M00312,62,Male,Suburban,Medicare Advantage,1,39.9,1,0,992.27,0,Q1,50-64
+M00313,37,Female,Urban,Medicaid,6,44.1,2,0,2048.52,0,Q2,35-49
+M00314,82,Female,Suburban,Medicare Advantage,3,45.3,0,0,1468.2,1,Q2,80+
+M00315,25,Female,Urban,Medicaid,0,45.1,0,0,536.86,0,Q2,18-34
+M00316,33,Male,Urban,Medicaid,0,70.0,0,0,505.91,1,Q4,18-34
+M00317,31,Female,Urban,Medicaid,3,35.1,1,0,1225.75,1,Q1,18-34
+M00318,32,Male,Urban,Medicaid,2,59.0,0,0,710.12,1,Q3,18-34
+M00319,83,Male,Urban,Medicare Advantage,3,76.9,0,0,1455.83,1,Q4,80+
+M00320,49,Male,Urban,Medicaid,2,45.8,0,0,983.19,0,Q2,35-49
+M00321,80,Female,Suburban,Medicaid,5,42.1,0,0,1413.43,1,Q1,80+
+M00322,68,Male,Urban,Medicaid,2,50.9,0,1,1905.74,1,Q2,65-79
+M00323,42,Female,Suburban,Medicaid,0,76.2,1,0,796.34,1,Q4,35-49
+M00324,75,Male,Rural,Medicare Advantage,4,58.5,1,0,1825.85,0,Q3,65-79
+M00325,80,Female,Suburban,DSNP,4,45.4,1,0,1981.0,1,Q2,80+
+M00326,79,Female,Urban,DSNP,4,63.7,0,1,2563.09,1,Q3,65-79
+M00327,39,Male,Urban,Medicare Advantage,1,35.2,0,0,755.75,1,Q1,35-49
+M00328,75,Female,Urban,Medicaid,4,67.3,3,0,1889.13,1,Q4,65-79
+M00329,75,Female,Urban,Medicare Advantage,2,62.4,1,0,1353.87,1,Q3,65-79
+M00330,66,Male,Rural,Medicaid,2,49.5,0,0,924.37,1,Q2,65-79
+M00331,69,Male,Urban,Medicaid,3,39.9,1,1,2523.4,1,Q1,65-79
+M00332,59,Male,Urban,Medicare Advantage,1,39.0,1,0,1223.36,0,Q1,50-64
+M00333,87,Male,Suburban,Medicaid,6,64.6,2,0,2314.35,1,Q3,80+
+M00334,32,Female,Suburban,DSNP,1,77.1,0,0,1094.56,1,Q4,18-34
+M00335,71,Female,Suburban,Medicaid,7,43.5,2,0,2269.92,0,Q1,65-79
+M00336,77,Female,Urban,Medicare Advantage,4,63.3,1,0,1694.95,1,Q3,65-79
+M00337,25,Female,Urban,Medicare Advantage,2,17.4,1,1,2037.94,1,Q1,18-34
+M00338,70,Male,Suburban,DSNP,8,44.5,4,1,4252.59,1,Q2,65-79
+M00339,77,Male,Urban,Medicare Advantage,4,54.4,1,0,1774.7,1,Q2,65-79
+M00340,22,Female,Urban,Medicare Advantage,2,38.6,0,0,928.09,0,Q1,18-34
+M00341,85,Female,Urban,Medicaid,4,38.1,1,0,1575.13,1,Q1,80+
+M00342,23,Male,Urban,Medicare Advantage,0,43.0,0,0,500.71,0,Q1,18-34
+M00343,64,Female,Urban,Medicaid,1,60.3,1,0,818.88,1,Q3,50-64
+M00344,72,Male,Urban,Medicare Advantage,4,51.6,1,0,1862.01,0,Q2,65-79
+M00345,57,Female,Suburban,Medicare Advantage,2,14.7,0,0,1332.66,0,Q1,50-64
+M00346,69,Male,Suburban,Medicare Advantage,4,16.8,0,0,1619.92,1,Q1,65-79
+M00347,33,Female,Rural,Medicaid,0,44.1,4,0,1190.91,0,Q2,18-34
+M00348,30,Male,Urban,Medicaid,1,63.2,0,1,1624.44,0,Q3,18-34
+M00349,47,Male,Urban,Medicare Advantage,2,5.5,1,0,1370.85,0,Q1,35-49
+M00350,36,Male,Urban,Medicaid,1,46.0,0,0,605.59,1,Q2,35-49
+M00351,34,Male,Suburban,Medicaid,2,45.5,0,0,884.67,1,Q2,18-34
+M00352,80,Male,Suburban,Medicaid,4,80.0,2,0,1755.24,1,Q4,80+
+M00353,36,Male,Urban,DSNP,4,48.1,1,0,1997.47,1,Q2,35-49
+M00354,75,Female,Rural,Medicare Advantage,3,61.9,1,0,1583.84,0,Q3,65-79
+M00355,72,Male,Urban,Medicaid,3,57.5,1,0,1267.94,1,Q3,65-79
+M00356,79,Male,Suburban,Medicaid,3,16.6,1,0,1486.38,0,Q1,65-79
+M00357,40,Female,Suburban,Medicaid,0,68.8,0,0,617.05,1,Q4,35-49
+M00358,26,Male,Rural,Medicare Advantage,1,58.9,0,0,787.78,1,Q3,18-34
+M00359,29,Male,Suburban,Medicare Advantage,1,64.1,1,0,1053.53,0,Q3,18-34
+M00360,18,Male,Rural,Medicaid,0,100.0,1,0,613.63,1,Q4,18-34
+M00361,75,Female,Urban,Medicaid,2,17.5,1,1,1973.89,1,Q1,65-79
+M00362,18,Female,Rural,Medicaid,0,86.0,0,0,383.79,1,Q4,18-34
+M00363,51,Male,Urban,Medicare Advantage,4,49.8,0,0,1466.76,0,Q2,50-64
+M00364,65,Male,Rural,Medicare Advantage,4,60.2,1,1,2564.64,1,Q3,65-79
+M00365,18,Female,Suburban,Medicaid,1,54.2,0,1,1578.09,1,Q2,18-34
+M00366,33,Male,Rural,Medicaid,4,47.4,1,0,1354.94,1,Q2,18-34
+M00367,78,Male,Urban,Medicaid,4,44.7,1,1,2442.81,1,Q2,65-79
+M00368,81,Female,Suburban,DSNP,2,60.9,1,0,1733.73,1,Q3,80+
+M00369,80,Male,Suburban,Medicaid,3,27.7,2,0,1656.62,1,Q1,80+
+M00370,86,Female,Suburban,Medicare Advantage,4,68.5,1,1,2614.59,1,Q4,80+
+M00371,39,Female,Urban,Medicare Advantage,0,47.5,0,0,760.06,1,Q2,35-49
+M00372,84,Female,Urban,Medicaid,2,34.7,1,1,2063.35,0,Q1,80+
+M00373,43,Male,Urban,Medicaid,2,46.9,2,0,1214.77,1,Q2,35-49
+M00374,33,Female,Urban,Medicaid,3,77.6,0,0,662.47,1,Q4,18-34
+M00375,68,Female,Rural,Medicare Advantage,4,45.4,3,0,2065.52,0,Q2,65-79
+M00376,74,Female,Urban,Medicare Advantage,4,61.5,2,0,2093.05,1,Q3,65-79
+M00377,46,Female,Rural,Medicare Advantage,1,41.8,1,1,1715.32,1,Q1,35-49
+M00378,86,Male,Urban,Medicare Advantage,2,68.6,0,0,1069.77,1,Q4,80+
+M00379,64,Female,Urban,Medicaid,2,67.3,0,1,1898.69,0,Q4,50-64
+M00380,79,Female,Suburban,DSNP,3,88.3,0,1,2216.62,1,Q4,65-79
+M00381,86,Male,Suburban,Medicare Advantage,2,51.8,0,1,2022.72,1,Q2,80+
+M00382,33,Female,Urban,Medicaid,1,67.0,0,1,1678.9,1,Q4,18-34
+M00383,65,Female,Suburban,DSNP,3,56.8,1,0,1995.16,1,Q3,65-79
+M00384,56,Female,Suburban,Medicare Advantage,2,78.3,0,0,1098.83,1,Q4,50-64
+M00385,50,Female,Urban,Medicare Advantage,3,42.1,1,0,1328.82,0,Q1,50-64
+M00386,40,Female,Rural,Medicare Advantage,3,68.4,0,0,1064.78,1,Q4,35-49
+M00387,27,Female,Rural,Medicare Advantage,1,51.5,0,0,785.39,1,Q2,18-34
+M00388,86,Female,Suburban,Medicare Advantage,4,53.8,1,1,2697.72,1,Q2,80+
+M00389,51,Male,Urban,Medicaid,5,56.7,1,0,1876.95,1,Q3,50-64
+M00390,69,Female,Suburban,Medicaid,4,59.5,1,0,1662.5,0,Q3,65-79
+M00391,27,Male,Urban,DSNP,0,52.9,0,0,848.09,1,Q2,18-34
+M00392,36,Male,Urban,Medicaid,2,58.9,3,0,1453.78,0,Q3,35-49
+M00393,75,Female,Urban,Medicaid,5,83.4,0,0,1891.77,0,Q4,65-79
+M00394,18,Male,Urban,Medicaid,1,72.7,1,0,877.19,1,Q4,18-34
+M00395,86,Female,Rural,Medicaid,3,70.6,2,0,1573.75,1,Q4,80+
+M00396,21,Male,Suburban,Medicare Advantage,1,46.8,3,0,1377.05,1,Q2,18-34
+M00397,33,Female,Suburban,DSNP,2,39.0,1,0,1336.71,0,Q1,18-34
+M00398,41,Female,Urban,Medicaid,4,72.2,0,0,925.45,0,Q4,35-49
+M00399,19,Female,Urban,Medicaid,4,70.8,1,0,1383.52,0,Q4,18-34
+M00400,49,Male,Urban,Medicaid,1,81.5,0,0,919.89,1,Q4,35-49
+M00401,41,Female,Rural,DSNP,1,44.1,0,0,878.33,0,Q2,35-49
+M00402,29,Male,Urban,Medicare Advantage,6,50.9,3,0,2342.63,1,Q2,18-34
+M00403,67,Female,Rural,Medicaid,3,25.5,2,0,1493.17,1,Q1,65-79
+M00404,52,Male,Suburban,Medicare Advantage,3,47.9,1,0,1510.58,0,Q2,50-64
+M00405,50,Female,Urban,DSNP,1,72.9,3,0,1749.32,1,Q4,50-64
+M00406,50,Male,Suburban,Medicare Advantage,2,46.6,2,0,1316.79,0,Q2,50-64
+M00407,78,Female,Urban,DSNP,5,66.5,2,0,2264.27,1,Q4,65-79
+M00408,68,Female,Rural,Medicaid,6,51.6,3,0,2242.36,1,Q2,65-79
+M00409,60,Female,Rural,Medicare Advantage,4,60.8,1,0,1821.32,1,Q3,50-64
+M00410,29,Female,Urban,Medicaid,2,34.3,0,1,1861.19,1,Q1,18-34
+M00411,84,Male,Urban,Medicare Advantage,2,56.5,2,0,1578.64,0,Q3,80+
+M00412,82,Female,Suburban,Medicare Advantage,3,5.0,1,1,2615.34,1,Q1,80+
+M00413,50,Male,Rural,Medicare Advantage,2,51.6,0,0,1019.22,1,Q2,50-64
+M00414,57,Female,Urban,Medicare Advantage,4,25.7,2,0,1828.8,1,Q1,50-64
+M00415,60,Female,Suburban,Medicaid,5,76.7,3,1,3036.85,1,Q4,50-64
+M00416,61,Female,Suburban,Medicare Advantage,2,69.0,1,0,1338.18,1,Q4,50-64
+M00417,46,Female,Suburban,DSNP,1,63.4,0,0,1027.35,1,Q3,35-49
+M00418,30,Male,Urban,DSNP,1,82.4,0,1,1932.62,1,Q4,18-34
+M00419,29,Female,Suburban,Medicaid,1,37.9,0,0,720.48,0,Q1,18-34
+M00420,63,Female,Rural,Medicaid,3,86.5,0,0,1137.54,1,Q4,50-64
+M00421,19,Male,Urban,Medicaid,2,71.8,0,0,771.13,0,Q4,18-34
+M00422,52,Male,Urban,Medicare Advantage,3,50.7,0,0,1287.3,1,Q2,50-64
+M00423,25,Female,Rural,Medicare Advantage,3,75.4,2,0,1640.0,0,Q4,18-34
+M00424,43,Female,Urban,Medicaid,1,35.1,2,0,1114.49,0,Q1,35-49
+M00425,51,Male,Rural,Medicare Advantage,3,40.2,0,1,2067.1,1,Q1,50-64
+M00426,24,Female,Urban,Medicare Advantage,1,44.0,2,0,1218.7,1,Q2,18-34
+M00427,85,Female,Urban,Medicare Advantage,4,45.5,1,0,1568.72,1,Q2,80+
+M00428,75,Female,Rural,Medicare Advantage,3,36.0,1,0,1514.76,0,Q1,65-79
+M00429,46,Male,Urban,Medicare Advantage,1,77.0,0,1,1447.41,1,Q4,35-49
+M00430,53,Male,Suburban,Medicare Advantage,3,50.3,0,0,1030.9,1,Q2,50-64
+M00431,38,Female,Urban,Medicaid,1,61.3,2,0,882.86,1,Q3,35-49
+M00432,53,Female,Suburban,Medicare Advantage,2,44.7,1,0,1397.68,1,Q2,50-64
+M00433,27,Female,Urban,Medicare Advantage,0,22.2,0,0,589.68,0,Q1,18-34
+M00434,41,Male,Urban,DSNP,1,59.9,3,0,1582.55,1,Q3,35-49
+M00435,81,Female,Rural,Medicare Advantage,3,20.6,1,0,1622.93,0,Q1,80+
+M00436,66,Female,Urban,Medicare Advantage,4,53.8,3,0,2242.64,1,Q2,65-79
+M00437,53,Male,Suburban,Medicaid,1,30.4,1,0,1003.02,0,Q1,50-64
+M00438,41,Female,Urban,Medicaid,2,90.8,0,0,831.35,0,Q4,35-49
+M00439,40,Male,Suburban,Medicaid,3,71.4,1,0,1277.9,1,Q4,35-49
+M00440,79,Female,Urban,Medicaid,2,56.9,1,0,1334.18,1,Q3,65-79
+M00441,54,Female,Rural,Medicare Advantage,3,77.7,0,0,1179.69,1,Q4,50-64
+M00442,29,Female,Urban,DSNP,2,39.8,2,1,2549.58,1,Q1,18-34
+M00443,72,Male,Urban,Medicaid,3,64.8,2,1,2467.14,0,Q3,65-79
+M00444,30,Male,Urban,Medicaid,2,58.6,1,0,836.39,1,Q3,18-34
+M00445,40,Male,Urban,Medicare Advantage,0,59.8,1,0,969.99,0,Q3,35-49
+M00446,47,Female,Suburban,Medicaid,3,77.9,0,0,1304.87,1,Q4,35-49
+M00447,34,Male,Urban,Medicare Advantage,3,68.2,3,0,1711.14,0,Q4,18-34
+M00448,79,Female,Rural,Medicare Advantage,2,60.2,2,1,2611.52,0,Q3,65-79
+M00449,30,Female,Urban,Medicare Advantage,1,25.2,0,0,678.96,0,Q1,18-34
+M00450,76,Male,Urban,Medicaid,4,37.7,1,0,1589.93,1,Q1,65-79
+M00451,36,Female,Suburban,Medicaid,1,52.8,2,0,1274.96,1,Q2,35-49
+M00452,66,Female,Suburban,Medicare Advantage,4,56.7,0,0,1401.55,1,Q3,65-79
+M00453,29,Female,Urban,Medicare Advantage,0,34.7,0,0,594.24,1,Q1,18-34
+M00454,78,Female,Urban,Medicaid,3,98.4,1,0,1185.82,1,Q4,65-79
+M00455,36,Female,Urban,Medicare Advantage,3,82.3,1,0,1304.3,1,Q4,35-49
+M00456,26,Male,Suburban,Medicaid,2,65.8,0,0,565.25,1,Q3,18-34
+M00457,88,Female,Suburban,Medicare Advantage,5,56.3,0,0,1783.5,0,Q3,80+
+M00458,45,Male,Urban,Medicaid,1,51.2,0,0,789.8,1,Q2,35-49
+M00459,69,Male,Rural,DSNP,2,37.9,1,0,1559.4,1,Q1,65-79
+M00460,33,Female,Rural,Medicaid,2,56.4,0,0,856.31,1,Q3,18-34
+M00461,86,Female,Suburban,Medicaid,3,59.6,0,1,2074.91,0,Q3,80+
+M00462,29,Female,Rural,Medicaid,1,32.6,0,0,714.87,1,Q1,18-34
+M00463,42,Male,Urban,Medicaid,0,61.0,0,0,513.54,1,Q3,35-49
+M00464,69,Female,Urban,DSNP,4,52.2,2,0,1927.72,1,Q2,65-79
+M00465,70,Male,Urban,DSNP,3,20.7,0,0,1662.8,1,Q1,65-79
+M00466,40,Female,Urban,Medicaid,6,39.5,2,0,1963.25,0,Q1,35-49
+M00467,33,Male,Suburban,Medicaid,3,47.6,2,0,1289.55,0,Q2,18-34
+M00468,74,Female,Rural,Medicare Advantage,2,89.0,0,2,2883.33,0,Q4,65-79
+M00469,56,Female,Urban,DSNP,3,65.0,1,0,1485.75,1,Q3,50-64
+M00470,70,Male,Urban,Medicare Advantage,3,31.0,2,2,3390.01,0,Q1,65-79
+M00471,59,Male,Urban,Medicaid,3,63.7,1,0,1343.15,1,Q3,50-64
+M00472,75,Female,Rural,Medicaid,5,27.1,2,0,1997.21,0,Q1,65-79
+M00473,56,Male,Urban,Medicare Advantage,3,74.5,2,1,2620.77,1,Q4,50-64
+M00474,31,Female,Suburban,Medicaid,2,46.5,1,0,1034.39,1,Q2,18-34
+M00475,22,Male,Urban,Medicare Advantage,2,53.3,0,0,844.86,1,Q2,18-34
+M00476,52,Male,Urban,Medicaid,1,78.9,0,0,711.46,1,Q4,50-64
+M00477,35,Female,Rural,Medicare Advantage,1,31.8,0,0,747.54,0,Q1,35-49
+M00478,26,Female,Rural,Medicaid,0,29.9,0,1,1138.91,0,Q1,18-34
+M00479,75,Female,Urban,Medicare Advantage,4,44.5,0,0,1407.31,1,Q2,65-79
+M00480,34,Female,Rural,Medicaid,2,73.7,3,0,1592.74,0,Q4,18-34
+M00481,24,Male,Suburban,Medicare Advantage,1,27.7,0,0,946.6,0,Q1,18-34
+M00482,63,Female,Rural,Medicaid,1,5.0,0,0,840.15,1,Q1,50-64
+M00483,30,Female,Urban,Medicare Advantage,0,46.9,0,0,785.24,1,Q2,18-34
+M00484,57,Male,Suburban,Medicare Advantage,1,64.9,1,0,1118.25,0,Q3,50-64
+M00485,59,Male,Urban,Medicare Advantage,5,76.6,0,0,1825.09,1,Q4,50-64
+M00486,26,Female,Suburban,Medicare Advantage,1,46.7,0,0,1010.54,0,Q2,18-34
+M00487,67,Female,Urban,Medicare Advantage,3,47.6,0,0,1079.98,1,Q2,65-79
+M00488,44,Female,Urban,Medicare Advantage,1,75.8,0,1,1762.58,1,Q4,35-49
+M00489,83,Female,Urban,Medicaid,5,21.3,2,0,2012.37,0,Q1,80+
+M00490,22,Male,Suburban,Medicare Advantage,3,48.0,0,0,1057.11,1,Q2,18-34
+M00491,46,Female,Urban,Medicaid,3,58.4,1,1,2233.03,1,Q3,35-49
+M00492,54,Male,Suburban,Medicaid,2,63.1,0,0,910.94,1,Q3,50-64
+M00493,55,Female,Rural,Medicaid,2,45.8,0,1,1721.75,1,Q2,50-64
+M00494,25,Male,Urban,Medicaid,5,55.6,0,0,1326.81,0,Q3,18-34
+M00495,82,Male,Suburban,Medicare Advantage,3,10.2,1,1,2612.55,0,Q1,80+
+M00496,34,Male,Urban,Medicare Advantage,1,43.2,0,0,817.9,1,Q1,18-34
+M00497,88,Female,Rural,Medicare Advantage,3,63.2,1,0,1667.23,1,Q3,80+
+M00498,62,Female,Urban,Medicare Advantage,1,37.3,0,0,874.75,1,Q1,50-64
+M00499,21,Female,Suburban,Medicaid,0,56.1,2,0,908.25,1,Q3,18-34
+M00500,53,Male,Rural,Medicaid,1,63.0,1,0,796.89,1,Q3,50-64
