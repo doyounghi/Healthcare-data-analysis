@@ -43,3 +43,17 @@ These findings are descriptive and based on synthetic data. They should not be i
 - Logistic Regression performed better than the Decision Tree, with ROC AUC of 0.76 and F1 score of 0.71.
 - Treated Logistic Regression as the stronger baseline model for future threshold tuning, coefficient interpretation, and model comparison.
 - Results should be interpreted as baseline model performance only, not as a final production model.
+
+### Notebook 4: Model Interpretation and Threshold Tuning
+
+- Rebuilt the baseline Logistic Regression model for AWV completion prediction using the cleaned predictor set from Notebook 3.
+- Excluded cost-related outcome variables, full-dataset quartile features, and redundant engineered grouping variables to keep coefficient interpretation cleaner.
+- Split the data into training, validation, and test sets so threshold tuning could be performed on validation data while preserving a final untouched test set.
+- Applied one-hot encoding to categorical variables and standard scaling to numeric variables using a scikit-learn pipeline.
+- Evaluated the model using accuracy, precision, recall, F1 score, ROC AUC, confusion matrix, and classification report.
+- Extracted Logistic Regression coefficients and converted them into odds ratios for interpretation.
+- Interpreted numeric coefficients as one-standard-deviation changes because numeric predictors were standardized.
+- Interpreted categorical coefficients relative to omitted reference categories because one-hot encoding used `drop="first"`.
+- Tested classification thresholds from 0.30 to 0.70 and selected 0.40 based on validation F1 score.
+- Applied the selected 0.40 threshold once to the final test set, producing test recall of 0.84 and test F1 score of 0.73.
+- Results are based on synthetic data and should be interpreted as baseline model behavior, not causal effects or final production performance.
