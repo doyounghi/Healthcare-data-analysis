@@ -28,3 +28,18 @@ These findings are descriptive and should not be interpreted causally.
 - Exported the analysis-ready dataset to `data/processed/member_analysis_ready.csv`.
 
 These findings are descriptive and based on synthetic data. They should not be interpreted causally.
+
+### Notebook 3 : Modeling Baseline
+
+- Built baseline classification models to predict current-year Annual Wellness Visit (AWV) completion.
+- Used `awv_completed` as the binary target variable.
+- Reviewed the synthetic data-generation logic to confirm which predictors were created before the AWV outcome.
+- Excluded identifier fields, cost-related outcome variables, full-dataset quartile features, and redundant engineered grouping variables from the predictor set.
+- Specifically excluded `member_id`, `monthly_cost`, `high_cost_member`, `engagement_group`, `sdoh_risk_group`, `age_group`, `chronic_burden_group`, `pcp_status`, `total_acute_visits`, `acute_utilization_group`, `has_acute_utilization`, `prior_awv_count`, and `prior_awv_group`.
+- Split the data into training and test sets using an 80/20 stratified split.
+- Applied one-hot encoding to categorical variables and standard scaling to numeric variables using a scikit-learn preprocessing pipeline.
+- Compared Logistic Regression and Decision Tree Classifier baseline models.
+- Evaluated performance using accuracy, precision, recall, F1 score, ROC AUC, confusion matrix, and classification report.
+- Logistic Regression performed better than the Decision Tree, with ROC AUC of 0.76 and F1 score of 0.71.
+- Treated Logistic Regression as the stronger baseline model for future threshold tuning, coefficient interpretation, and model comparison.
+- Results should be interpreted as baseline model performance only, not as a final production model.
