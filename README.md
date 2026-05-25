@@ -7,25 +7,23 @@ This repository contains healthcare analytics and machine learning portfolio pro
 ## Projects
 
 ### 01_mock_member_health_analysis
+
 End-to-end healthcare analytics and machine learning project using synthetic member-level data.
 
 Main topics:
-- Data generation
+
+- Synthetic healthcare data generation
 - Exploratory data analysis
 - Feature engineering
 - AWV completion classification
 - Monthly cost regression
-- Model comparison
+- Model interpretation
+- Residual diagnostics
+- Tree-based models
+- Random Forest and Gradient Boosting
+- Hyperparameter tuning
+- Final regression model comparison
 - Portfolio-ready project summary
-
-### 02_healthcare_outreach_ab_testing
-Healthcare outreach A/B testing project focused on evaluating intervention effectiveness.
-
-Main topics:
-- Synthetic outreach data generation
-- Treatment vs control comparison
-- Statistical testing
-- Practical healthcare business interpretation
 
 ## Skills Demonstrated
 
@@ -34,9 +32,12 @@ Main topics:
 - scikit-learn
 - machine learning
 - healthcare analytics
+- exploratory data analysis
+- feature engineering
 - classification modeling
 - regression modeling
-- A/B testing
+- model comparison
+- residual diagnostics
 - data storytelling
 - Git/GitHub project organization
 
@@ -49,12 +50,7 @@ mock-member-health-analysis/
 │   ├── notebooks/
 │   ├── data/
 │   ├── outputs/
-│   └── README.md
-│
-├── 02_healthcare_outreach_ab_testing/
-│   ├── notebooks/
-│   ├── data/
-│   ├── outputs/
+│   ├── src/
 │   └── README.md
 │
 └── README.md
