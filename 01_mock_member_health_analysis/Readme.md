@@ -2,6 +2,8 @@
 
 Practice project for Python, data analysis, and introductory machine learning.
 
+#### This project uses fully synthetic healthcare-style data generated for portfolio and learning purposes. It does not contain real patient data, PHI, claims data, employer data, or production healthcare records. Results should be interpreted as modeling practice, not real-world clinical or financial evidence.
+
 ### Notebook 1 : Explornatory Data Analysis
 
 This notebook performs initial exploratory analysis on a synthetic healthcare member dataset. Each row represents one health plan member with demographic, plan, SDOH, utilization, cost, PCP attribution, and AWV completion fields.
