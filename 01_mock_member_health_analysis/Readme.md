@@ -2,7 +2,7 @@
 
 Practice project for Python, data analysis, and introductory machine learning.
 
-## Notebook 1 : Explornatory Data Analysis
+### Notebook 1 : Explornatory Data Analysis
 
 This notebook performs initial exploratory analysis on a synthetic healthcare member dataset. Each row represents one health plan member with demographic, plan, SDOH, utilization, cost, PCP attribution, and AWV completion fields.
 
