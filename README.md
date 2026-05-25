@@ -1,6 +1,7 @@
 # Mock Member Health Analysis Portfolio
 
-This repository contains healthcare analytics and machine learning portfolio projects focused on Medicaid/Medicare-style member data, cost prediction, outreach analysis, and quality improvement.
+This repository contains healthcare analytics and machine learning portfolio projects focused on Medicaid/Medicare-style member data, cost prediction, outreach analysis, and quality improvement.4
+This project uses synthetic healthcare-style data created for portfolio and learning purposes. Results should not be interpreted as real-world clinical or financial evidence.
 
 ## Projects
 
