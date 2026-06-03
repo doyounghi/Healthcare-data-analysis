@@ -1,10 +1,106 @@
 # Mock Member Health Analysis
 
-Practice project for Python, data analysis, and introductory machine learning.
+A synthetic healthcare analytics and machine learning portfolio project built to practice Python, exploratory data analysis, feature engineering, classification modeling, regression modeling, model interpretation, and leakage-aware evaluation.
 
-#### This project uses fully synthetic healthcare-style data generated for portfolio and learning purposes. It does not contain real patient data, PHI, claims data, employer data, or production healthcare records. Results should be interpreted as modeling practice, not real-world clinical or financial evidence.
+This project uses fully synthetic healthcare-style data generated for portfolio and learning purposes. It does **not** contain real patient data, PHI, claims data, employer data, or production healthcare records. Results should be interpreted as a modeling workflow demonstration, not real-world clinical or financial evidence.
 
-### Notebook 1 : Explornatory Data Analysis
+## Executive Summary
+
+| Area                  | Summary                                                                                                                          |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| Problem               | Predict AWV completion and monthly healthcare cost using synthetic member-level healthcare data                                  |
+| Methods               | EDA, leakage-aware feature engineering, classification modeling, regression modeling, residual diagnostics, and model comparison |
+| Classification Result | Logistic Regression was selected as the stronger baseline model for AWV completion prediction                                    |
+| Regression Result     | Gradient Boosting was selected as the best model for monthly cost prediction                                                     |
+| Caveat                | This is a synthetic workflow project, not real-world healthcare evidence                                                         |
+
+Final regression model performance: Gradient Boosting achieved approximately MAE `$370.87`, RMSE `$643.58`, and R² `0.772` on the held-out test set.
+
+## Project Overview
+
+This project analyzes a synthetic member-level health plan dataset with 3,000 mock members. Each row represents one member and includes simulated demographic, plan, SDOH, engagement, PCP attribution, utilization, cost, prior AWV behavior, and current-year AWV completion fields.
+
+The project includes two supervised learning tracks:
+
+1. **AWV Completion Classification**
+   Predict whether a member completed an Annual Wellness Visit.
+
+2. **Monthly Cost Regression**
+   Predict simulated monthly healthcare cost.
+
+The main focus of the project is not to prove real healthcare findings, but to demonstrate a complete data science workflow: data generation, EDA, feature engineering, leakage prevention, baseline modeling, model tuning, residual diagnostics, model comparison, and careful interpretation.
+
+## Start Here
+
+Recommended notebooks for a quick review:
+
+| Notebook                                     | Purpose                                                               |
+| -------------------------------------------- | --------------------------------------------------------------------- |
+| `01_Exploratory_Data_Analysis.ipynb`         | Understand the synthetic member population and key feature patterns   |
+| `04_model_interpretation.ipynb`              | Review AWV classification interpretation and threshold logic          |
+| `09_residual_diagnostics.ipynb`              | Evaluate regression residual behavior and high-cost prediction errors |
+| `15_final_regression_model_comparison.ipynb` | Compare final regression models                                       |
+| `16_project_summary.ipynb`                   | Review the full project summary                                       |
+
+## Reproducibility: How to Run This Project
+
+To reproduce the project workflow:
+
+1. Clone the repository.
+
+```bash
+git clone https://github.com/doyounghi/synthetic-data-analysis.git
+cd synthetic-data-analysis/01_mock_member_health_analysis
+```
+
+2. Create and activate a virtual environment.
+
+```bash
+python -m venv .venv
+```
+
+On Windows:
+
+```bash
+.venv\Scripts\activate
+```
+
+On Mac/Linux:
+
+```bash
+source .venv/bin/activate
+```
+
+3. Install required packages.
+
+```bash
+pip install -r requirements.txt
+```
+
+4. Generate the synthetic dataset.
+
+```bash
+python src/generate_data.py
+```
+
+5. Launch Jupyter.
+
+```bash
+jupyter notebook
+```
+
+6. Run the notebooks in order from `01` to `16`.
+
+Notebook outputs may vary slightly depending on package versions and random seeds, but the main modeling workflow and conclusions should remain consistent.
+
+Generated and processed data files are stored under:
+
+```text
+data/raw/
+data/processed/
+```
+
+### Notebook 1 : Exploratory Data Analysis
 
 This notebook performs initial exploratory analysis on a synthetic healthcare member dataset. Each row represents one health plan member with demographic, plan, SDOH, utilization, cost, PCP attribution, and AWV completion fields.
 
@@ -225,3 +321,12 @@ Results should be interpreted as synthetic baseline model behavior, not real-wor
 - Added visual comparisons for RMSE, MAE, and R².
 - Added limitations explaining that the results are based on synthetic data, manually collected metrics, and tested models only.
 - Concluded that Gradient Boosting was the strongest model in this synthetic monthly cost prediction project, while emphasizing that results are predictive and not causal.
+
+### Notebook 16: Project Summary
+
+- Summarized the full synthetic healthcare analytics and machine learning workflow.
+- Reviewed the two supervised learning tracks: AWV completion classification and monthly cost regression.
+- Highlighted key modeling decisions, including leakage prevention, feature selection, model comparison, and final model selection.
+- Explained why Logistic Regression was selected as the stronger AWV classification baseline.
+- Explained why Gradient Boosting was selected as the final monthly cost regression model.
+- Reinforced that results are based on synthetic data and should be interpreted as workflow demonstration, not real-world healthcare evidence.
