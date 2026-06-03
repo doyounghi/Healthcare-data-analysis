@@ -99,3 +99,45 @@ Key design note:
 This notebook does not estimate the final treatment effect. It prepares the dataset for formal A/B testing by validating randomization balance, missingness patterns, funnel logic, and outcome consistency.
 
 The next notebook will use an intent-to-treat framework to compare members based on randomized assignment. That analysis should include absolute lift, relative lift, confidence intervals, p-values, and practical significance.
+
+### Notebook 02: A/B Test Primary Outcome Analysis
+
+Notebook 02 estimates the primary A/B testing result for the Diabetes Peer Support outreach experiment.
+
+The goal of this notebook is to compare members assigned to Diabetes Peer Support against members assigned to Standard Outreach using an intent-to-treat framework.
+
+Main work completed:
+
+- Loaded the validated synthetic A/B testing dataset
+- Confirmed treatment and control group definitions
+- Defined the primary binary compliance outcome
+- Compared compliance rates between Standard Outreach and Diabetes Peer Support
+- Calculated absolute lift and relative lift
+- Ran a two-proportion z-test for the binary compliance outcome
+- Calculated a 95% confidence interval for the absolute lift
+- Analyzed average diabetes testing compliance rate as a secondary outcome
+- Ran a Welch two-sample t-test for average compliance rate
+- Reviewed individual diabetes test completion rates
+- Interpreted results using an intent-to-treat framework
+- Avoided attendee-only causal claims because enrollment and attendance are selective
+
+Key findings:
+
+- Members assigned to Diabetes Peer Support had a higher binary compliance rate than members assigned to Standard Outreach.
+- The binary compliance rate increased from 37.6% in Standard Outreach to 42.3% in Diabetes Peer Support.
+- The absolute lift was 4.7 percentage points.
+- The relative lift was 12.6%.
+- The two-proportion z-test p-value was 0.0023.
+- The 95% confidence interval for the binary absolute lift was 1.7 to 7.8 percentage points.
+- The average diabetes testing compliance rate also improved from 71.3% to 74.5%.
+- Individual diabetes test completion differences were reviewed as exploratory secondary outcomes.
+
+Output notebook:
+
+`notebooks/02_ab_test_primary_outcome.ipynb`
+
+Key design note:
+
+This notebook uses an intent-to-treat design. Members are compared based on randomized assignment, regardless of whether they enrolled in or attended the peer-support program.
+
+This protects the main treatment comparison from participation-based selection bias. Funnel participation analysis should be handled separately.
