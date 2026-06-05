@@ -141,3 +141,52 @@ Key design note:
 This notebook uses an intent-to-treat design. Members are compared based on randomized assignment, regardless of whether they enrolled in or attended the peer-support program.
 
 This protects the main treatment comparison from participation-based selection bias. Funnel participation analysis should be handled separately.
+
+### Notebook 03: Peer Support Funnel Analysis
+
+Notebook 03 analyzes the operational funnel for the Diabetes Peer Support intervention.
+
+The goal of this notebook is to evaluate how members assigned to Diabetes Peer Support moved through the program funnel from assignment to invitation, enrollment, attendance, and session participation.
+
+Main work completed:
+
+* Loaded the validated synthetic A/B testing dataset
+* Defined the Diabetes Peer Support treatment group
+* Kept the Standard Outreach group for funnel validation checks
+* Validated peer-support funnel logic
+* Confirmed that Standard Outreach members were not invited to the peer-support program
+* Confirmed that enrollment only occurred after invitation
+* Confirmed that attendance only occurred after enrollment
+* Confirmed that positive session counts only occurred for members who attended at least one session
+* Calculated member counts at each funnel stage
+* Calculated invitation, enrollment, and attendance conversion rates
+* Visualized peer-support funnel counts
+* Visualized peer-support funnel conversion rates
+* Reviewed the distribution of sessions attended
+* Created business-friendly attendance groups
+* Compared diabetes testing compliance across attendance groups
+* Reviewed baseline differences across attendance groups
+* Checked whether attendance groups differed by baseline engagement, health literacy, SDOH risk, and prior testing compliance
+* Interpreted attendance results as exploratory associations, not causal effects
+
+Key findings:
+
+* The peer-support funnel logic was valid, with no detected structural violations.
+* Members assigned to Diabetes Peer Support moved through the expected funnel stages: assignment, invitation, enrollment, and attendance.
+* Funnel conversion rates helped identify where program drop-off occurred.
+* Session attendance varied across treatment-group members.
+* Members with higher session attendance showed different diabetes testing compliance patterns compared with members who attended no sessions.
+* Baseline characteristics also varied across attendance groups, suggesting that attendance may reflect member selection as well as program engagement.
+* Attendance-based comparisons were treated as operational and exploratory, not randomized causal evidence.
+
+Output notebook:
+
+`notebooks/03_peer_support_funnel_analysis.ipynb`
+
+Key design note:
+
+This notebook does not estimate the main randomized treatment effect.
+
+The main A/B testing result remains the intent-to-treat comparison from Notebook 02. Notebook 03 focuses on implementation, engagement, and funnel performance among members assigned to the peer-support intervention.
+
+Because enrollment and attendance are selective behaviors, higher compliance among attendees should be interpreted as an association, not proof that attending more sessions caused better diabetes testing compliance.
