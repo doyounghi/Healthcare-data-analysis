@@ -190,3 +190,47 @@ This notebook does not estimate the main randomized treatment effect.
 The main A/B testing result remains the intent-to-treat comparison from Notebook 02. Notebook 03 focuses on implementation, engagement, and funnel performance among members assigned to the peer-support intervention.
 
 Because enrollment and attendance are selective behaviors, higher compliance among attendees should be interpreted as an association, not proof that attending more sessions caused better diabetes testing compliance.
+
+### Notebook 04: SDOH Segment Analysis
+
+Notebook 04 explores whether observed Diabetes Peer Support outcomes differ across SDOH and baseline engagement segments.
+
+The goal of this notebook is to identify which member subgroups may show stronger or weaker observed response patterns, while treating all segment-level results as exploratory and hypothesis-generating.
+
+Main work completed:
+
+* Loaded the validated synthetic A/B testing dataset
+* Created SDOH risk groups using quantile-based segmentation
+* Checked whether the SDOH risk score had enough unique values to support clean quantile grouping
+* Compared treatment and control outcomes within Low, Medium, and High SDOH risk groups
+* Analyzed specific SDOH barriers, including food insecurity, transportation barriers, financial barriers, and housing instability
+* Created baseline engagement groups using quantile-based segmentation
+* Reviewed missingness in baseline engagement before creating engagement groups
+* Compared diabetes testing compliance across SDOH and engagement segments
+* Calculated absolute and relative lift within each segment
+* Reviewed subgroup sample sizes to reduce the risk of overinterpreting small segments
+* Visualized segment-level outcome differences using percentage-formatted charts
+* Interpreted all subgroup findings as exploratory, not definitive evidence of heterogeneous treatment effects
+
+Key findings:
+
+* Diabetes Peer Support showed positive observed lift across SDOH risk groups.
+* Observed lift was not limited to only one SDOH risk tier.
+* Among specific SDOH barriers, some barrier groups showed stronger observed lift than others.
+* Members with financial barriers showed one of the stronger observed binary compliance lifts.
+* Baseline engagement segments showed different observed response patterns.
+* Members with higher baseline engagement appeared more responsive to the peer-support intervention in observed subgroup comparisons.
+* Segment-level findings may help guide future targeting and program design, but they should not replace the overall intent-to-treat result from Notebook 02.
+* Because multiple segments were reviewed, these results should be treated as exploratory subgroup evidence rather than confirmed causal differences.
+
+Output notebook:
+
+`notebooks/04_sdoh_segment_analysis.ipynb`
+
+Key design note:
+
+The primary randomized treatment effect remains the overall intent-to-treat analysis completed in Notebook 02.
+
+Notebook 04 is an exploratory segment analysis. It helps identify possible targeting opportunities across SDOH risk, specific barriers, and baseline engagement levels, but it does not formally prove that the treatment effect differs across subgroups.
+
+To formally test heterogeneous treatment effects, a later adjusted model should include treatment-by-segment interaction terms.
