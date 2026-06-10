@@ -234,3 +234,49 @@ The primary randomized treatment effect remains the overall intent-to-treat anal
 Notebook 04 is an exploratory segment analysis. It helps identify possible targeting opportunities across SDOH risk, specific barriers, and baseline engagement levels, but it does not formally prove that the treatment effect differs across subgroups.
 
 To formally test heterogeneous treatment effects, a later adjusted model should include treatment-by-segment interaction terms.
+
+
+### Notebook 05: Adjusted Sensitivity Analysis
+
+Notebook 05 evaluates whether the Diabetes Peer Support result remains stable after adjusting for observed baseline member characteristics.
+
+The goal of this notebook is to compare unadjusted and adjusted estimates to assess whether the main A/B testing result from Notebook 02 is sensitive to baseline differences in demographics, health risk, engagement, health literacy, prior testing behavior, PCP attribution, and SDOH risk.
+
+Main work completed:
+
+* Created a binary treatment indicator for regression modeling
+* Selected baseline-only covariates for adjustment
+* Excluded post-assignment funnel variables such as invitation, enrollment, attendance, and session count
+* Reviewed structured missingness in baseline engagement and health literacy
+* Used median imputation as a simple sensitivity-analysis strategy to preserve the full randomized sample
+* Fitted an unadjusted OLS model for average diabetes testing compliance rate
+* Fitted an adjusted OLS model controlling for observed baseline characteristics
+* Used robust standard errors for OLS to reduce sensitivity to heteroskedasticity
+* Fitted unadjusted and adjusted logistic regression models for the binary compliance outcome
+* Converted logistic regression coefficients into odds ratios for easier interpretation
+* Compared unadjusted and adjusted treatment estimates
+* Reviewed baseline covariates associated with diabetes testing compliance
+* Framed the analysis as a robustness check, not a replacement for the primary randomized intent-to-treat result
+
+Key findings:
+
+* The adjusted OLS treatment estimate remained positive after controlling for observed baseline characteristics.
+* The estimated average compliance-rate lift changed from approximately 3.2 percentage points unadjusted to approximately 2.7 percentage points adjusted.
+* The adjusted OLS estimate remained statistically significant, with a 95% confidence interval of approximately 1.2 to 4.2 percentage points.
+* The adjusted logistic regression model also showed a positive treatment association for the binary compliance outcome.
+* The adjusted odds ratio was approximately 1.20, meaning treatment-assigned members had about 20% higher odds of binary compliance after adjustment for observed baseline characteristics.
+* Baseline engagement, health literacy, and PCP attribution were positively associated with compliance.
+* SDOH risk was negatively associated with compliance.
+* The adjusted results were directionally consistent with the unadjusted intent-to-treat findings from Notebook 02.
+
+Output notebook:
+
+`notebooks/05_adjusted_sensitivity_analysis.ipynb`
+
+Key design note:
+
+The randomized intent-to-treat comparison in Notebook 02 remains the primary A/B testing result.
+
+Notebook 05 is a sensitivity analysis. It checks whether the observed Diabetes Peer Support result remains stable after adjusting for measured baseline characteristics. Because the adjustment uses observed covariates only, it does not eliminate all possible sources of bias or prove that the result is unaffected by unobserved factors.
+
+Median imputation is used as a simple robustness strategy, not as a claim that it is the best possible missing-data method.
