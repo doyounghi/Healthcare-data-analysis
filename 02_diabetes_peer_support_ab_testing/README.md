@@ -280,3 +280,60 @@ The randomized intent-to-treat comparison in Notebook 02 remains the primary A/B
 Notebook 05 is a sensitivity analysis. It checks whether the observed Diabetes Peer Support result remains stable after adjusting for measured baseline characteristics. Because the adjustment uses observed covariates only, it does not eliminate all possible sources of bias or prove that the result is unaffected by unobserved factors.
 
 Median imputation is used as a simple robustness strategy, not as a claim that it is the best possible missing-data method.
+
+
+Notebook 06: Business Recommendation Summary
+
+Notebook 06 synthesizes the statistical, causal, operational, and segment-level findings from the Diabetes Peer Support A/B testing project.
+
+The goal of this notebook is to translate the analysis results into a practical business recommendation for healthcare leadership, including whether the program should be expanded, where operational improvements are needed, and how a future experiment should be designed.
+
+Main work completed:
+
+Loaded the validated 4,000-row synthetic A/B testing dataset
+Confirmed the randomized study groups:
+Diabetes Peer Support: 2,078 members
+Standard Outreach: 1,922 members
+Summarized the primary intent-to-treat A/B testing result
+Documented the primary binary compliance lift:
+4.7 percentage point absolute lift
+12.6% relative lift
+two-proportion z-test p-value of 0.0023
+95% confidence interval of 1.7 to 7.8 percentage points
+Recalculated the average diabetes testing compliance rate lift as a secondary outcome
+Visualized primary outcome differences using percentage-formatted reporting charts
+Summarized peer-support funnel performance and identified enrollment drop-off as a key operational constraint
+Integrated SDOH and segment-level findings to support targeted outreach recommendations
+Built a business decision matrix covering effectiveness, operational feasibility, targeting value, and scalability
+Reviewed project limitations, including the use of synthetic data
+Proposed a next-phase experiment focused on targeted expansion and improved enrollment workflows
+
+Key strategic recommendations:
+
+Use targeted expansion instead of immediate full rollout
+
+Diabetes Peer Support showed a positive intent-to-treat result in the synthetic randomized experiment. However, a broad rollout should wait until operational conversion and real-world implementation risks are better understood.
+
+Future expansion should prioritize members with incomplete prior diabetes testing compliance, moderate-to-high SDOH risk, and barriers that may be addressable through peer support, reminders, scheduling flexibility, or care-navigation support.
+
+Improve enrollment and onboarding before scaling
+
+The peer-support funnel showed a major drop-off between invitation and enrollment. This suggests that program impact may be limited if members are invited but do not enroll or attend.
+
+Operational improvements should focus on enrollment workflow, follow-up timing, reminder strategy, session accessibility, and member communication.
+
+Run a follow-up randomized experiment
+
+The next experiment should test whether enhanced enrollment support improves down-funnel participation and diabetes testing compliance.
+
+A strong next-phase design would compare standard peer-support outreach against peer-support outreach with added digital session options, automated text reminders, or care-navigation follow-up.
+
+Output notebook:
+
+notebooks/06_business_recommendation_summary.ipynb
+
+Key design note:
+
+Notebook 06 is a business-facing summary notebook. It does not replace the primary statistical analysis from Notebook 02 or the adjusted sensitivity analysis from Notebook 05.
+
+The main randomized treatment effect remains the intent-to-treat result from Notebook 02. Notebook 06 translates the full project into a practical recommendation: consider targeted expansion of Diabetes Peer Support while improving enrollment, monitoring implementation, and validating results in a future real-world or synthetic follow-up experiment.
