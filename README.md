@@ -1,8 +1,21 @@
-# Mock Member Health Analysis Portfolio
+# Synthetic Healthcare Data Analysis Portfolio
 
 This repository contains healthcare analytics, machine learning, and experimentation portfolio projects focused on Medicaid/Medicare-style member data, cost prediction, outreach analysis, quality improvement, and healthcare program evaluation.
 
 #### This repository uses synthetic healthcare-style data created for portfolio and learning purposes. Results should not be interpreted as real-world clinical, operational, or financial evidence.
+
+## Recommended Review Path
+
+For a quick technical review, start with the strongest recruiter-facing materials:
+
+1. `02_diabetes_peer_support_ab_testing/README.md`
+2. `02_diabetes_peer_support_ab_testing/notebooks/02_ab_test_primary_outcome.ipynb`
+3. `02_diabetes_peer_support_ab_testing/notebooks/06_Business_Recommendation_Summary.ipynb`
+4. `01_mock_member_health_analysis/Readme.md`
+5. `01_mock_member_health_analysis/notebooks/15_final_regression_model_comparison.ipynb`
+6. `01_mock_member_health_analysis/notebooks/16_project_summary.ipynb`
+
+This path highlights the strongest project narratives first: randomized experiment analysis, business recommendation, model comparison, and project-level synthesis.
 
 ## Projects
 
@@ -96,22 +109,21 @@ Key notebooks:
 ## Repository Structure
 
 ```text
-mock-member-health-analysis/
-│
-├── 01_mock_member_health_analysis/
-│   ├── notebooks/
-│   ├── data/
-│   ├── outputs/
-│   ├── src/
-│   └── README.md
-│
-├── 02_diabetes_peer_support_ab_testing/
-│   ├── notebooks/
-│   ├── data/
-│   ├── reports/
-│   ├── src/
-│   └── README.md
-│
-├── requirements.txt
-└── README.md
+synthetic-data-analysis/
+|
+|-- 01_mock_member_health_analysis/
+|   |-- notebooks/
+|   |-- data/
+|   |-- src/
+|   |-- requirements.txt
+|   `-- Readme.md
+|
+|-- 02_diabetes_peer_support_ab_testing/
+|   |-- notebooks/
+|   |-- data/
+|   |-- src/
+|   |-- requirements.txt
+|   `-- README.md
+|
+`-- README.md
 ```
