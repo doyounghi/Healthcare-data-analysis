@@ -1,8 +1,8 @@
 # Mock Member Health Analysis Portfolio
 
-This repository contains healthcare analytics and machine learning portfolio projects focused on Medicaid/Medicare-style member data, cost prediction, outreach analysis, and quality improvement.
+This repository contains healthcare analytics, machine learning, and experimentation portfolio projects focused on Medicaid/Medicare-style member data, cost prediction, outreach analysis, quality improvement, and healthcare program evaluation.
 
-#### This project uses synthetic healthcare-style data created for portfolio and learning purposes. Results should not be interpreted as real-world clinical or financial evidence.
+#### This repository uses synthetic healthcare-style data created for portfolio and learning purposes. Results should not be interpreted as real-world clinical, operational, or financial evidence.
 
 ## Projects
 
@@ -12,34 +12,86 @@ End-to-end healthcare analytics and machine learning project using synthetic mem
 
 Main topics:
 
-- Synthetic healthcare data generation
-- Exploratory data analysis
-- Feature engineering
-- AWV completion classification
-- Monthly cost regression
-- Model interpretation
-- Residual diagnostics
-- Tree-based models
-- Random Forest and Gradient Boosting
-- Hyperparameter tuning
-- Final regression model comparison
-- Portfolio-ready project summary
+* Synthetic healthcare data generation
+* Exploratory data analysis
+* Feature engineering
+* AWV completion classification
+* Monthly cost regression
+* Model interpretation
+* Residual diagnostics
+* Tree-based models
+* Random Forest and Gradient Boosting
+* Hyperparameter tuning
+* Final regression model comparison
+* Portfolio-ready project summary
+
+---
+
+### 02_diabetes_peer_support_ab_testing
+
+Healthcare A/B testing project evaluating whether a Diabetes Peer Support outreach program improves diabetes testing compliance compared with Standard Outreach.
+
+This project uses a synthetic randomized experiment design and follows an intent-to-treat framework. Members are analyzed based on randomized assignment rather than later enrollment or attendance behavior.
+
+Main topics:
+
+* Synthetic healthcare outreach data generation
+* Randomized treatment/control assignment
+* Intent-to-treat A/B testing
+* Baseline balance validation
+* Standardized mean differences
+* Two-proportion z-test
+* Welch's t-test
+* Absolute lift and relative lift
+* Confidence intervals and p-values
+* Peer-support funnel analysis
+* SDOH segment analysis
+* Adjusted regression sensitivity analysis
+* Logistic regression and odds ratios
+* Business recommendation summary
+* Healthcare outreach interpretation
+
+Key notebooks:
+
+* `01_EDA_And_Randomization_Balance_Check.ipynb`
+* `02_ab_test_primary_outcome.ipynb`
+* `03_Peer_Support_Funnel_Analysis.ipynb`
+* `04_SDOH_Segment_Analysis.ipynb`
+* `05_adjusted_sensitivity_analysis.ipynb`
+* `06_Business_Recommendation_Summary.ipynb`
 
 ## Skills Demonstrated
 
-- Python
-- pandas
-- scikit-learn
-- machine learning
-- healthcare analytics
-- exploratory data analysis
-- feature engineering
-- classification modeling
-- regression modeling
-- model comparison
-- residual diagnostics
-- data storytelling
-- Git/GitHub project organization
+* Python
+* pandas
+* NumPy
+* matplotlib
+* scipy
+* statsmodels
+* scikit-learn
+* healthcare analytics
+* Medicaid/Medicare-style member analytics
+* exploratory data analysis
+* synthetic data generation
+* feature engineering
+* classification modeling
+* regression modeling
+* model comparison
+* residual diagnostics
+* A/B testing
+* randomized experiment analysis
+* intent-to-treat interpretation
+* baseline balance checks
+* standardized mean differences
+* statistical hypothesis testing
+* confidence interval interpretation
+* logistic regression
+* odds ratio interpretation
+* subgroup and segment analysis
+* funnel analysis
+* business recommendation development
+* data storytelling
+* Git/GitHub project organization
 
 ## Repository Structure
 
@@ -53,4 +105,13 @@ mock-member-health-analysis/
 │   ├── src/
 │   └── README.md
 │
+├── 02_diabetes_peer_support_ab_testing/
+│   ├── notebooks/
+│   ├── data/
+│   ├── reports/
+│   ├── src/
+│   └── README.md
+│
+├── requirements.txt
 └── README.md
+```

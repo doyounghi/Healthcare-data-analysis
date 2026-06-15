@@ -1,341 +1,241 @@
-## Project 2: Diabetes Peer Support A/B Testing
+﻿# Diabetes Peer Support A/B Testing
 
-This project analyzes a synthetic healthcare outreach A/B test designed to evaluate whether a diabetes peer-support program can improve diabetes testing compliance compared with standard outreach.
+A synthetic healthcare analytics and experimentation portfolio project built to practice Python, randomized A/B testing, intent-to-treat analysis, randomization balance checks, funnel analysis, subgroup exploration, adjusted sensitivity analysis, and business recommendation writing.
 
-The project follows a practical healthcare analytics workflow: generating realistic member-level data, validating randomization, checking baseline balance, reviewing funnel behavior, and preparing the dataset for formal treatment-effect analysis.
+This project uses fully synthetic healthcare-style data generated for portfolio and learning purposes. It does **not** contain real patient data, PHI, claims data, employer data, or production healthcare records. Results should be interpreted as an experimentation workflow demonstration, not real-world clinical or financial evidence.
 
-### Day 1: Synthetic Data Generation
+## Executive Summary
 
-Day 1 focused on creating the synthetic member-level dataset used throughout the project.
+| Area | Summary |
+| --- | --- |
+| Problem | Evaluate whether Diabetes Peer Support improves diabetes testing compliance compared with Standard Outreach |
+| Methods | Synthetic data generation, randomization balance checks, intent-to-treat A/B testing, funnel analysis, SDOH segment analysis, and adjusted sensitivity analysis |
+| Primary Result | Diabetes Peer Support increased binary compliance from 37.6% to 42.3%, a 4.7 percentage point absolute lift |
+| Sensitivity Result | Adjusted OLS estimated a positive 2.7 percentage point lift after controlling for observed baseline characteristics |
+| Business Recommendation | Use targeted expansion rather than immediate full-population rollout, while improving enrollment and attendance conversion |
+| Caveat | This is a synthetic workflow project, not real-world healthcare evidence |
 
-The goal was to build a realistic healthcare outreach dataset that includes member demographics, baseline health and engagement characteristics, SDOH barriers, peer-support participation behavior, and diabetes testing outcomes.
+Final primary A/B test result: Diabetes Peer Support achieved a 4.7 percentage point absolute lift, 12.6% relative lift, two-proportion z-test p-value of 0.0023, and 95% confidence interval of 1.7 to 7.8 percentage points for binary diabetes testing compliance.
+
+## Project Overview
+
+This project analyzes a synthetic member-level healthcare outreach experiment with 4,000 targetable diabetic members. Each row represents one member and includes simulated demographic, plan, health risk, engagement, health literacy, SDOH barrier, PCP attribution, peer-support funnel, and diabetes testing outcome fields.
+
+The project includes three main analytical tracks:
+
+1. **Randomized A/B Testing**
+   Estimate whether assignment to Diabetes Peer Support improved diabetes testing compliance compared with Standard Outreach.
+
+2. **Operational Funnel Analysis**
+   Review how members moved from assignment to invitation, enrollment, attendance, and session participation.
+
+3. **Business Recommendation and Targeting Strategy**
+   Use segment analysis and adjusted sensitivity checks to inform whether the program should be expanded, where bottlenecks exist, and what a future experiment should test.
+
+The main focus of the project is not to prove real healthcare findings, but to demonstrate a complete experimentation workflow: synthetic data generation, data validation, balance checking, intent-to-treat analysis, statistical testing, confidence intervals, funnel diagnostics, subgroup exploration, robustness checks, and careful business interpretation.
+
+## Start Here
+
+Recommended notebooks for a quick review:
+
+| Notebook | Purpose |
+| --- | --- |
+| `01_EDA_And_Randomization_Balance_Check.ipynb` | Validate the synthetic dataset, randomization balance, missingness, and outcome logic |
+| `02_ab_test_primary_outcome.ipynb` | Review the main intent-to-treat A/B testing result |
+| `03_Peer_Support_Funnel_Analysis.ipynb` | Understand program enrollment and attendance drop-off |
+| `04_SDOH_Segment_Analysis.ipynb` | Explore SDOH and engagement subgroup patterns |
+| `05_adjusted_sensitivity_analysis.ipynb` | Check whether the A/B result remains stable after baseline adjustment |
+| `06_Business_Recommendation_Summary.ipynb` | Review the final business recommendation and next experiment proposal |
+
+## Reproducibility: How to Run This Project
+
+To reproduce the project workflow:
+
+1. Clone the repository.
+
+```bash
+git clone https://github.com/doyounghi/synthetic-data-analysis.git
+cd synthetic-data-analysis/02_diabetes_peer_support_ab_testing
+```
+
+2. Create and activate a virtual environment.
+
+```bash
+python -m venv .venv
+```
+
+On Windows:
+
+```bash
+.venv\Scripts\activate
+```
+
+On Mac/Linux:
+
+```bash
+source .venv/bin/activate
+```
+
+3. Install required packages.
+
+```bash
+pip install -r requirements.txt
+```
+
+4. Generate the synthetic dataset.
+
+```bash
+python src/generate_diabetes_peer_support_data.py
+```
+
+5. Launch Jupyter.
+
+```bash
+jupyter notebook
+```
+
+6. Run the notebooks in order from `01` to `06`.
+
+Notebook outputs should remain broadly consistent because the synthetic data generator uses a fixed random seed, though minor differences may occur across package versions.
+
+Generated data files are stored under:
+
+```text
+data/raw/
+```
+
+### Synthetic Data Generation
+
+The data generation script creates the synthetic member-level dataset used throughout the project.
+
+The goal was to build a realistic healthcare outreach dataset that includes member demographics, baseline health and engagement characteristics, health literacy, SDOH barriers, peer-support participation behavior, and diabetes testing outcomes.
 
 Main work completed:
 
-* Defined the target diabetic member population
-* Simulated member demographics, plan type, health risk, baseline engagement, health literacy, and SDOH barriers
-* Randomly assigned members into two experiment groups:
-
-  * **Standard Outreach**
-  * **Diabetes Peer Support**
-* Created a selective peer-support funnel:
-
-  * program invitation
-  * program enrollment
-  * attendance
-  * number of sessions attended
-* Generated diabetes testing outcomes:
-
-  * A1c test completion
-  * kidney screening completion
-  * eye exam completion
-  * diabetes testing compliance rate
-  * diabetes testing compliant flag
-* Added intentional structured missingness to reflect common healthcare data quality issues
-* Ran validation checks for dataset shape, missingness, age realism, experiment group distribution, funnel integrity, and diabetes testing outcome logic
+- Defined the target diabetic member population.
+- Simulated member demographics, plan type, health risk, baseline engagement, health literacy, and SDOH barriers.
+- Randomly assigned members into Standard Outreach and Diabetes Peer Support groups.
+- Created a selective peer-support funnel including invitation, enrollment, attendance, and session count.
+- Generated diabetes testing outcomes including A1c completion, kidney screening completion, eye exam completion, compliance rate, and binary compliance flag.
+- Added intentional structured missingness to reflect common healthcare data quality issues.
+- Ran validation checks for dataset shape, missingness, age realism, experiment group distribution, funnel integrity, and diabetes testing outcome logic.
 
 Output file:
 
-`data/raw/mock_diabetes_peer_support_ab_test.csv`
+```text
+data/raw/mock_diabetes_peer_support_ab_test.csv
+```
 
 Key design note:
 
-Random assignment supports an **intent-to-treat** analysis, where members are compared based on their assigned experiment group rather than their later participation behavior.
+Random assignment supports an intent-to-treat analysis, where members are compared based on assigned experiment group rather than later participation behavior. Enrollment, attendance, and session count occur after assignment and are intentionally selective, so they should be treated as downstream funnel variables rather than randomized baseline characteristics.
 
-Enrollment, attendance, and session count occur after assignment and are intentionally selective. These variables should be treated as downstream funnel variables, not randomized baseline characteristics. Comparing attendees directly against non-attendees may introduce selection bias because participation can be influenced by engagement, health literacy, transportation barriers, and unobserved motivation.
+### Notebook 1: EDA and Randomization Balance Check
 
----
+This notebook validates the synthetic A/B testing dataset before formal treatment-effect analysis.
 
-### Notebook 01: EDA and Randomization Balance Check
-
-Notebook 01 validates the synthetic A/B testing dataset before formal treatment-effect analysis.
-
-The goal of this notebook is to confirm that the dataset is structurally sound, the treatment and control groups are reasonably balanced, and the peer-support funnel logic is valid before moving into statistical testing.
-
-Main work completed:
-
-* Loaded and inspected the synthetic member-level outreach dataset
-* Confirmed the unit of analysis is one targetable diabetic member
-* Reviewed dataset shape, column structure, data types, and missing values
-* Verified that all members belong to the intended diabetic outreach target population
-* Checked the experiment group distribution between:
-
-  * **Standard Outreach**
-  * **Diabetes Peer Support**
-* Reviewed age and plan-type realism
-* Compared baseline numeric and binary characteristics between treatment and control groups
-* Calculated standardized mean differences to evaluate baseline balance
-* Checked categorical balance using dummy-variable standardized mean differences
-* Reviewed missingness balance for baseline engagement and health literacy
-* Highlighted SDOH-related balance results
-* Created exploratory SDOH risk groups using quantile-based splitting
-* Reviewed PCP attribution and prior diabetes testing compliance balance
-* Visualized baseline balance using an SMD balance plot
-* Validated peer-support funnel integrity
-* Reviewed treatment-only funnel rates
-* Confirmed diabetes testing outcome logic
-* Checked the diabetes test difficulty hierarchy
-* Previewed outcome differences without making final treatment-effect claims
+The analysis checks the dataset structure, unit of analysis, missing values, experiment group distribution, age and plan-type realism, baseline numeric and categorical balance, SDOH balance, funnel integrity, and diabetes testing outcome logic.
 
 Key findings:
 
-* The dataset contains 4,000 targetable diabetic members.
-* Each row represents one member in the outreach experiment.
-* The treatment and control groups are reasonably balanced after random assignment.
-* All observed baseline standardized mean differences are below the common 0.10 imbalance threshold.
-* Categorical variables such as gender, region, and plan type are reasonably balanced after dummy-variable conversion.
-* Missingness exists in baseline engagement and health literacy, but missingness is not strongly imbalanced by experiment group.
-* SDOH-related variables appear reasonably balanced between experiment groups.
-* The peer-support funnel is structurally valid: control members are not invited, and members do not skip impossible funnel stages.
-* Diabetes testing outcome variables are internally consistent.
-* Outcome differences are included only as an exploratory preview and should not be interpreted as final treatment effects.
-
-Output notebook:
-
-`notebooks/01_EDA_And_Randomization_Balance_Check.ipynb`
-
-Key design note:
+- The dataset contains 4,000 targetable diabetic members.
+- Each row represents one member in the outreach experiment.
+- Treatment and control groups are reasonably balanced after random assignment.
+- All observed baseline standardized mean differences are below the common 0.10 imbalance threshold.
+- Missingness exists in baseline engagement and health literacy, but missingness is not strongly imbalanced by experiment group.
+- SDOH-related variables appear reasonably balanced between experiment groups.
+- The peer-support funnel is structurally valid, with control members not invited and no impossible funnel-stage skips.
+- Diabetes testing outcome variables are internally consistent.
+- Outcome differences are included only as an exploratory preview and should not be interpreted as final treatment effects.
 
 This notebook does not estimate the final treatment effect. It prepares the dataset for formal A/B testing by validating randomization balance, missingness patterns, funnel logic, and outcome consistency.
 
-The next notebook will use an intent-to-treat framework to compare members based on randomized assignment. That analysis should include absolute lift, relative lift, confidence intervals, p-values, and practical significance.
+### Notebook 2: A/B Test Primary Outcome Analysis
 
-### Notebook 02: A/B Test Primary Outcome Analysis
+This notebook estimates the primary A/B testing result for the Diabetes Peer Support outreach experiment.
 
-Notebook 02 estimates the primary A/B testing result for the Diabetes Peer Support outreach experiment.
-
-The goal of this notebook is to compare members assigned to Diabetes Peer Support against members assigned to Standard Outreach using an intent-to-treat framework.
-
-Main work completed:
-
-- Loaded the validated synthetic A/B testing dataset
-- Confirmed treatment and control group definitions
-- Defined the primary binary compliance outcome
-- Compared compliance rates between Standard Outreach and Diabetes Peer Support
-- Calculated absolute lift and relative lift
-- Ran a two-proportion z-test for the binary compliance outcome
-- Calculated a 95% confidence interval for the absolute lift
-- Analyzed average diabetes testing compliance rate as a secondary outcome
-- Ran a Welch two-sample t-test for average compliance rate
-- Reviewed individual diabetes test completion rates
-- Interpreted results using an intent-to-treat framework
-- Avoided attendee-only causal claims because enrollment and attendance are selective
+The analysis compares members assigned to Diabetes Peer Support against members assigned to Standard Outreach using an intent-to-treat framework. Members are analyzed based on randomized assignment, regardless of whether they enrolled in or attended the peer-support program.
 
 Key findings:
 
-- Members assigned to Diabetes Peer Support had a higher binary compliance rate than members assigned to Standard Outreach.
-- The binary compliance rate increased from 37.6% in Standard Outreach to 42.3% in Diabetes Peer Support.
-- The absolute lift was 4.7 percentage points.
-- The relative lift was 12.6%.
-- The two-proportion z-test p-value was 0.0023.
-- The 95% confidence interval for the binary absolute lift was 1.7 to 7.8 percentage points.
-- The average diabetes testing compliance rate also improved from 71.3% to 74.5%.
+- Standard Outreach binary compliance rate: 37.6%.
+- Diabetes Peer Support binary compliance rate: 42.3%.
+- Absolute lift: 4.7 percentage points.
+- Relative lift: 12.6%.
+- Two-proportion z-test p-value: 0.0023.
+- 95% confidence interval for binary absolute lift: 1.7 to 7.8 percentage points.
+- Average diabetes testing compliance rate improved from 71.3% to 74.5%.
 - Individual diabetes test completion differences were reviewed as exploratory secondary outcomes.
 
-Output notebook:
+This notebook is the primary randomized treatment-effect analysis. It protects the main comparison from participation-based selection bias by avoiding attendee-only causal claims.
 
-`notebooks/02_ab_test_primary_outcome.ipynb`
+### Notebook 3: Peer Support Funnel Analysis
 
-Key design note:
+This notebook analyzes the operational funnel for the Diabetes Peer Support intervention.
 
-This notebook uses an intent-to-treat design. Members are compared based on randomized assignment, regardless of whether they enrolled in or attended the peer-support program.
-
-This protects the main treatment comparison from participation-based selection bias. Funnel participation analysis should be handled separately.
-
-### Notebook 03: Peer Support Funnel Analysis
-
-Notebook 03 analyzes the operational funnel for the Diabetes Peer Support intervention.
-
-The goal of this notebook is to evaluate how members assigned to Diabetes Peer Support moved through the program funnel from assignment to invitation, enrollment, attendance, and session participation.
-
-Main work completed:
-
-* Loaded the validated synthetic A/B testing dataset
-* Defined the Diabetes Peer Support treatment group
-* Kept the Standard Outreach group for funnel validation checks
-* Validated peer-support funnel logic
-* Confirmed that Standard Outreach members were not invited to the peer-support program
-* Confirmed that enrollment only occurred after invitation
-* Confirmed that attendance only occurred after enrollment
-* Confirmed that positive session counts only occurred for members who attended at least one session
-* Calculated member counts at each funnel stage
-* Calculated invitation, enrollment, and attendance conversion rates
-* Visualized peer-support funnel counts
-* Visualized peer-support funnel conversion rates
-* Reviewed the distribution of sessions attended
-* Created business-friendly attendance groups
-* Compared diabetes testing compliance across attendance groups
-* Reviewed baseline differences across attendance groups
-* Checked whether attendance groups differed by baseline engagement, health literacy, SDOH risk, and prior testing compliance
-* Interpreted attendance results as exploratory associations, not causal effects
+The analysis evaluates how members assigned to Diabetes Peer Support moved from assignment to invitation, enrollment, attendance, and session participation.
 
 Key findings:
 
-* The peer-support funnel logic was valid, with no detected structural violations.
-* Members assigned to Diabetes Peer Support moved through the expected funnel stages: assignment, invitation, enrollment, and attendance.
-* Funnel conversion rates helped identify where program drop-off occurred.
-* Session attendance varied across treatment-group members.
-* Members with higher session attendance showed different diabetes testing compliance patterns compared with members who attended no sessions.
-* Baseline characteristics also varied across attendance groups, suggesting that attendance may reflect member selection as well as program engagement.
-* Attendance-based comparisons were treated as operational and exploratory, not randomized causal evidence.
+- The peer-support funnel logic was valid, with no detected structural violations.
+- Members assigned to Diabetes Peer Support moved through the expected funnel stages.
+- Funnel counts were: 2,078 assigned, 1,758 invited, 765 enrolled, and 280 attended at least one session.
+- The largest member-count drop-off occurred between invitation and enrollment.
+- The highest stage-to-stage drop-off rate occurred between enrollment and attendance.
+- Members with higher session attendance showed higher diabetes testing compliance patterns than members with no sessions.
+- Baseline characteristics also varied across attendance groups, suggesting attendance may reflect member selection as well as program engagement.
 
-Output notebook:
+Attendance-based comparisons are operational and exploratory, not randomized causal evidence. The main A/B testing result remains the intent-to-treat comparison from Notebook 2.
 
-`notebooks/03_peer_support_funnel_analysis.ipynb`
+### Notebook 4: SDOH Segment Analysis
 
-Key design note:
+This notebook explores whether observed Diabetes Peer Support outcomes differ across SDOH and baseline engagement segments.
 
-This notebook does not estimate the main randomized treatment effect.
-
-The main A/B testing result remains the intent-to-treat comparison from Notebook 02. Notebook 03 focuses on implementation, engagement, and funnel performance among members assigned to the peer-support intervention.
-
-Because enrollment and attendance are selective behaviors, higher compliance among attendees should be interpreted as an association, not proof that attending more sessions caused better diabetes testing compliance.
-
-### Notebook 04: SDOH Segment Analysis
-
-Notebook 04 explores whether observed Diabetes Peer Support outcomes differ across SDOH and baseline engagement segments.
-
-The goal of this notebook is to identify which member subgroups may show stronger or weaker observed response patterns, while treating all segment-level results as exploratory and hypothesis-generating.
-
-Main work completed:
-
-* Loaded the validated synthetic A/B testing dataset
-* Created SDOH risk groups using quantile-based segmentation
-* Checked whether the SDOH risk score had enough unique values to support clean quantile grouping
-* Compared treatment and control outcomes within Low, Medium, and High SDOH risk groups
-* Analyzed specific SDOH barriers, including food insecurity, transportation barriers, financial barriers, and housing instability
-* Created baseline engagement groups using quantile-based segmentation
-* Reviewed missingness in baseline engagement before creating engagement groups
-* Compared diabetes testing compliance across SDOH and engagement segments
-* Calculated absolute and relative lift within each segment
-* Reviewed subgroup sample sizes to reduce the risk of overinterpreting small segments
-* Visualized segment-level outcome differences using percentage-formatted charts
-* Interpreted all subgroup findings as exploratory, not definitive evidence of heterogeneous treatment effects
+The analysis compares treatment and control outcomes within SDOH risk groups, specific SDOH barrier groups, and baseline engagement groups. Segment-level results are treated as exploratory and hypothesis-generating.
 
 Key findings:
 
-* Diabetes Peer Support showed positive observed lift across SDOH risk groups.
-* Observed lift was not limited to only one SDOH risk tier.
-* Among specific SDOH barriers, some barrier groups showed stronger observed lift than others.
-* Members with financial barriers showed one of the stronger observed binary compliance lifts.
-* Baseline engagement segments showed different observed response patterns.
-* Members with higher baseline engagement appeared more responsive to the peer-support intervention in observed subgroup comparisons.
-* Segment-level findings may help guide future targeting and program design, but they should not replace the overall intent-to-treat result from Notebook 02.
-* Because multiple segments were reviewed, these results should be treated as exploratory subgroup evidence rather than confirmed causal differences.
+- Diabetes Peer Support showed positive observed lift across low, medium, and high SDOH risk groups.
+- Observed binary compliance lift by SDOH risk group was 5.4 percentage points for Low SDOH Risk, 4.0 percentage points for Medium SDOH Risk, and 4.8 percentage points for High SDOH Risk.
+- Among specific SDOH barriers, members with financial barriers showed one of the stronger observed binary compliance lifts.
+- Baseline engagement segments showed different observed response patterns.
+- Members with higher baseline engagement appeared more responsive to the peer-support intervention in observed subgroup comparisons.
+- Segment sample sizes were reviewed to reduce the risk of overinterpreting small subgroups.
 
-Output notebook:
+These subgroup findings may help guide future targeting and program design, but they should not replace the overall intent-to-treat result from Notebook 2. Because multiple segments were reviewed, these results should be interpreted as exploratory subgroup evidence rather than confirmed causal differences.
 
-`notebooks/04_sdoh_segment_analysis.ipynb`
+### Notebook 5: Adjusted Sensitivity Analysis
 
-Key design note:
+This notebook evaluates whether the Diabetes Peer Support result remains stable after adjusting for observed baseline member characteristics.
 
-The primary randomized treatment effect remains the overall intent-to-treat analysis completed in Notebook 02.
-
-Notebook 04 is an exploratory segment analysis. It helps identify possible targeting opportunities across SDOH risk, specific barriers, and baseline engagement levels, but it does not formally prove that the treatment effect differs across subgroups.
-
-To formally test heterogeneous treatment effects, a later adjusted model should include treatment-by-segment interaction terms.
-
-
-### Notebook 05: Adjusted Sensitivity Analysis
-
-Notebook 05 evaluates whether the Diabetes Peer Support result remains stable after adjusting for observed baseline member characteristics.
-
-The goal of this notebook is to compare unadjusted and adjusted estimates to assess whether the main A/B testing result from Notebook 02 is sensitive to baseline differences in demographics, health risk, engagement, health literacy, prior testing behavior, PCP attribution, and SDOH risk.
-
-Main work completed:
-
-* Created a binary treatment indicator for regression modeling
-* Selected baseline-only covariates for adjustment
-* Excluded post-assignment funnel variables such as invitation, enrollment, attendance, and session count
-* Reviewed structured missingness in baseline engagement and health literacy
-* Used median imputation as a simple sensitivity-analysis strategy to preserve the full randomized sample
-* Fitted an unadjusted OLS model for average diabetes testing compliance rate
-* Fitted an adjusted OLS model controlling for observed baseline characteristics
-* Used robust standard errors for OLS to reduce sensitivity to heteroskedasticity
-* Fitted unadjusted and adjusted logistic regression models for the binary compliance outcome
-* Converted logistic regression coefficients into odds ratios for easier interpretation
-* Compared unadjusted and adjusted treatment estimates
-* Reviewed baseline covariates associated with diabetes testing compliance
-* Framed the analysis as a robustness check, not a replacement for the primary randomized intent-to-treat result
+The analysis compares unadjusted and adjusted estimates to assess whether the main A/B testing result is sensitive to baseline differences in demographics, health risk, engagement, health literacy, prior testing behavior, PCP attribution, and SDOH risk.
 
 Key findings:
 
-* The adjusted OLS treatment estimate remained positive after controlling for observed baseline characteristics.
-* The estimated average compliance-rate lift changed from approximately 3.2 percentage points unadjusted to approximately 2.7 percentage points adjusted.
-* The adjusted OLS estimate remained statistically significant, with a 95% confidence interval of approximately 1.2 to 4.2 percentage points.
-* The adjusted logistic regression model also showed a positive treatment association for the binary compliance outcome.
-* The adjusted odds ratio was approximately 1.20, meaning treatment-assigned members had about 20% higher odds of binary compliance after adjustment for observed baseline characteristics.
-* Baseline engagement, health literacy, and PCP attribution were positively associated with compliance.
-* SDOH risk was negatively associated with compliance.
-* The adjusted results were directionally consistent with the unadjusted intent-to-treat findings from Notebook 02.
+- The adjusted OLS treatment estimate remained positive after controlling for observed baseline characteristics.
+- The estimated average compliance-rate lift changed from approximately 3.2 percentage points unadjusted to approximately 2.7 percentage points adjusted.
+- The adjusted OLS estimate remained statistically significant, with a 95% confidence interval of approximately 1.2 to 4.2 percentage points.
+- The adjusted logistic regression model also showed a positive treatment association for the binary compliance outcome.
+- The adjusted odds ratio was approximately 1.20, meaning treatment-assigned members had about 20% higher odds of binary compliance after adjustment for observed baseline characteristics.
+- Baseline engagement, health literacy, and PCP attribution were positively associated with compliance.
+- SDOH risk was negatively associated with compliance.
+- The adjusted results were directionally consistent with the unadjusted intent-to-treat findings from Notebook 2.
 
-Output notebook:
+This notebook is a sensitivity analysis, not a replacement for the primary randomized result. Median imputation is used as a simple robustness strategy, not as a claim that it is the best possible missing-data method.
 
-`notebooks/05_adjusted_sensitivity_analysis.ipynb`
+### Notebook 6: Business Recommendation Summary
 
-Key design note:
+This notebook synthesizes the statistical, causal, operational, and segment-level findings from the Diabetes Peer Support A/B testing project.
 
-The randomized intent-to-treat comparison in Notebook 02 remains the primary A/B testing result.
+The goal is to translate the analysis results into a practical business recommendation for healthcare leadership, including whether the program should be expanded, where operational improvements are needed, and how a future experiment should be designed.
 
-Notebook 05 is a sensitivity analysis. It checks whether the observed Diabetes Peer Support result remains stable after adjusting for measured baseline characteristics. Because the adjustment uses observed covariates only, it does not eliminate all possible sources of bias or prove that the result is unaffected by unobserved factors.
+Key findings and recommendations:
 
-Median imputation is used as a simple robustness strategy, not as a claim that it is the best possible missing-data method.
+- Diabetes Peer Support showed a positive intent-to-treat result in the synthetic randomized experiment.
+- The program should be considered for targeted expansion rather than immediate full-population rollout.
+- Enrollment and onboarding should be improved before scaling because the peer-support funnel showed major drop-off between invitation and enrollment.
+- Future expansion should prioritize members with incomplete prior diabetes testing compliance, moderate-to-high SDOH risk, and barriers that may be addressable through peer support, reminders, scheduling flexibility, or care-navigation support.
+- A follow-up randomized experiment should test whether enhanced enrollment support improves down-funnel participation and diabetes testing compliance.
+- A strong next-phase design would compare standard peer-support outreach against peer-support outreach with digital session options, automated text reminders, or care-navigation follow-up.
 
-
-### Notebook 06: Business Recommendation Summary
-
-Notebook 06 synthesizes the statistical, causal, operational, and segment-level findings from the Diabetes Peer Support A/B testing project.
-
-The goal of this notebook is to translate the analysis results into a practical business recommendation for healthcare leadership, including whether the program should be expanded, where operational improvements are needed, and how a future experiment should be designed.
-
-Main work completed:
-
-* Loaded the validated 4,000-row synthetic A/B testing dataset
-* Confirmed the randomized study groups:
-
-  * **Diabetes Peer Support:** 2,078 members
-  * **Standard Outreach:** 1,922 members
-* Summarized the primary intent-to-treat A/B testing result
-* Documented the primary binary compliance lift:
-
-  * 4.7 percentage point absolute lift
-  * 12.6% relative lift
-  * two-proportion z-test p-value of 0.0023
-  * 95% confidence interval of 1.7 to 7.8 percentage points
-* Recalculated the average diabetes testing compliance rate lift as a secondary outcome
-* Visualized primary outcome differences using percentage-formatted reporting charts
-* Summarized peer-support funnel performance and identified enrollment drop-off as a key operational constraint
-* Integrated SDOH and segment-level findings to support targeted outreach recommendations
-* Built a business decision matrix covering effectiveness, operational feasibility, targeting value, and scalability
-* Reviewed project limitations, including the use of synthetic data
-* Proposed a next-phase experiment focused on targeted expansion and improved enrollment workflows
-
-Key strategic recommendations:
-
-1. **Use targeted expansion instead of immediate full rollout**
-
-   Diabetes Peer Support showed a positive intent-to-treat result in the synthetic randomized experiment. However, a broad rollout should wait until operational conversion and real-world implementation risks are better understood.
-
-   Future expansion should prioritize members with incomplete prior diabetes testing compliance, moderate-to-high SDOH risk, and barriers that may be addressable through peer support, reminders, scheduling flexibility, or care-navigation support.
-
-2. **Improve enrollment and onboarding before scaling**
-
-   The peer-support funnel showed a major drop-off between invitation and enrollment. This suggests that program impact may be limited if members are invited but do not enroll or attend.
-
-   Operational improvements should focus on enrollment workflow, follow-up timing, reminder strategy, session accessibility, and member communication.
-
-3. **Run a follow-up randomized experiment**
-
-   The next experiment should test whether enhanced enrollment support improves down-funnel participation and diabetes testing compliance.
-
-   A strong next-phase design would compare standard peer-support outreach against peer-support outreach with added digital session options, automated text reminders, or care-navigation follow-up.
-
-Output notebook:
-
-`notebooks/06_business_recommendation_summary.ipynb`
-
-Key design note:
-
-Notebook 06 is a business-facing summary notebook. It does not replace the primary statistical analysis from Notebook 02 or the adjusted sensitivity analysis from Notebook 05.
-
-The main randomized treatment effect remains the intent-to-treat result from Notebook 02. Notebook 06 translates the full project into a practical recommendation: consider targeted expansion of Diabetes Peer Support while improving enrollment, monitoring implementation, and validating results in a future real-world or synthetic follow-up experiment.
+Notebook 6 is a business-facing summary notebook. It does not replace the primary statistical analysis from Notebook 2 or the adjusted sensitivity analysis from Notebook 5. The main business conclusion is targeted expansion with continued measurement, not immediate full-population rollout.
