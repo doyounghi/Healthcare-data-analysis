@@ -195,3 +195,146 @@ This notebook does not perform:
 * Fairness or subgroup performance analysis
 
 Those steps are handled in later notebooks.
+
+## Notebook 02: EDA and Outcome Analysis
+
+Notebook 02 performs descriptive exploratory data analysis for the Risk Stratification and Intervention Prioritization project.
+
+The goal is to understand population structure, missingness patterns, feature distributions, and observed 30-day readmission rates across key variables before modeling begins.
+
+This notebook is descriptive only. It does not estimate causal effects, train models, or make intervention recommendations.
+
+### Main Work Completed
+
+* Loaded the cleaned starter dataset created in Notebook 01
+* Confirmed the dataset contains 101,766 encounter-level records
+* Reviewed the distribution of the binary target, `readmitted_30d`
+* Confirmed the baseline 30-day readmission rate is approximately 11.16%
+* Examined class imbalance for the readmission outcome
+* Analyzed missingness patterns across columns
+* Visualized high-missingness fields such as `weight`, `max_glu_serum`, and `A1Cresult`
+* Compared observed readmission rates across demographic fields including `age`, `race`, and `gender`
+* Flagged sensitive demographic fields for later fairness and subgroup monitoring
+* Analyzed encounter context fields such as `admission_type_id`, `discharge_disposition_id`, and `admission_source_id`
+* Added caution that admission and discharge ID fields require mapping labels before business presentation
+* Evaluated prior utilization variables such as outpatient, emergency, and inpatient visit counts
+* Created grouped utilization summaries using natural ordinal ordering
+* Reviewed clinical complexity variables such as `number_diagnoses` and `num_medications`
+* Analyzed diabetes medication indicators and medication change patterns
+* Added patient-aware train/test split reminders for later modeling notebooks
+* Exported EDA summary tables and figures for later reference
+
+### Target Review
+
+The primary binary target is:
+
+```python
+readmitted_30d = 1 if readmitted == "<30" else 0
+```
+
+Rows with `readmitted == ">30"` or `readmitted == "NO"` are treated as `0`.
+
+The positive class is relatively uncommon, with a baseline 30-day readmission rate of approximately 11.16%.
+
+This class imbalance means later modeling notebooks should not rely on accuracy alone. More useful evaluation metrics will include ROC AUC, PR AUC, precision, recall, lift, calibration, and event capture rates at different outreach thresholds.
+
+### Unit of Analysis
+
+This project remains **encounter-level**.
+
+Each row represents one hospital encounter, not one unique patient.
+
+Because some patients appear in multiple encounters, later modeling notebooks must use patient-aware train/test splitting with `patient_nbr` as the grouping variable. A simple random row-level split could place encounters from the same patient in both training and test sets, causing train/test contamination and inflated model performance.
+
+Recommended later splitting approaches include:
+
+* `GroupShuffleSplit`
+* `GroupKFold`
+* `StratifiedGroupKFold`
+
+This notebook does not perform model validation. All tables and charts are descriptive EDA outputs.
+
+### Missingness Review
+
+Missingness is reviewed after Notebook 01 converted raw `?` missing-value codes into `NaN`.
+
+Missingness is shown as a percentage of rows. High-missingness fields are visualized and documented for later feature engineering decisions.
+
+Examples of high-missingness fields include:
+
+* `weight`
+* `max_glu_serum`
+* `A1Cresult`
+* `medical_specialty`
+* `payer_code`
+
+These fields are not automatically removed in this notebook. Final feature inclusion decisions are deferred to later feature engineering and modeling notebooks.
+
+### Demographic and Subgroup Review
+
+Observed readmission rates are compared across demographic fields such as:
+
+* `age`
+* `race`
+* `gender`
+
+These summaries are used for descriptive subgroup review only.
+
+Observed differences across demographic groups should not be interpreted as causal effects. Sensitive demographic fields may be useful for fairness monitoring and subgroup performance review, but they require caution before being used as predictive features.
+
+### Encounter Context Review
+
+Encounter-level context analysis includes:
+
+* `admission_type_id`
+* `discharge_disposition_id`
+* `admission_source_id`
+* `time_in_hospital`
+
+Admission and discharge fields are shown using source-system ID values in this notebook. Human-readable mapping labels should be added before final business presentation.
+
+Some encounter context fields may also be prediction-timing sensitive. Later feature selection must decide whether the model is intended for admission-time prediction or near-discharge prioritization.
+
+### Utilization and Clinical Complexity Review
+
+Utilization and clinical complexity analysis includes:
+
+* `number_outpatient`
+* `number_emergency`
+* `number_inpatient`
+* Total prior utilization
+* `number_diagnoses`
+* `num_medications`
+* Medication change indicators
+
+Ordinal grouped variables are summarized using natural order rather than sorting only by observed readmission rate. This preserves logical trend interpretation across ordered groups such as age, prior visits, diagnosis count, and medication count.
+
+### Outputs Created
+
+EDA summary tables are exported to:
+
+```text
+outputs/model_results/
+```
+
+EDA figures are exported to:
+
+```text
+outputs/figures/
+```
+
+The notebook uses dynamic project path resolution, so output paths are generated relative to the project root instead of relying on hard-coded local machine paths. This improves reproducibility across different environments.
+
+These files provide reference outputs for later feature engineering, modeling, and business interpretation notebooks.
+
+### What This Notebook Does Not Do
+
+This notebook does not perform:
+
+* Feature engineering, including imputation, encoding, or scaling
+* Predictive modeling, validation, or threshold selection
+* Outreach prioritization or intervention simulation
+* Causal inference or final fairness evaluation
+
+Those steps are handled in later notebooks.
+
