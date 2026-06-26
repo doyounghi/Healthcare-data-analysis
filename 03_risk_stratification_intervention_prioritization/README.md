@@ -338,3 +338,170 @@ This notebook does not perform:
 
 Those steps are handled in later notebooks.
 
+## Notebook 03: Feature Engineering and Leakage Review
+
+Notebook 03 creates a leakage-reviewed modeling input dataset for the Risk Stratification and Intervention Prioritization project.
+
+The goal of this notebook is to transform the cleaned encounter-level dataset into a structured modeling input while documenting feature availability, prediction timing, missingness assumptions, and leakage risks before model training begins.
+
+This notebook does not train models. It prepares the candidate feature set that later notebooks will use for patient-aware model development.
+
+### Main Work Completed
+
+* Loaded the cleaned starter dataset created in Notebook 01
+* Used robust project-root detection to avoid hard-coded local paths
+* Verified that pseudo-null values such as `?`, `"None"`, `"NULL"`, and `"nan"` were not present after cleaning
+* Preserved encounter-level modeling as the unit of analysis
+* Preserved `patient_nbr` for later patient-aware train/test splitting
+* Created age midpoint and age-order features from the original age bands
+* Created prior utilization features from outpatient, emergency, and inpatient visit counts
+* Created encounter complexity features using length of stay, diagnosis count, medication count, procedures, and lab activity
+* Grouped diagnosis codes into broad simplified ICD-9 categories
+* Created medication change indicators and medication-change count features
+* Created tested/not-tested flags for highly missing lab-result fields
+* Excluded raw sparse lab-result fields such as `A1Cresult` and `max_glu_serum` from the first modeling input dataset
+* Created missingness indicator features for high-missingness fields
+* Grouped rare categorical levels to reduce sparse categories
+* Converted operational ID fields to categorical representations
+* Normalized feature data types before export
+* Created leakage review, excluded-column review, feature-list, and missingness-summary outputs
+* Exported a modeling-input dataset for later preprocessing and model development
+
+### Prediction Timing
+
+This notebook uses a **near-discharge prediction framing**.
+
+That means the model input may include information that would be available by the end of the hospital encounter, before post-discharge outreach prioritization.
+
+This framing is different from admission-time prediction. Some fields that may be acceptable for near-discharge prioritization could be unavailable or leakage-prone for admission-time triage.
+
+Later notebooks should keep this timing assumption consistent when building and evaluating models.
+
+### Unit of Analysis and Splitting Requirement
+
+This project remains **encounter-level**.
+
+Each row represents one hospital encounter, not one unique patient.
+
+Because some patients appear in multiple encounters, later modeling notebooks must use patient-aware train/test splitting with `patient_nbr` as the grouping variable. A simple random row-level split could place encounters from the same patient in both training and test sets, causing train/test contamination and inflated model performance.
+
+Recommended later splitting approaches include:
+
+* `GroupShuffleSplit`
+* `GroupKFold`
+* `StratifiedGroupKFold`
+
+Identifier fields such as `encounter_id` and `patient_nbr` are not used as predictive features. The original target field, `readmitted`, is also excluded from the feature list.
+
+### Feature Engineering Summary
+
+Notebook 03 creates several groups of engineered features:
+
+* **Age features**
+
+  * Age midpoint
+  * Age order
+
+* **Prior utilization features**
+
+  * Total prior visits
+  * Any prior utilization flag
+  * Prior inpatient flag
+  * Prior emergency flag
+  * High prior utilization flag
+
+* **Encounter complexity features**
+
+  * Long-stay flag
+  * Time-in-hospital group
+  * Diagnosis count group
+  * Medication count group
+  * Raw encounter-volume fields such as `time_in_hospital`, `num_lab_procedures`, `num_procedures`, `num_medications`, and `number_diagnoses`
+
+* **Diagnosis grouping features**
+
+  * Primary diagnosis group
+  * Secondary diagnosis group
+  * Tertiary diagnosis group
+
+* **Medication features**
+
+  * Insulin flag
+  * Diabetes medication flag
+  * Diabetes medication changed flag
+  * Medication change count
+  * Any medication change flag
+
+* **Missingness and testing features**
+
+  * Missingness flags for high-missingness fields
+  * `A1Cresult_tested_flag`
+  * `max_glu_serum_tested_flag`
+
+These features are designed for predictive modeling and operational prioritization, not causal interpretation.
+
+### Leakage Review
+
+Notebook 03 creates a leakage review table documenting excluded, retained, and caution-required fields.
+
+The review covers:
+
+* Identifier fields
+* Original and engineered target fields
+* Prediction-timing-sensitive encounter fields
+* Highly sparse lab-result fields
+* Sensitive demographic fields
+* Patient grouping fields needed for later split logic
+
+This notebook prepares a defensible candidate feature set, but final feature inclusion decisions should still be reviewed during modeling.
+
+### Missingness Handling
+
+Notebook 03 does not perform imputation.
+
+Instead, it:
+
+* Validates that pseudo-null values were already cleaned
+* Creates missingness indicators for selected high-missingness fields
+* Creates tested/not-tested flags for sparse lab-result fields
+* Excludes extremely sparse raw lab-result categories from the first modeling input dataset
+
+Actual imputation strategy is deferred to later modeling pipelines.
+
+### Data Type Handling
+
+Before export, selected features are normalized into clearer modeling-input types:
+
+* Numeric features are converted to numeric types
+* Binary and missingness flags are converted to compact integer flags
+* Categorical and subgroup-review fields are converted to string representation
+
+This improves consistency for later preprocessing, but the dataset is not yet fully scikit-learn-ready.
+
+### Outputs Created
+
+Notebook 03 exports:
+
+```text
+data/processed/diabetes_readmission_model_ready.csv
+outputs/model_results/model_feature_list.csv
+outputs/model_results/leakage_review.csv
+outputs/model_results/excluded_columns_review.csv
+outputs/model_results/model_ready_missingness_summary.csv
+```
+
+The exported modeling-input dataset includes selected candidate features, the binary target column, and `patient_nbr` for later patient-aware splitting.
+
+### What This Notebook Does Not Do
+
+This notebook does not perform:
+
+* Train/test splitting or grouped cross-validation
+* Imputation, encoding, or scaling pipelines
+* Model training or model evaluation
+* Threshold selection or outreach prioritization
+* Causal inference or final fairness evaluation
+
+Those steps are handled in later notebooks.
+
+
