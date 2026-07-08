@@ -504,4 +504,154 @@ This notebook does not perform:
 
 Those steps are handled in later notebooks.
 
+## Notebook 04: Baseline Risk Modeling
+
+Notebook 04 builds baseline predictive models for **30-day hospital readmission risk** using the leakage-reviewed modeling input dataset created in Notebook 03.
+
+The goal is to establish an initial modeling benchmark before moving into advanced model comparison, calibration, threshold selection, and outreach prioritization.
+
+This notebook focuses on **patient-aware validation**, **baseline model performance**, and **class-imbalance-aware evaluation**. It does not create final intervention thresholds or outreach lists.
+
+### Main Work Completed
+
+**Data and target setup**
+
+* Loaded the modeling input dataset and feature list from Notebook 03
+* Confirmed the binary target, `readmitted_30d`
+* Preserved `patient_nbr` for patient-aware splitting
+* Excluded patient and encounter identifiers from predictive features
+
+**Patient-aware validation**
+
+* Created a holdout split using `GroupShuffleSplit`
+* Verified that train and test sets have **zero overlapping patients**
+* Compared train and test 30-day readmission rates
+* Added grouped cross-validation using `StratifiedGroupKFold`
+
+**Modeling pipeline**
+
+* Built preprocessing pipelines for numeric and categorical features
+* Applied imputation, scaling, and one-hot encoding inside the modeling pipeline
+* Trained a **Dummy Classifier**, **Logistic Regression**, and **Decision Tree** baseline
+
+**Model selection and export**
+
+* Compared baseline model performance
+* Selected **Logistic Regression** as the provisional baseline model
+* Exported model metrics, classification reports, split summary, cross-validation results, and selected baseline metadata
+
+### Target Definition
+
+The primary binary target is:
+
+```python
+readmitted_30d = 1 if readmitted == "<30" else 0
+```
+
+Rows with `readmitted == ">30"` or `readmitted == "NO"` are treated as `0`.
+
+The positive class represents hospital encounters followed by readmission within 30 days.
+
+### Unit of Analysis and Split Strategy
+
+This project remains **encounter-level**.
+
+Each row represents one hospital encounter, but patients can appear in multiple encounters.
+
+Because of repeated patients, this notebook does **not** use a simple random row-level train/test split. A random split could place encounters from the same patient in both training and test sets, causing train/test contamination and inflated model performance.
+
+Instead, this notebook uses `patient_nbr` as the grouping variable.
+
+Validation methods used:
+
+* **Holdout split:** `GroupShuffleSplit`
+* **Grouped cross-validation:** `StratifiedGroupKFold`
+
+This protects the evaluation from same-patient leakage while preserving the encounter-level prediction problem.
+
+### Baseline Models
+
+Notebook 04 compares three baseline models:
+
+* **Dummy Classifier**
+
+  * Serves as a no-skill reference model
+  * Confirms whether trained models improve over a naive baseline
+
+* **Logistic Regression**
+
+  * Provides an interpretable linear baseline
+  * Uses `class_weight="balanced"` to account for the low positive-class rate
+  * Selected as the provisional baseline model
+
+* **Decision Tree**
+
+  * Provides a simple nonlinear baseline
+  * Uses class weighting
+  * Useful for comparison, but not selected as the strongest baseline
+
+### Evaluation Approach
+
+Because 30-day readmission is an imbalanced outcome, **accuracy is not the main metric**.
+
+Notebook 04 evaluates models using:
+
+* **ROC AUC** for overall ranking ability
+* **PR AUC** for performance on the uncommon positive class
+* **Precision and recall** for care-management relevance
+* **F1 score** as a balance between precision and recall
+* **Confusion matrices and classification reports** for threshold-based interpretation
+* **Grouped cross-validation metrics** for patient-aware validation stability
+
+The default `0.50` classification threshold is treated as provisional. Later notebooks should evaluate thresholds based on care management capacity, such as **top 5%**, **top 10%**, or **top 20%** risk groups.
+
+### Baseline Result Summary
+
+**Logistic Regression** is selected as the provisional baseline model.
+
+It performs better than the Dummy Classifier and Decision Tree on the main ranking metrics used in this notebook. Precision remains low because the positive class is uncommon, which is expected in a 30-day readmission-risk problem.
+
+This model should be interpreted as a **baseline risk-ranking model**, not a deployment-ready outreach engine.
+
+### Interpretation Caution
+
+This notebook evaluates **predictive association**, not causal effect.
+
+A higher predicted risk score means the model estimates a higher probability of 30-day readmission based on observed encounter-level features. It does not prove that any individual feature causes readmission.
+
+This notebook also does not prove that outreach will reduce readmissions. Outreach impact would require an experiment, quasi-experimental design, or separate program evaluation.
+
+### Outputs Created
+
+Notebook 04 exports model results to:
+
+```text
+outputs/model_results/baseline_model_metrics.csv
+outputs/model_results/baseline_classification_reports.csv
+outputs/model_results/baseline_split_summary.csv
+outputs/model_results/baseline_cv_results.csv
+outputs/model_results/selected_baseline_model.csv
+```
+
+Baseline figures are exported to:
+
+```text
+outputs/figures/
+```
+
+These outputs provide benchmark results for later notebooks covering model comparison, threshold strategy, and outreach prioritization.
+
+### What This Notebook Does Not Do
+
+This notebook does not perform:
+
+* Advanced model tuning or final model selection
+* Probability calibration
+* Threshold selection, risk tiering, or outreach simulation
+* Fairness or subgroup performance evaluation
+* Causal inference or intervention-effect estimation
+
+Those steps are handled in later notebooks.
+
+
 
