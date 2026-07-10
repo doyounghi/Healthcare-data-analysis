@@ -49,7 +49,7 @@ To reproduce the project workflow:
 1. Clone the repository.
 
 ```bash
-git clone https://github.com/doyounghi/synthetic-data-analysis.git
+git clone https://github.com/doyounghi/Healthcare-data-analysis.git
 cd Healthcare-data-analysis/01_medicare_and_medicaid_member_analysis
 ```
 
