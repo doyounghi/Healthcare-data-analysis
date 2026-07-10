@@ -653,5 +653,199 @@ This notebook does not perform:
 
 Those steps are handled in later notebooks.
 
+## Notebook 05: Model Comparison and Threshold Strategy
+
+Notebook 05 compares candidate readmission-risk models and translates predicted risk scores into an outreach prioritization strategy.
+
+The goal is not only to evaluate model performance, but to answer a practical operational question:
+
+> If care management capacity is limited, which encounters should be prioritized first?
+
+This notebook focuses on **model comparison**, **patient-aware validation**, **top-risk group evaluation**, and **capacity-constrained threshold strategy**. It does not prove that outreach reduces readmissions.
+
+### Main Work Completed
+
+**Model comparison**
+
+* Loaded the modeling input dataset and feature list created in Notebook 03
+* Recreated a patient-aware train/test split using `patient_nbr`
+* Trained three fixed-parameter candidate models:
+
+  * Logistic Regression
+  * Random Forest
+  * Gradient Boosting
+* Compared candidate models using holdout test performance
+* Added patient-aware cross-validation to estimate metric stability
+
+**Threshold and prioritization strategy**
+
+* Ranked test-set encounters by predicted readmission risk
+* Evaluated top-risk groups at **Top 5%**, **Top 10%**, and **Top 20%**
+* Calculated observed readmission rate, lift multiplier over baseline, precision at k, and recall at k
+* Created rank-based risk tiers to keep tier counts consistent with top-risk evaluation
+* Simulated outreach capacity under different intervention thresholds
+* Exported a Top 10% outreach list for downstream review
+
+**Governance and interpretation**
+
+* Selected a provisional candidate model using patient-aware cross-validation
+* Added caveats for fixed-parameter model comparison, calibration, and causal interpretation
+* Documented that predicted scores are used for ranking, not yet as calibrated absolute probabilities
+* Stated that outreach impact requires a separate experiment or program evaluation
+
+### Unit of Analysis and Split Strategy
+
+This project remains **encounter-level**.
+
+Each row represents one hospital encounter, but patients can appear in multiple encounters.
+
+Because of repeated patients, this notebook does **not** use a simple random row-level train/test split. A random split could place encounters from the same patient in both training and test sets, causing train/test contamination and inflated model performance.
+
+The notebook uses `patient_nbr` as the grouping variable for patient-aware validation.
+
+Validation methods include:
+
+* **Holdout split:** patient-aware train/test split
+* **Cross-validation:** patient-aware grouped CV on the training set
+
+This keeps the evaluation aligned with the encounter-level prediction problem while reducing same-patient leakage.
+
+### Candidate Models
+
+Notebook 05 compares three fixed-parameter candidate models:
+
+* **Logistic Regression**
+
+  * Interpretable linear benchmark
+  * Useful as a stable risk-ranking baseline
+
+* **Random Forest**
+
+  * Nonlinear tree-based ensemble
+  * Captures interactions and nonlinear relationships
+
+* **Gradient Boosting**
+
+  * Sequential tree-based ensemble
+  * Selected as the provisional candidate model in this fixed-parameter comparison
+
+The models use fixed, conservative hyperparameters in this notebook. This is a **provisional model comparison**, not a final hyperparameter-tuned architecture selection.
+
+Because different model families respond differently to tuning, the selected model should not be interpreted as the final best algorithm. Later notebooks should revisit model selection after hyperparameter tuning, calibration review, and subgroup performance analysis.
+
+### Model Selection Logic
+
+The provisional candidate model is selected using **patient-aware cross-validation on the training set**, not by directly choosing the best result from the holdout test set.
+
+Selection prioritizes:
+
+1. **Top 10% lift multiplier mean**
+2. **PR AUC mean**
+3. **ROC AUC mean**
+
+The **Top 10% lift multiplier** compares the observed readmission rate within the highest-risk 10% of encounters against the overall baseline readmission rate.
+
+For example, a lift multiplier of `2.4x` means the Top 10% risk group has approximately 2.4 times the baseline readmission rate.
+
+This selection rule aligns with the project goal: prioritizing a limited outreach population rather than maximizing generic classification accuracy.
+
+In the current fixed-parameter comparison, **Gradient Boosting** is selected as the provisional candidate model.
+
+### Threshold Strategy
+
+The notebook evaluates outreach thresholds based on ranked predicted risk.
+
+In this notebook, **k** refers to the size of the outreach group selected from the ranked risk list.
+
+Thresholds reviewed:
+
+* **Top 5%**: k equals the highest-risk 5% of encounters
+* **Top 10%**: k equals the highest-risk 10% of encounters
+* **Top 20%**: k equals the highest-risk 20% of encounters
+
+For each threshold, the notebook calculates:
+
+* Number of encounters targeted
+* Observed 30-day readmission count
+* Observed readmission rate
+* Lift multiplier over baseline
+* Precision at k
+* Recall at k
+
+Here, **recall at k** represents the share of all observed 30-day readmissions captured within the selected top-risk group.
+
+The recommended pilot threshold is:
+
+> Start with the Top 10% highest-risk encounters.
+
+This threshold is operationally realistic for an initial outreach pilot. It can be narrowed to the Top 5% if staffing is highly constrained or expanded to the Top 20% if care management capacity allows.
+
+### Risk Tiers
+
+Notebook 05 assigns rank-based risk tiers:
+
+* **Very High Risk:** Top 5%
+* **High Risk:** 5% to 10%
+* **Moderate Risk:** 10% to 25%
+* **Lower Risk:** Bottom 75%
+
+Risk tiers are assigned using rank cutoffs rather than probability cutoffs. This keeps tier sizes consistent with the capacity-based threshold strategy.
+
+### Calibration and Interpretation Caution
+
+Predicted scores are used for **ranking**.
+
+They should not yet be interpreted as calibrated absolute probabilities. Calibration should be reviewed before using fixed probability thresholds such as `risk >= 0.30`.
+
+This notebook evaluates predictive association, not causal effect.
+
+A higher risk score means the model ranks an encounter as more likely to be followed by 30-day readmission. It does not prove that any feature causes readmission, and it does not prove that outreach will reduce readmissions.
+
+Estimating outreach impact would require a randomized pilot, A/B test, quasi-experimental design, or separate program evaluation.
+
+### Outputs Created
+
+Notebook 05 exports model comparison outputs to:
+
+```text
+outputs/model_results/candidate_model_comparison_metrics.csv
+outputs/model_results/candidate_model_cv_results.csv
+outputs/model_results/candidate_model_cv_summary.csv
+outputs/model_results/top_risk_segment_evaluation.csv
+outputs/model_results/selected_candidate_model.csv
+outputs/model_results/risk_tier_summary.csv
+outputs/model_results/outreach_capacity_summary.csv
+```
+
+Notebook 05 exports outreach-prioritization files to:
+
+```text
+outputs/outreach_lists/test_set_risk_ranking.csv
+outputs/outreach_lists/top_10_percent_outreach_list.csv
+```
+
+Notebook 05 exports model comparison and risk-tier figures to:
+
+```text
+outputs/figures/
+```
+
+These outputs support later subgroup review, calibration review, hyperparameter tuning, and business recommendation development.
+
+### What This Notebook Does Not Do
+
+This notebook does not perform:
+
+* Final hyperparameter tuning
+* Final algorithm selection
+* Probability calibration
+* Fairness or subgroup performance evaluation
+* SHAP or feature-importance interpretation
+* Causal inference or intervention-effect estimation
+* Production deployment logic
+
+Those steps are handled in later notebooks.
+
+
 
 
