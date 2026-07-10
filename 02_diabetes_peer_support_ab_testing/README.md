@@ -55,7 +55,7 @@ To reproduce the project workflow:
 
 ```bash
 git clone https://github.com/doyounghi/synthetic-data-analysis.git
-cd synthetic-data-analysis/02_diabetes_peer_support_ab_testing
+cd Healthcare-data-analysis/02_diabetes_peer_support_ab_testing
 ```
 
 2. Create and activate a virtual environment.

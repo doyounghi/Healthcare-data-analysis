@@ -1,4 +1,4 @@
-# Mock Member Health Analysis
+# Medicare & Medicaid Member Analysis
 
 A synthetic healthcare analytics and machine learning portfolio project built to practice Python, exploratory data analysis, feature engineering, classification modeling, regression modeling, model interpretation, and leakage-aware evaluation.
 
@@ -50,7 +50,7 @@ To reproduce the project workflow:
 
 ```bash
 git clone https://github.com/doyounghi/synthetic-data-analysis.git
-cd synthetic-data-analysis/01_mock_member_health_analysis
+cd Healthcare-data-analysis/01_medicare_and_medicaid_member_analysis
 ```
 
 2. Create and activate a virtual environment.

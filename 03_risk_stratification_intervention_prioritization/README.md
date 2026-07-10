@@ -14,6 +14,31 @@ This project uses the UCI Diabetes 130-US Hospitals for Years 1999–2008 datase
 
 The dataset contains 101,766 hospital encounter records for patients diagnosed with diabetes and supports a classification task related to early readmission within 30 days after discharge.
 
+## Raw Data Access
+
+The raw dataset files are not committed to this repository because the `data/` directory is gitignored.
+
+To reproduce the project, download the UCI Diabetes 130-US Hospitals for Years 1999–2008 dataset from the UCI Machine Learning Repository:
+
+```text
+https://archive.ics.uci.edu/ml/datasets/diabetes+130-us+hospitals+for+years+1999-2008
+```
+
+After downloading and extracting the dataset, place the required raw files in:
+
+```text
+data/raw/
+```
+
+Expected raw files:
+
+```text
+data/raw/diabetic_data.csv
+data/raw/IDS_mapping.csv
+```
+
+The project notebooks expect these exact filenames and paths. Notebook 00 checks whether both files exist before the cleaning and modeling workflow begins.
+
 ## Business Question
 
 Can historical hospital encounter data be used to identify higher-risk diabetic patients and prioritize post-discharge outreach under limited care management capacity?
@@ -484,7 +509,7 @@ Notebook 03 exports:
 
 ```text
 data/processed/diabetes_readmission_model_ready.csv
-outputs/model_results/model_feature_list.csv
+outputs/model_results/feature_list.csv
 outputs/model_results/leakage_review.csv
 outputs/model_results/excluded_columns_review.csv
 outputs/model_results/model_ready_missingness_summary.csv
