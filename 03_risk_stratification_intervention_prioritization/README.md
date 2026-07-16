@@ -871,6 +871,367 @@ This notebook does not perform:
 
 Those steps are handled in later notebooks.
 
+## Notebook 06: Fairness and Subgroup Review
+
+Notebook 06 evaluates subgroup selection and predictive-performance patterns for the Risk Stratification and Intervention Prioritization project.
+
+The goal is to determine whether model scores, outreach selection, and threshold-based performance differ across key demographic groups before final intervention recommendations are made.
+
+This notebook does **not** certify that the model is fair. It identifies patterns that require monitoring, validation, and further review before any real-world use.
+
+### Key Findings
+
+* The Top 10% threshold selected **2,016 of 20,153 encounters**. This group had a **25.79% observed readmission rate**, compared with approximately **10.67% across the full test set**, and captured about **24.17% of all observed readmissions**.
+* Among age groups with at least 100 encounters, the `[30-40)` group had the highest Top 10% selection rate at **16.67%** and the highest recall at **35.35%**.
+* African American encounters had an **11.33% selection rate** and **28.00% recall**, compared with a **9.88% selection rate** and **23.43% recall** for Caucasian encounters.
+* Encounters with unknown race had a substantially lower **4.63% selection rate** and **4.76% recall**. This may indicate a missing-demographic or data-quality issue requiring further review.
+* Female and male encounters had similar results. Selection rates were **10.25% for females** and **9.71% for males**, while recall was **23.60%** and **24.85%**, respectively.
+* Very small groups, including `[0-10)` with 38 encounters and `Unknown/Invalid` gender with 2 encounters, produced unstable metrics and should not be treated as reliable subgroup evidence.
+* These results are descriptive. The notebook does not calculate confidence intervals or formal significance tests, so observed differences cannot be labeled statistically significant or used as proof that the model is fair or unfair.
+
+### Main Work Completed
+
+**Data preparation**
+
+* Loaded the test-set risk ranking created in Notebook 05
+* Loaded the model-ready dataset created in Notebook 03
+* Joined demographic fields to ranked test encounters using `encounter_id`
+* Confirmed that the join preserved the original test-set row count
+* Created rank-based selection indicators for the Top 5%, Top 10%, and Top 20% highest-risk encounters
+
+**Subgroup evaluation**
+
+* Reviewed performance across `age`, `race`, and `gender`
+* Used the Top 10% risk group as the primary subgroup-monitoring threshold
+* Calculated subgroup outcome, selection, and classification metrics
+* Compared subgroup selection rates and recall with overall values
+* Flagged subgroups with fewer than 100 encounters
+
+**Visualization and export**
+
+* Visualized selection-rate and recall differences across demographic groups
+* Compared subgroup selection rates with observed readmission rates
+* Exported subgroup tables, monitoring flags, threshold summaries, and figures
+
+### Requirements
+
+Notebook 06 uses:
+
+* Python
+* `pandas`
+* `numpy`
+* `matplotlib`
+
+It does not use a specialized fairness library such as Fairlearn.
+
+Install project dependencies from the project root:
+
+```bash
+pip install -r requirements.txt
+```
+
+### Execution Requirements
+
+Notebook 06 depends on outputs created by earlier notebooks. It is not fully standalone unless the following files already exist:
+
+```text
+data/processed/diabetes_readmission_model_ready.csv
+outputs/outreach_lists/test_set_risk_ranking.csv
+outputs/model_results/selected_candidate_model.csv
+```
+
+For a complete clean run, execute the notebooks in numerical order:
+
+```text
+00_project_setup_and_data_access_check.ipynb
+01_data_cleaning_and_dictionary.ipynb
+02_eda_and_outcome_analysis.ipynb
+03_feature_engineering_and_leakage_review.ipynb
+04_baseline_risk_modeling.ipynb
+05_model_comparison_and_threshold_strategy.ipynb
+06_fairness_and_subgroup_review.ipynb
+```
+
+Notebook 06 can be rerun independently after the required Notebook 03 and Notebook 05 outputs have been generated.
+
+Dynamic project-root detection is used so inputs and outputs are resolved relative to the repository rather than through hard-coded local paths.
+
+### Outreach Selection Threshold
+
+The primary operational threshold is the Top 10% highest-risk encounters.
+
+Selection indicators use rank-based cutoffs so the evaluated populations remain consistent with the threshold and outreach-list logic established in Notebook 05.
+
+```python
+top_10_cutoff = int(np.ceil(total_test_encounters * 0.10))
+
+top_10_selected = 1 if risk_rank <= top_10_cutoff else 0
+```
+
+Additional indicators are created for:
+
+* Top 5% highest-risk encounters
+* Top 10% highest-risk encounters
+* Top 20% highest-risk encounters
+
+Selection into the Top 10% does not mean that readmission is certain. It means the encounter received one of the highest model scores under limited outreach capacity.
+
+### Subgroups Reviewed
+
+Subgroup performance is reviewed across:
+
+* `age`
+* `race`
+* `gender`
+
+Race and gender are excluded from the primary predictive feature set and retained for subgroup monitoring.
+
+Age may be included as a clinically relevant predictive feature, but age-based selection and performance differences still require review.
+
+### Subgroup Metrics
+
+The notebook calculates the following fields for each subgroup:
+
+* `encounter_count`
+* `readmission_count`
+* `readmission_rate`
+* `avg_predicted_risk`
+* `selected_count`
+* `selection_rate`
+* `true_positive`
+* `false_positive`
+* `false_negative`
+* `true_negative`
+* `precision`
+* `recall`
+* `false_positive_rate`
+* `false_negative_rate`
+
+The exported field `avg_predicted_risk` represents the subgroup’s average model score.
+
+Probability calibration has not yet been completed. This field is therefore used for relative ranking and subgroup comparison rather than interpreted as a calibrated absolute readmission probability.
+
+#### Selection Rate
+
+The percentage of subgroup encounters selected into the Top 10% highest-risk group.
+
+```text
+selected encounters / total subgroup encounters
+```
+
+#### Precision
+
+Among selected subgroup encounters, the percentage that experienced a 30-day readmission.
+
+```text
+true positives / selected encounters
+```
+
+#### Recall
+
+Among subgroup encounters that experienced a 30-day readmission, the percentage selected into the Top 10% group.
+
+```text
+true positives / total subgroup readmissions
+```
+
+#### False Positive Rate
+
+Among subgroup encounters that were not readmitted, the percentage selected into the Top 10%.
+
+```text
+false positives / total subgroup non-readmissions
+```
+
+#### False Negative Rate
+
+Among subgroup encounters that were readmitted, the percentage not selected into the Top 10%.
+
+```text
+false negatives / total subgroup readmissions
+```
+
+These metrics describe model behavior at the selected outreach threshold. They do not prove that the model is fair or unfair.
+
+### Age Group Review
+
+Age-group analysis compares:
+
+* Encounter volume
+* Observed readmission rate
+* `avg_predicted_risk`
+* Top 10% selection rate
+* Precision and recall
+* False positive and false negative rates
+
+Age bands are displayed in their natural ordinal order:
+
+```text
+[0-10)
+[10-20)
+[20-30)
+...
+[90-100)
+```
+
+Differences across age groups may reflect clinical risk, utilization patterns, historical data patterns, feature availability, or model behavior.
+
+### Race Group Review
+
+Race-group analysis compares selection and predictive-performance metrics across available race categories.
+
+Race is used only for subgroup monitoring in the primary workflow.
+
+Observed differences may reflect:
+
+* Unequal subgroup sample sizes
+* Missing demographic information
+* Documentation patterns
+* Clinical complexity
+* Historical utilization
+* Structural inequities
+* Model behavior
+
+Race-group differences should not be interpreted as causal effects or automatic evidence of discrimination.
+
+### Gender Group Review
+
+Gender-group analysis compares:
+
+* Observed readmission rates
+* `avg_predicted_risk`
+* Top 10% selection rates
+* Precision and recall
+* False positive and false negative rates
+
+Very small groups may produce unstable metrics and should be interpreted cautiously.
+
+Results from a single retrospective test set should be treated as monitoring signals rather than final conclusions.
+
+### Small-Sample Monitoring
+
+Subgroups with fewer than 100 encounters are flagged using:
+
+```python
+small_sample_flag = 1 if encounter_count < 100 else 0
+```
+
+Small-sample metrics can change substantially because of only a few outcomes or selections.
+
+The notebook does not currently calculate confidence intervals or formal significance tests for subgroup differences.
+
+### Overall Comparison
+
+Each subgroup’s selection rate is compared with the overall Top 10% selection rate.
+
+Each subgroup’s recall is also compared with overall recall.
+
+The notebook calculates:
+
+```text
+selection_rate_diff_vs_overall
+recall_diff_vs_overall
+```
+
+These differences identify groups that may require further review.
+
+A difference from the overall result is not automatically evidence of bias. Observed readmission rates, sample sizes, data quality, and clinical profiles must also be considered.
+
+### Selection Rate and Observed Outcome
+
+The notebook reviews subgroup Top 10% selection rates alongside observed subgroup readmission rates.
+
+A subgroup with a higher observed readmission rate may reasonably receive a higher selection rate. However, observed outcome differences do not automatically justify every selection difference.
+
+Differences may also result from:
+
+* Data quality
+* Feature availability
+* Probability calibration
+* Documentation practices
+* Historical care patterns
+* Structural inequities
+* Model behavior
+
+Selection rates and observed outcomes should therefore be reviewed together.
+
+### Outputs Created
+
+Subgroup review tables are exported to:
+
+```text
+outputs/model_results/subgroup_review_age.csv
+outputs/model_results/subgroup_review_race.csv
+outputs/model_results/subgroup_review_gender.csv
+outputs/model_results/subgroup_review_combined.csv
+outputs/model_results/subgroup_monitoring_flags.csv
+outputs/model_results/test_ranking_with_subgroups.csv
+outputs/model_results/subgroup_threshold_selection_summary.csv
+```
+
+Subgroup figures are exported to:
+
+```text
+outputs/figures/top_10_selection_rate_by_age.png
+outputs/figures/recall_at_top_10_by_age.png
+outputs/figures/top_10_selection_rate_by_race.png
+outputs/figures/recall_at_top_10_by_race.png
+outputs/figures/top_10_selection_rate_by_gender.png
+outputs/figures/recall_at_top_10_by_gender.png
+outputs/figures/selection_rate_vs_readmission_rate_by_subgroup.png
+```
+
+### Interpretation Limitations
+
+This notebook does not provide final fairness approval.
+
+Important limitations include:
+
+* Retrospective test-set evaluation
+* Unequal subgroup sample sizes
+* No confidence intervals
+* No formal significance testing
+* No intersectional subgroup analysis
+* No calibration analysis by subgroup
+* No post-deployment monitoring
+* No outreach completion data
+* No intervention outcome data
+* No causal evidence that outreach reduces readmissions
+
+Differences in subgroup performance may reflect model behavior, underlying outcome differences, data quality, documentation practices, historical care patterns, or structural inequities.
+
+### What This Notebook Does Not Do
+
+This notebook does not perform:
+
+* Model retraining or hyperparameter tuning
+* Final model selection
+* Final outreach-list creation
+* Intervention ROI estimation
+* Causal impact evaluation
+* Production deployment approval
+* Formal legal or regulatory fairness validation
+* Claims that the model is fair
+
+Those steps require additional analysis, operational validation, and ongoing monitoring.
+
+### Monitoring Recommendations
+
+Any real-world implementation should continue monitoring:
+
+* Selection rates by subgroup
+* Outreach completion rates by subgroup
+* Observed readmission rates by subgroup
+* Precision and recall by subgroup
+* False negative rates by subgroup
+* Probability calibration
+* Data and population drift
+* Missingness patterns
+* Manual overrides
+* Model recalibration frequency
+
+The next notebook converts the risk rankings and subgroup-review findings into final intervention-prioritization outputs and a business recommendation.
+
 
 
 
