@@ -838,8 +838,6 @@ outputs/model_results/candidate_model_cv_results.csv
 outputs/model_results/candidate_model_cv_summary.csv
 outputs/model_results/top_risk_segment_evaluation.csv
 outputs/model_results/selected_candidate_model.csv
-outputs/model_results/risk_tier_summary.csv
-outputs/model_results/outreach_capacity_summary.csv
 ```
 
 Notebook 05 exports outreach-prioritization files to:
@@ -1232,6 +1230,597 @@ Any real-world implementation should continue monitoring:
 
 The next notebook converts the risk rankings and subgroup-review findings into final intervention-prioritization outputs and a business recommendation.
 
+## Notebook 07: Intervention Prioritization and Business Recommendation
+
+This project uses the public **UCI Diabetes 130-US Hospitals for Years 1999–2008 dataset**, containing de-identified hospital encounter records for patients diagnosed with diabetes.
+
+Notebook 07 converts the final readmission-risk rankings into an operational intervention-prioritization strategy for the Risk Stratification and Intervention Prioritization project.
+
+The goal is to translate encounter-level model rankings into practical patient-level outreach decisions when care management capacity is limited.
+
+This notebook does **not** retrain the model, calibrate predicted probabilities, or estimate the causal effect of outreach. It focuses on outreach capacity, patient-level prioritization, subgroup-monitoring requirements, and business recommendations.
+
+### Key Findings
+
+* The Top 5% threshold selected **1,008 of 20,153 encounters** and had an observed 30-day readmission rate of approximately **30.06%**.
+* The Top 10% threshold selected **2,016 encounters** and had a **25.79% observed readmission rate**, compared with approximately **10.67% across the full test set**.
+* The Top 10% group captured approximately **24.17% of all observed test-set readmissions** while targeting about one-tenth of encounters.
+* The Top 20% threshold selected **4,031 encounters** and had an observed readmission rate of approximately **20.39%**.
+* The risk-tier results showed a clear risk gradient, with higher-ranked tiers having higher observed readmission rates than lower-ranked tiers.
+* The Top 10% threshold was retained as the provisional pilot strategy because it balances risk concentration, readmission capture, and operational workload.
+* The encounter-level Top 10% list contained repeated patients, confirming that model evaluation and operational outreach require different units of analysis.
+* The selected encounter list was deduplicated into a prototype roster containing one priority row per patient.
+* Actual future readmission outcomes were excluded from the prototype outreach list because they would not be available at prediction time.
+* Gradient Boosting remains a **provisional candidate model**. The model scores are used for relative ranking and should not be interpreted as calibrated absolute probabilities.
+* These results support a controlled outreach pilot. They do not prove that outreach will reduce readmissions.
+* Deduplicating the 2,016 selected encounters produced a prototype outreach roster of **1,240 unique patients**, representing approximately **8.67% of the 14,304 unique patients** in the test set.
+* The threshold is therefore Top 10% at the encounter level, not at the patient level.
+
+### Main Work Completed
+
+**Input validation**
+
+* Loaded the provisional candidate-model output from Notebook 05
+* Loaded ranked test encounters and subgroup-review outputs from Notebook 06
+* Confirmed that required ranking, outcome, subgroup, and threshold columns were available
+* Confirmed that `encounter_id` remained unique in the encounter-level ranking
+* Validated model-score and risk-percentile ranges
+* Confirmed that Top 5%, Top 10%, and Top 20% selection flags matched exact risk-rank cutoffs
+
+**Threshold and risk-tier evaluation**
+
+* Recalculated encounter-level threshold performance
+* Validated threshold results against Notebook 06 outputs
+* Calculated selected encounter counts and unique-patient counts
+* Calculated observed readmission rates within each threshold
+* Calculated lift over the test-set baseline
+* Calculated the percentage of total readmissions captured
+* Summarized observed outcomes across final risk tiers
+* Visualized lift, readmission capture, and risk-tier gradients
+
+**Operational prioritization**
+
+* Distinguished encounter-level retrospective evaluation from patient-level outreach operations
+* Identified patients with multiple selected encounters
+* Deduplicated the Top 10% encounter list using `patient_nbr`
+* Retained the highest-ranked qualifying encounter for each patient
+* Created a retrospective patient-level list for evaluation
+* Created a separate operational outreach roster without future outcomes
+* Assigned proposed operational actions by risk tier
+
+**Business recommendation and monitoring**
+
+* Incorporated subgroup-monitoring findings from Notebook 06
+* Defined subgroup-monitoring requirements for a prospective pilot
+* Defined capacity, outreach, outcome, model, and data-quality monitoring metrics
+* Recommended a controlled Top 10% outreach pilot
+* Documented model, operational, fairness, and causal limitations
+* Exported final prioritization, monitoring, recommendation, and outreach outputs
+
+### Requirements
+
+Notebook 07 uses:
+
+* Python
+* `pandas`
+* `numpy`
+* `matplotlib`
+
+Install project dependencies from the project root:
+
+```bash
+pip install -r requirements.txt
+```
+
+### Execution Requirements
+
+Notebook 07 depends on outputs created by earlier notebooks. It is not fully standalone unless the following files already exist:
+
+```text
+outputs/model_results/selected_candidate_model.csv
+outputs/model_results/candidate_model_cv_summary.csv
+outputs/model_results/test_ranking_with_subgroups.csv
+outputs/model_results/subgroup_monitoring_flags.csv
+outputs/model_results/subgroup_threshold_selection_summary.csv
+```
+
+For a complete clean run, execute the notebooks in numerical order:
+
+```text
+00_project_setup_and_data_access_check.ipynb
+01_data_cleaning_and_dictionary.ipynb
+02_eda_and_outcome_analysis.ipynb
+03_feature_engineering_and_leakage_review.ipynb
+04_baseline_risk_modeling.ipynb
+05_model_comparison_and_threshold_strategy.ipynb
+06_fairness_and_subgroup_review.ipynb
+07_intervention_prioritization_and_business_recommendation.ipynb
+```
+
+Notebook 07 can be rerun independently after the required Notebook 05 and Notebook 06 outputs have been generated.
+
+Dynamic project-root detection is used so inputs and outputs are resolved relative to the repository rather than through hard-coded local paths.
+
+### Candidate Model Status
+
+The provisional candidate model is **Gradient Boosting**.
+
+The model was selected during the fixed-parameter comparison performed in Notebook 05.
+
+The model should remain provisional because:
+
+* Final hyperparameter tuning has not been completed
+* Probability calibration has not been completed
+* External validation has not been completed
+* Prospective operational validation has not been completed
+
+The exported field `predicted_readmission_risk` represents the model score used for relative ranking.
+
+It should not be interpreted as a calibrated absolute probability of readmission.
+
+### Unit of Analysis and Operational Unit
+
+The predictive model remains **encounter-level**.
+
+Each row represents one hospital encounter and receives one predicted readmission-risk score.
+
+However, care management outreach is generally **patient-level**.
+
+The same patient may have multiple encounters within the selected Top 10% group. Sending the encounter-level ranking directly to an outreach team could therefore create duplicate assignments.
+
+Notebook 07 preserves two distinct outputs:
+
+1. **Encounter-level retrospective evaluation**
+2. **Patient-level prototype prioritization**
+
+This distinction keeps performance evaluation aligned with the model’s prediction unit while making the outreach output operationally usable.
+
+### Rank-Based Outreach Thresholds
+
+Notebook 07 reuses the rank-based threshold indicators established in Notebooks 05 and 06.
+
+```python
+top_10_cutoff = int(np.ceil(total_test_encounters * 0.10))
+
+top_10_selected = 1 if risk_rank <= top_10_cutoff else 0
+```
+
+The reviewed thresholds are:
+
+* Top 5% highest-risk encounters
+* Top 10% highest-risk encounters
+* Top 20% highest-risk encounters
+
+Rank-based thresholds are used instead of fixed score thresholds because probability calibration has not been completed.
+
+This also keeps the selected population aligned with explicit outreach-capacity assumptions.
+
+### Outreach Capacity Metrics
+
+For each threshold, the notebook calculates:
+
+* `selected_encounters`
+* `selected_unique_patients`
+* `selected_readmissions`
+* `selected_readmission_rate`
+* `baseline_readmission_rate`
+* `lift_vs_baseline`
+* `percent_of_readmissions_captured`
+
+#### Lift Over Baseline
+
+Lift measures how concentrated observed readmissions are within the selected outreach group compared with the full test set.
+
+```text
+selected-group readmission rate / baseline readmission rate
+```
+
+A lift greater than `1.0` means the selected group has a higher observed readmission rate than the overall test population.
+
+#### Readmission Capture
+
+Readmission capture measures the percentage of all observed test-set readmissions included in the selected group.
+
+```text
+selected readmissions / total test-set readmissions
+```
+
+This metric reflects the tradeoff between outreach volume and missed readmissions.
+
+### Outreach Capacity Tradeoff
+
+A smaller selected population generally provides:
+
+* Higher observed readmission concentration
+* Higher lift
+* Fewer selected encounters
+* Fewer selected patients
+* Lower total readmission capture
+
+A larger selected population generally provides:
+
+* More selected encounters
+* More selected patients
+* Higher total readmission capture
+* Lower readmission concentration
+* Lower lift
+
+The outreach threshold is therefore an operational capacity decision rather than a universal model cutoff.
+
+### Provisional Pilot Threshold
+
+The recommended pilot threshold is the **Top 10% highest-risk encounters**.
+
+The Top 10% threshold provides a practical balance between:
+
+* Risk concentration
+* Readmission capture
+* Outreach volume
+* Patient volume
+* Staffing requirements
+* Pilot feasibility
+
+The Top 5% threshold may be used when outreach capacity is extremely limited.
+
+The Top 20% threshold may be considered if the organization has sufficient capacity and prioritizes broader readmission capture.
+
+The final operational threshold should be selected using actual staffing, outreach cost, eligibility rules, and workflow data.
+
+### Final Risk Tiers
+
+Notebook 07 summarizes four capacity-based risk tiers:
+
+* **Very High Risk:** Top 5%
+* **High Risk:** 5% to 10%
+* **Moderate Risk:** 10% to 25%
+* **Lower Risk:** Bottom 75%
+
+For each risk tier, the notebook calculates:
+
+* Encounter count
+* Unique-patient count
+* Observed readmission count
+* Average model score
+* Observed readmission rate
+* Lift over baseline
+
+The average model score is used for relative comparison only.
+
+It should not be interpreted as the tier’s true absolute readmission probability.
+
+### Encounter-Level Retrospective Ranking
+
+The encounter-level retrospective ranking contains:
+
+* `encounter_id`
+* `patient_nbr`
+* predicted model score
+* risk rank
+* risk percentile
+* risk tier
+* actual 30-day readmission outcome
+* subgroup-monitoring fields
+* Top 5%, Top 10%, and Top 20% selection indicators
+
+This output is used for historical model and threshold evaluation.
+
+The actual outcome is included because the analysis is retrospective.
+
+### Patient-Level Deduplication
+
+The Top 10% encounter list is deduplicated using `patient_nbr`.
+
+For patients with multiple selected encounters, the highest-ranked qualifying encounter is retained as the priority encounter.
+
+The patient-level retrospective list includes:
+
+* `patient_nbr`
+* priority `encounter_id`
+* highest model score
+* best risk rank
+* best risk percentile
+* risk tier
+* qualifying encounter count
+* actual retrospective outcome
+* subgroup-monitoring fields
+
+The qualifying encounter count identifies patients who appeared multiple times within the selected encounter group.
+
+### Patient-Level Prototype Outreach Roster
+
+The prototype outreach list is separate from the retrospective evaluation list.
+
+It includes fields such as:
+
+* `patient_nbr`
+* priority `encounter_id`
+* highest model score
+* best risk rank
+* best risk percentile
+* risk tier
+* qualifying encounter count
+* age group
+* proposed operational action
+
+The operational list excludes:
+
+* `actual_readmitted_30d`
+* retrospective true-positive or false-positive indicators
+* Top 5%, Top 10%, and Top 20% selection indicators
+* race
+* gender
+
+The future readmission outcome would not be available at prediction time.
+
+Race and gender remain available in separate subgroup-monitoring outputs rather than the core outreach roster.
+
+### Proposed Operational Actions
+
+The notebook assigns proposed actions by risk tier.
+
+#### Very High Risk
+
+```text
+Priority review and first outreach attempt
+```
+
+#### High Risk
+
+```text
+Standard pilot outreach after the Very High Risk group
+```
+
+#### Moderate Risk
+
+```text
+Monitor or include if additional outreach capacity is available
+```
+
+#### Lower Risk
+
+```text
+Usual workflow without model-prioritized outreach
+```
+
+These actions are portfolio-level recommendations rather than clinical orders.
+
+A real operational workflow would still require:
+
+* Program eligibility review
+* Discharge-status review
+* Existing care-management enrollment checks
+* Contact-preference review
+* Clinical and operational overrides
+* Privacy and access controls
+
+### Subgroup Monitoring Integration
+
+Notebook 07 incorporates the subgroup-monitoring findings from Notebook 06.
+
+Monitoring fields include:
+
+* Subgroup encounter count
+* Observed readmission rate
+* Selection rate
+* Recall
+* False negative rate
+* Small-sample flag
+* Selection-rate difference from overall
+* Recall difference from overall
+
+Notebook 06 identified meaningful subgroup variation and several very small groups.
+
+These findings do not prove that the model is fair or unfair. They identify areas requiring monitoring during any prospective pilot.
+
+### Subgroup Monitoring Requirements
+
+The recommended pilot should monitor:
+
+* Selection rate by subgroup
+* Outreach-attempt rate by subgroup
+* Outreach-completion rate by subgroup
+* Recall by subgroup
+* False negative rate by subgroup
+* Observed readmission rate by subgroup
+* Missingness patterns
+* Subgroup sample sizes
+* Calibration by subgroup after calibration work is completed
+
+Subgroup selection, intervention delivery, missed outcomes, and observed outcomes should be reviewed together.
+
+### Pilot Monitoring Plan
+
+The pilot-monitoring framework includes:
+
+**Capacity metrics**
+
+* Selected encounter count
+* Unique selected patient count
+* Duplicate selected encounters
+* Care-manager caseload
+
+**Operational metrics**
+
+* Outreach-attempt rate
+* Successful-contact rate
+* Outreach-completion rate
+* Time from discharge to outreach
+* Unable-to-reach rate
+* Patient-refusal rate
+
+**Outcome metrics**
+
+* 30-day readmission rate
+* Emergency department utilization
+* Inpatient utilization
+* Time to readmission
+* Readmission rate by risk tier
+
+**Model metrics**
+
+* Top 10% lift
+* Top 10% readmission capture
+* PR AUC
+* ROC AUC
+* Risk-tier stability
+* Population drift
+* Feature drift
+
+**Subgroup metrics**
+
+* Selection rate by subgroup
+* Outreach-completion rate by subgroup
+* Recall by subgroup
+* False negative rate by subgroup
+* Readmission outcome by subgroup
+
+### Controlled Pilot Recommendation
+
+The preferred next step is a randomized or controlled outreach pilot.
+
+Possible evaluation designs include:
+
+* Randomized outreach versus usual care within the Top 10% group
+* Holdout group receiving the current care-management process
+* Phased rollout across facilities or care-management teams
+* Matched comparison when randomization is not feasible
+
+A controlled evaluation is necessary because retrospective model performance does not establish intervention effectiveness.
+
+### Business Recommendation
+
+The recommended strategy is:
+
+> Use the provisional Gradient Boosting ranking to identify a high-risk candidate pool from the Top 10% encounter-level threshold. Deduplicate the selected encounters to one priority record per patient, then apply clinical and operational review to assess eligibility, modifiable barriers, and likely outreach actionability before assignment.
+
+The Top 10% group should not be treated as a final ordered list of patients expected to benefit most. The current model predicts readmission risk, not intervention responsiveness.
+
+A controlled pilot should randomize eligible patients to outreach or usual care. The resulting treatment and outcome data could later support uplift modeling or heterogeneous treatment-effect estimation to prioritize patients by expected intervention benefit rather than risk alone.
+
+The pilot should:
+
+* Retain a comparison group
+* Track outreach attempts and completion
+* Measure 30-day readmission outcomes
+* Monitor subgroup selection and missed readmissions
+* Review operational workload
+* Reassess the threshold after initial results
+* Revisit model tuning and calibration before broader implementation
+
+### Outputs Created
+
+Final model and intervention summaries are exported to:
+
+```text
+outputs/model_results/final_threshold_summary.csv
+outputs/model_results/final_risk_tier_summary.csv
+outputs/model_results/intervention_executive_summary.csv
+outputs/model_results/intervention_recommendation_summary.csv
+outputs/model_results/pilot_monitoring_plan.csv
+outputs/model_results/subgroup_monitoring_requirements.csv
+outputs/model_results/encounter_patient_deduplication_summary.csv
+```
+
+Final outreach outputs are exported to:
+
+```text
+outputs/outreach_lists/final_ranked_encounter_list_retrospective.csv
+outputs/outreach_lists/top_10_percent_encounter_list_retrospective.csv
+outputs/outreach_lists/top_10_encounter_threshold_patient_list_retrospective.csv
+outputs/outreach_lists/top_10_encounter_threshold_patient_outreach_list_prototype.csv
+```
+
+Final figures are exported to:
+
+```text
+outputs/figures/final_lift_by_outreach_threshold.png
+outputs/figures/final_outreach_volume_vs_readmission_capture.png
+outputs/figures/final_readmission_rate_by_risk_tier.png
+```
+
+### Interpretation Limitations
+
+Important limitations include:
+
+* Historical data from 1999–2008
+* Retrospective test-set evaluation
+* Fixed model parameters
+* No final hyperparameter tuning
+* No probability calibration
+* No external validation
+* No prospective operational validation
+* Encounter-level predictions requiring patient-level deduplication
+* No outreach staffing or cost data
+* No intervention completion data
+* No randomized intervention results
+* No causal evidence that outreach reduces readmissions
+* Retrospective subgroup review that does not prove fairness
+* Potentially unstable metrics for small subgroups
+
+Model scores should be interpreted as relative ranking values rather than calibrated probabilities.
+
+### Risk Versus Intervention Benefit
+
+This project predicts the risk of 30-day readmission.
+
+It does not predict which patient will benefit most from outreach.
+
+A very high-risk patient may remain high risk even after intervention.
+
+A moderately high-risk patient may be more responsive to outreach than the highest-risk patient.
+
+Future work could estimate intervention benefit using:
+
+* Randomized pilot data
+* Uplift modeling
+* Treatment-effect estimation
+* Heterogeneous treatment-effect models
+* Causal machine learning
+
+The current workflow should therefore be interpreted as risk prioritization rather than treatment-effect optimization.
+
+### What This Notebook Does Not Do
+
+This notebook does not perform:
+
+* Model retraining
+* Hyperparameter tuning
+* Probability calibration
+* SHAP analysis
+* External validation
+* Financial ROI estimation
+* Causal inference
+* Treatment-effect estimation
+* Clinical deployment
+* Automated care-management assignment
+* Final fairness approval
+* Claims that outreach reduces readmission
+* Claims that the model is production-ready
+
+Those steps require additional data, prospective validation, controlled intervention testing, and organizational governance.
+
+### Final Project Conclusion
+
+Notebook 07 completes the planned Risk Stratification and Intervention Prioritization workflow.
+
+The project created a patient-aware and leakage-aware process that:
+
+* Cleans and documents the public UCI Diabetes 130-US Hospitals dataset
+* Engineers prediction-timing-aware features
+* Separates patients across model-validation folds
+* Compares baseline and nonlinear models
+* Evaluates capacity-based Top 5%, Top 10%, and Top 20% thresholds
+* Reviews subgroup selection and performance
+* Converts encounter-level rankings into a deduplicated patient-level prototype outreach roster
+* Defines a controlled pilot and monitoring strategy
+
+The final recommendation is:
+
+> Pilot outreach for patients represented in the Top 10% highest-risk encounters. Deduplicate selected encounters to one priority record per patient, apply operational eligibility review, retain a comparison group, and monitor operational, outcome, model, and subgroup results.
+
+The project supports intervention prioritization.
+
+It does not establish that the intervention itself is effective.
 
 
 
