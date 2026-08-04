@@ -1,0 +1,22 @@
+business_concept,expected_source_field,available
+Facility identifier,Permanent Facility Id,True
+Operating certificate,Operating Certificate Number,True
+Facility name,Facility Name,True
+Hospital service area,Hospital Service Area,True
+Hospital county,Hospital County,True
+Length of stay,Length of Stay,True
+Admission type,Type of Admission,True
+Patient disposition,Patient Disposition,True
+Discharge year,Discharge Year,True
+APR-DRG code,APR DRG Code,True
+APR-DRG description,APR DRG Description,True
+Severity code,APR Severity of Illness Code,True
+Severity description,APR Severity of Illness Description,True
+Mortality risk,APR Risk of Mortality,True
+Medical/surgical classification,APR Medical Surgical Description,True
+Primary payer,Payment Typology 1,True
+Emergency department indicator,Emergency Department Indicator,True
+Total charges,Total Charges,True
+Estimated costs,Total Costs,True
+CCSR diagnosis code,CCSR Diagnosis Code,True
+CCSR procedure code,CCSR Procedure Code,True

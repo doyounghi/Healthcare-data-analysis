@@ -1,0 +1,52 @@
+source_field,source_value,discharges,percentage,target_group,mapping_action,mapping_status,mapping_rationale
+APR Risk of Mortality,Minor,1073037,50.4779,Minor,RETAIN,APPROVED,Retain the released APR mortality-risk categories.
+APR Risk of Mortality,Moderate,455080,21.4079,Moderate,RETAIN,APPROVED,Retain the released APR mortality-risk categories.
+APR Risk of Mortality,Major,399457,18.7913,Major,RETAIN,APPROVED,Retain the released APR mortality-risk categories.
+APR Risk of Mortality,Extreme,197706,9.3005,Extreme,RETAIN,APPROVED,Retain the released APR mortality-risk categories.
+APR Risk of Mortality,[MISSING],474,0.0223,Missing / Not Available,MISSING,APPROVED,Classified as unavailable and excluded from metrics requiring a known category.
+APR Severity of Illness Description,Moderate,785246,36.9396,Moderate,RETAIN,APPROVED,Retain the released APR severity categories.
+APR Severity of Illness Description,Minor,627605,29.5239,Minor,RETAIN,APPROVED,Retain the released APR severity categories.
+APR Severity of Illness Description,Major,504585,23.7368,Major,RETAIN,APPROVED,Retain the released APR severity categories.
+APR Severity of Illness Description,Extreme,207844,9.7774,Extreme,RETAIN,APPROVED,Retain the released APR severity categories.
+APR Severity of Illness Description,[MISSING],474,0.0223,Missing / Not Available,MISSING,APPROVED,Classified as unavailable and excluded from metrics requiring a known category.
+Age Group,70 or Older,665216,31.2932,70 or Older,RETAIN,APPROVED,Retain the released age bands because they already provide business-readable demographic categories.
+Age Group,50 to 69,569293,26.7808,50 to 69,RETAIN,APPROVED,Retain the released age bands because they already provide business-readable demographic categories.
+Age Group,30 to 49,412490,19.4044,30 to 49,RETAIN,APPROVED,Retain the released age bands because they already provide business-readable demographic categories.
+Age Group,0 to 17,296035,13.9261,0 to 17,RETAIN,APPROVED,Retain the released age bands because they already provide business-readable demographic categories.
+Age Group,18 to 29,182720,8.5955,18 to 29,RETAIN,APPROVED,Retain the released age bands because they already provide business-readable demographic categories.
+Emergency Department Indicator,Y,1335889,62.8431,Y,RETAIN,APPROVED,Retain the released binary Y/N categories.
+Emergency Department Indicator,N,789865,37.1569,N,RETAIN,APPROVED,Retain the released binary Y/N categories.
+Patient Disposition,Home or Self Care,1405879,66.1355,Home or Self Care,RETAIN,APPROVED,Retain released disposition detail to avoid hiding materially different post-discharge settings.
+Patient Disposition,Home w/ Home Health Services,281903,13.2613,Home w/ Home Health Services,RETAIN,APPROVED,Retain released disposition detail to avoid hiding materially different post-discharge settings.
+Patient Disposition,Skilled Nursing Home,200275,9.4214,Skilled Nursing Home,RETAIN,APPROVED,Retain released disposition detail to avoid hiding materially different post-discharge settings.
+Patient Disposition,Left Against Medical Advice,58445,2.7494,Left Against Medical Advice,RETAIN,APPROVED,Retain released disposition detail to avoid hiding materially different post-discharge settings.
+Patient Disposition,Expired,53845,2.533,Expired,RETAIN,APPROVED,Retain released disposition detail to avoid hiding materially different post-discharge settings.
+Patient Disposition,Short-term Hospital,36246,1.7051,Short-term Hospital,RETAIN,APPROVED,Retain released disposition detail to avoid hiding materially different post-discharge settings.
+Patient Disposition,Inpatient Rehabilitation Facility,35392,1.6649,Inpatient Rehabilitation Facility,RETAIN,APPROVED,Retain released disposition detail to avoid hiding materially different post-discharge settings.
+Patient Disposition,Hospice - Home,11159,0.5249,Hospice - Home,RETAIN,APPROVED,Retain released disposition detail to avoid hiding materially different post-discharge settings.
+Patient Disposition,Hospice - Medical Facility,9846,0.4632,Hospice - Medical Facility,RETAIN,APPROVED,Retain released disposition detail to avoid hiding materially different post-discharge settings.
+Patient Disposition,Psychiatric Hospital or Unit of Hosp,9726,0.4575,Psychiatric Hospital or Unit of Hosp,RETAIN,APPROVED,Retain released disposition detail to avoid hiding materially different post-discharge settings.
+Patient Disposition,Facility w/ Custodial/Supportive Care,6261,0.2945,Facility w/ Custodial/Supportive Care,RETAIN,APPROVED,Retain released disposition detail to avoid hiding materially different post-discharge settings.
+Patient Disposition,Another Type Not Listed,5161,0.2428,Another Type Not Listed,RETAIN,APPROVED,Retain released disposition detail to avoid hiding materially different post-discharge settings.
+Patient Disposition,Court/Law Enforcement,3843,0.1808,Court/Law Enforcement,RETAIN,APPROVED,Retain released disposition detail to avoid hiding materially different post-discharge settings.
+Patient Disposition,Medicare Cert Long Term Care Hospital,2712,0.1276,Medicare Cert Long Term Care Hospital,RETAIN,APPROVED,Retain released disposition detail to avoid hiding materially different post-discharge settings.
+Patient Disposition,Cancer Center or Children's Hospital,1942,0.0914,Cancer Center or Children's Hospital,RETAIN,APPROVED,Retain released disposition detail to avoid hiding materially different post-discharge settings.
+Patient Disposition,Hosp Basd Medicare Approved Swing Bed,1592,0.0749,Hosp Basd Medicare Approved Swing Bed,RETAIN,APPROVED,Retain released disposition detail to avoid hiding materially different post-discharge settings.
+Patient Disposition,Medicaid Cert Nursing Facility,750,0.0353,Medicaid Cert Nursing Facility,RETAIN,APPROVED,Retain released disposition detail to avoid hiding materially different post-discharge settings.
+Patient Disposition,Federal Health Care Facility,572,0.0269,Federal Health Care Facility,RETAIN,APPROVED,Retain released disposition detail to avoid hiding materially different post-discharge settings.
+Patient Disposition,Critical Access Hospital,205,0.0096,Critical Access Hospital,RETAIN,APPROVED,Retain released disposition detail to avoid hiding materially different post-discharge settings.
+Payment Typology 1,Medicare,867570,40.8123,Medicare,RETAIN,APPROVED,Retain released payer categories; no unsupported payer consolidation is applied.
+Payment Typology 1,Medicaid,648713,30.5168,Medicaid,RETAIN,APPROVED,Retain released payer categories; no unsupported payer consolidation is applied.
+Payment Typology 1,Private Health Insurance,299131,14.0718,Private Health Insurance,RETAIN,APPROVED,Retain released payer categories; no unsupported payer consolidation is applied.
+Payment Typology 1,Blue Cross/Blue Shield,207377,9.7555,Blue Cross/Blue Shield,RETAIN,APPROVED,Retain released payer categories; no unsupported payer consolidation is applied.
+Payment Typology 1,Self-Pay,29079,1.3679,Self-Pay,RETAIN,APPROVED,Retain released payer categories; no unsupported payer consolidation is applied.
+Payment Typology 1,"Managed Care, Unspecified",27919,1.3134,"Managed Care, Unspecified",RETAIN,APPROVED,Retain released payer categories; no unsupported payer consolidation is applied.
+Payment Typology 1,Miscellaneous/Other,24073,1.1324,Miscellaneous/Other,RETAIN,APPROVED,Retain released payer categories; no unsupported payer consolidation is applied.
+Payment Typology 1,Federal/State/Local/VA,20518,0.9652,Federal/State/Local/VA,RETAIN,APPROVED,Retain released payer categories; no unsupported payer consolidation is applied.
+Payment Typology 1,Department of Corrections,1374,0.0646,Department of Corrections,RETAIN,APPROVED,Retain released payer categories; no unsupported payer consolidation is applied.
+Type of Admission,Emergency,1410175,66.3376,Emergency,RETAIN,APPROVED,Retain valid admission categories because each represents a distinct operational admission pathway.
+Type of Admission,Elective,356802,16.7847,Elective,RETAIN,APPROVED,Retain valid admission categories because each represents a distinct operational admission pathway.
+Type of Admission,Newborn,194249,9.1379,Newborn,RETAIN,APPROVED,Retain valid admission categories because each represents a distinct operational admission pathway.
+Type of Admission,Urgent,153960,7.2426,Urgent,RETAIN,APPROVED,Retain valid admission categories because each represents a distinct operational admission pathway.
+Type of Admission,Trauma,8067,0.3795,Trauma,RETAIN,APPROVED,Retain valid admission categories because each represents a distinct operational admission pathway.
+Type of Admission,Not Available,2501,0.1177,Missing / Not Available,MISSING,APPROVED,Classified as unavailable and excluded from metrics requiring a known category.

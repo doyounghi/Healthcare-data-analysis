@@ -1,0 +1,780 @@
+column_name,category,discharges,percentage
+Hospital Service Area,New York City,963525,45.3263
+Hospital Service Area,Long Island,346694,16.3092
+Hospital Service Area,Hudson Valley,237546,11.1747
+Hospital Service Area,Western NY,138654,6.5226
+Hospital Service Area,Finger Lakes,137867,6.4856
+Hospital Service Area,Capital/Adirond,136764,6.4337
+Hospital Service Area,Central NY,133188,6.2654
+Hospital Service Area,Southern Tier,26183,1.2317
+Hospital Service Area,[MISSING],5333,0.2509
+Hospital County,Manhattan,377402,17.7538
+Hospital County,Kings,192427,9.0522
+Hospital County,Nassau,186298,8.7639
+Hospital County,Queens,181164,8.5223
+Hospital County,Bronx,160474,7.549
+Hospital County,Suffolk,160396,7.5454
+Hospital County,Westchester,121205,5.7017
+Hospital County,Erie,109117,5.1331
+Hospital County,Monroe,104812,4.9306
+Hospital County,Onondaga,68839,3.2383
+Hospital County,Albany,58601,2.7567
+Hospital County,Richmond,52058,2.4489
+Hospital County,Dutchess,36387,1.7117
+Hospital County,Orange,36113,1.6988
+Hospital County,Rockland,30655,1.4421
+Hospital County,Broome,24945,1.1735
+Hospital County,Oneida,23362,1.099
+Hospital County,Schenectady,14493,0.6818
+Hospital County,Warren,11989,0.564
+Hospital County,Ontario,10903,0.5129
+Hospital County,Saratoga,10411,0.4898
+Hospital County,Jefferson,10257,0.4825
+Hospital County,Otsego,10233,0.4814
+Hospital County,Rensselaer,9814,0.4617
+Hospital County,Chemung,8792,0.4136
+Hospital County,Clinton,7766,0.3653
+Hospital County,Niagara,7348,0.3457
+Hospital County,Chautauqua,7236,0.3404
+Hospital County,St Lawrence,7084,0.3332
+Hospital County,Ulster,6247,0.2939
+Hospital County,Cattaraugus,6093,0.2866
+Hospital County,Tompkins,5950,0.2799
+Hospital County,Steuben,5594,0.2632
+Hospital County,[MISSING],5333,0.2509
+Hospital County,Wayne,5041,0.2371
+Hospital County,Genesee,4971,0.2338
+Hospital County,Oswego,4624,0.2175
+Hospital County,Cayuga,4485,0.211
+Hospital County,Montgomery,3743,0.1761
+Hospital County,Cortland,3710,0.1745
+Hospital County,Sullivan,3649,0.1717
+Hospital County,Madison,3412,0.1605
+Hospital County,Putnam,3290,0.1548
+Hospital County,Columbia,2961,0.1393
+Hospital County,Franklin,2949,0.1387
+Hospital County,Fulton,2350,0.1105
+Hospital County,Livingston,2143,0.1008
+Hospital County,Allegany,1913,0.09
+Hospital County,Wyoming,1772,0.0834
+Hospital County,Chenango,1238,0.0582
+Hospital County,Lewis,784,0.0369
+Hospital County,Herkimer,681,0.032
+Hospital County,Essex,635,0.0299
+Hospital County,Schoharie,422,0.0199
+Hospital County,Delaware,397,0.0187
+Hospital County,Yates,311,0.0146
+Hospital County,Schuyler,271,0.0127
+Hospital County,Orleans,204,0.0096
+Operating Certificate Number,7002054,152632,7.1801
+Operating Certificate Number,7002053,117158,5.5114
+Operating Certificate Number,7003004,83367,3.9218
+Operating Certificate Number,7000006,75200,3.5376
+Operating Certificate Number,7002024,58581,2.7558
+Operating Certificate Number,1401014,53666,2.5246
+Operating Certificate Number,2951001,53106,2.4982
+Operating Certificate Number,7002032,42287,1.9893
+Operating Certificate Number,2701005,40987,1.9281
+Operating Certificate Number,5151001,40117,1.8872
+Operating Certificate Number,7004003,38445,1.8085
+Operating Certificate Number,0101000,36208,1.7033
+Operating Certificate Number,5957001,33864,1.593
+Operating Certificate Number,7002017,31167,1.4662
+Operating Certificate Number,7001020,31076,1.4619
+Operating Certificate Number,3301007,30861,1.4518
+Operating Certificate Number,7002001,28262,1.3295
+Operating Certificate Number,7003010,28247,1.3288
+Operating Certificate Number,2701003,27740,1.3049
+Operating Certificate Number,7000002,27362,1.2872
+Operating Certificate Number,5154001,25904,1.2186
+Operating Certificate Number,7002020,25186,1.1848
+Operating Certificate Number,5154000,24623,1.1583
+Operating Certificate Number,7000001,24366,1.1462
+Operating Certificate Number,5902001,24149,1.136
+Operating Certificate Number,0101004,22538,1.0602
+Operating Certificate Number,1302001,21892,1.0298
+Operating Certificate Number,5153000,20943,0.9852
+Operating Certificate Number,3523000,20615,0.9698
+Operating Certificate Number,7003000,20588,0.9685
+Operating Certificate Number,3301008,20317,0.9558
+Operating Certificate Number,7002002,20115,0.9463
+Operating Certificate Number,2950001,20036,0.9425
+Operating Certificate Number,7001002,19686,0.9261
+Operating Certificate Number,2953000,19499,0.9173
+Operating Certificate Number,2754001,19161,0.9014
+Operating Certificate Number,7001016,17857,0.84
+Operating Certificate Number,3301003,17661,0.8308
+Operating Certificate Number,4329000,17438,0.8203
+Operating Certificate Number,7000008,17376,0.8174
+Operating Certificate Number,1401008,17184,0.8084
+Operating Certificate Number,2701001,16924,0.7961
+Operating Certificate Number,0303001,16421,0.7725
+Operating Certificate Number,7003003,15720,0.7395
+Operating Certificate Number,1401005,15272,0.7184
+Operating Certificate Number,2950002,15203,0.7152
+Operating Certificate Number,5907001,14899,0.7009
+Operating Certificate Number,7000014,14116,0.664
+Operating Certificate Number,7001009,13918,0.6547
+Operating Certificate Number,7004010,13613,0.6404
+Operating Certificate Number,7003001,12478,0.587
+Operating Certificate Number,4601001,12450,0.5857
+Operating Certificate Number,3202003,12264,0.5769
+Operating Certificate Number,7003007,12188,0.5733
+Operating Certificate Number,1401013,12068,0.5677
+Operating Certificate Number,7001035,12038,0.5663
+Operating Certificate Number,5601000,11989,0.564
+Operating Certificate Number,4324000,11797,0.555
+Operating Certificate Number,7001003,11749,0.5527
+Operating Certificate Number,2909000,11595,0.5455
+Operating Certificate Number,5157003,10889,0.5122
+Operating Certificate Number,5155000,10827,0.5093
+Operating Certificate Number,7002009,10786,0.5074
+Operating Certificate Number,3522000,10707,0.5037
+Operating Certificate Number,4501000,10411,0.4898
+Operating Certificate Number,5920000,10277,0.4835
+Operating Certificate Number,5149001,10125,0.4763
+Operating Certificate Number,7002012,9768,0.4595
+Operating Certificate Number,4102002,9669,0.4549
+Operating Certificate Number,3824000,9104,0.4283
+Operating Certificate Number,7001024,9068,0.4266
+Operating Certificate Number,2201000,9039,0.4252
+Operating Certificate Number,0701000,8792,0.4136
+Operating Certificate Number,5123000,8594,0.4043
+Operating Certificate Number,0301001,8524,0.401
+Operating Certificate Number,5149000,8374,0.3939
+Operating Certificate Number,2952005,8167,0.3842
+Operating Certificate Number,7001045,8161,0.3839
+Operating Certificate Number,5901000,8038,0.3781
+Operating Certificate Number,7002021,7787,0.3663
+Operating Certificate Number,0901001,7766,0.3653
+Operating Certificate Number,3202002,7477,0.3517
+Operating Certificate Number,7001037,7234,0.3403
+Operating Certificate Number,5932000,7226,0.3399
+Operating Certificate Number,2952006,6285,0.2957
+Operating Certificate Number,5501000,6161,0.2898
+Operating Certificate Number,0602001,6096,0.2868
+Operating Certificate Number,0401001,6093,0.2866
+Operating Certificate Number,1327000,6063,0.2852
+Operating Certificate Number,1404000,5959,0.2803
+Operating Certificate Number,5401001,5950,0.2799
+Operating Certificate Number,2901000,5703,0.2683
+Operating Certificate Number,3429000,5593,0.2631
+Operating Certificate Number,5907002,5537,0.2605
+Operating Certificate Number,5904001,5496,0.2585
+Operating Certificate Number,[MISSING],5333,0.2509
+Operating Certificate Number,5820000,5041,0.2371
+Operating Certificate Number,1801000,4971,0.2338
+Operating Certificate Number,4429000,4843,0.2278
+Operating Certificate Number,3702000,4624,0.2175
+Operating Certificate Number,5001000,4499,0.2116
+Operating Certificate Number,7001008,4492,0.2113
+Operating Certificate Number,0501000,4485,0.211
+Operating Certificate Number,1401010,4272,0.201
+Operating Certificate Number,3102000,3885,0.1828
+Operating Certificate Number,2801001,3743,0.1761
+Operating Certificate Number,1101000,3710,0.1745
+Operating Certificate Number,3201002,3621,0.1703
+Operating Certificate Number,5263000,3557,0.1673
+Operating Certificate Number,3950000,3290,0.1548
+Operating Certificate Number,3121001,3282,0.1544
+Operating Certificate Number,1001000,2961,0.1393
+Operating Certificate Number,5902002,2848,0.134
+Operating Certificate Number,3421000,2800,0.1317
+Operating Certificate Number,3535001,2705,0.1272
+Operating Certificate Number,2601001,2661,0.1252
+Operating Certificate Number,3402000,2510,0.1181
+Operating Certificate Number,7000011,2389,0.1124
+Operating Certificate Number,1701000,2350,0.1105
+Operating Certificate Number,1623001,2187,0.1029
+Operating Certificate Number,2527000,2143,0.1008
+Operating Certificate Number,3529000,2086,0.0981
+Operating Certificate Number,4601004,2043,0.0961
+Operating Certificate Number,5903001,1936,0.0911
+Operating Certificate Number,0228000,1845,0.0868
+Operating Certificate Number,6027000,1772,0.0834
+Operating Certificate Number,4322000,1420,0.0668
+Operating Certificate Number,0824000,1238,0.0582
+Operating Certificate Number,3801000,1129,0.0531
+Operating Certificate Number,2238700,1106,0.052
+Operating Certificate Number,0601000,1002,0.0471
+Operating Certificate Number,5002001,890,0.0419
+Operating Certificate Number,2424700,784,0.0369
+Operating Certificate Number,2625700,751,0.0353
+Operating Certificate Number,1624000,741,0.0349
+Operating Certificate Number,1427000,696,0.0327
+Operating Certificate Number,2129700,681,0.032
+Operating Certificate Number,1552701,635,0.0299
+Operating Certificate Number,4402001,603,0.0284
+Operating Certificate Number,4402701,592,0.0278
+Operating Certificate Number,4423701,517,0.0243
+Operating Certificate Number,4401000,509,0.0239
+Operating Certificate Number,7002050,482,0.0227
+Operating Certificate Number,4720700,422,0.0199
+Operating Certificate Number,5957000,367,0.0173
+Operating Certificate Number,6120700,311,0.0146
+Operating Certificate Number,7002026,284,0.0134
+Operating Certificate Number,4823700,271,0.0127
+Operating Certificate Number,5022000,205,0.0096
+Operating Certificate Number,3622700,204,0.0096
+Operating Certificate Number,3101000,181,0.0085
+Operating Certificate Number,1229700,160,0.0075
+Operating Certificate Number,1254700,152,0.0072
+Operating Certificate Number,0632000,138,0.0065
+Operating Certificate Number,2221700,112,0.0053
+Operating Certificate Number,5263700,92,0.0043
+Operating Certificate Number,5526700,86,0.004
+Operating Certificate Number,1226701,85,0.004
+Operating Certificate Number,0226700,68,0.0032
+Operating Certificate Number,1624700,21,0.001
+Operating Certificate Number,4458701,20,0.0009
+Permanent Facility Id,000541,49154,2.3123
+Permanent Facility Id,001456,48929,2.3017
+Permanent Facility Id,001463,47610,2.2397
+Permanent Facility Id,001464,44387,2.0881
+Permanent Facility Id,000413,40987,1.9281
+Permanent Facility Id,001630,39632,1.8644
+Permanent Facility Id,000511,36560,1.7199
+Permanent Facility Id,000001,36208,1.7033
+Permanent Facility Id,001169,34926,1.643
+Permanent Facility Id,000245,34101,1.6042
+Permanent Facility Id,001450,31167,1.4662
+Permanent Facility Id,001740,31088,1.4624
+Permanent Facility Id,001305,31076,1.4619
+Permanent Facility Id,001306,28602,1.3455
+Permanent Facility Id,001304,28281,1.3304
+Permanent Facility Id,001438,28262,1.3295
+Permanent Facility Id,001637,28247,1.3288
+Permanent Facility Id,000411,27740,1.3049
+Permanent Facility Id,001458,27619,1.2993
+Permanent Facility Id,000925,25904,1.2186
+Permanent Facility Id,001139,25432,1.1964
+Permanent Facility Id,001466,25357,1.1928
+Permanent Facility Id,003058,24944,1.1734
+Permanent Facility Id,000924,24623,1.1583
+Permanent Facility Id,001045,24149,1.136
+Permanent Facility Id,001453,24048,1.1313
+Permanent Facility Id,000207,23432,1.1023
+Permanent Facility Id,000005,21902,1.0303
+Permanent Facility Id,000181,21892,1.0298
+Permanent Facility Id,000635,21046,0.99
+Permanent Facility Id,000913,20943,0.9852
+Permanent Facility Id,000699,20615,0.9698
+Permanent Facility Id,001626,20588,0.9685
+Permanent Facility Id,001178,20509,0.9648
+Permanent Facility Id,001165,20152,0.948
+Permanent Facility Id,000527,20036,0.9425
+Permanent Facility Id,000636,19934,0.9377
+Permanent Facility Id,000563,19499,0.9173
+Permanent Facility Id,000471,18785,0.8837
+Permanent Facility Id,003376,18675,0.8785
+Permanent Facility Id,001301,17857,0.84
+Permanent Facility Id,000630,17661,0.8308
+Permanent Facility Id,000779,17438,0.8203
+Permanent Facility Id,001172,17376,0.8174
+Permanent Facility Id,003067,17375,0.8174
+Permanent Facility Id,000213,17184,0.8084
+Permanent Facility Id,001469,16930,0.7964
+Permanent Facility Id,000409,16924,0.7961
+Permanent Facility Id,010139,15732,0.7401
+Permanent Facility Id,001629,15720,0.7395
+Permanent Facility Id,001168,15330,0.7212
+Permanent Facility Id,000210,15272,0.7184
+Permanent Facility Id,000528,15203,0.7152
+Permanent Facility Id,001638,14916,0.7017
+Permanent Facility Id,001176,14116,0.664
+Permanent Facility Id,001294,13918,0.6547
+Permanent Facility Id,001738,13613,0.6404
+Permanent Facility Id,001286,13601,0.6398
+Permanent Facility Id,000058,13068,0.6147
+Permanent Facility Id,000208,12859,0.6049
+Permanent Facility Id,001628,12478,0.587
+Permanent Facility Id,001633,12188,0.5733
+Permanent Facility Id,001318,12038,0.5663
+Permanent Facility Id,001005,11989,0.564
+Permanent Facility Id,003975,11948,0.5621
+Permanent Facility Id,001122,11835,0.5567
+Permanent Facility Id,000776,11797,0.555
+Permanent Facility Id,001288,11749,0.5527
+Permanent Facility Id,000513,11595,0.5455
+Permanent Facility Id,001439,11117,0.523
+Permanent Facility Id,000218,10951,0.5152
+Permanent Facility Id,000943,10889,0.5122
+Permanent Facility Id,000938,10827,0.5093
+Permanent Facility Id,001445,10786,0.5074
+Permanent Facility Id,000694,10707,0.5037
+Permanent Facility Id,000818,10411,0.4898
+Permanent Facility Id,001117,10277,0.4835
+Permanent Facility Id,000518,10144,0.4772
+Permanent Facility Id,000896,10125,0.4763
+Permanent Facility Id,000599,9961,0.4686
+Permanent Facility Id,000628,9815,0.4617
+Permanent Facility Id,001447,9768,0.4595
+Permanent Facility Id,000756,9669,0.4549
+Permanent Facility Id,001639,9652,0.4541
+Permanent Facility Id,001437,9344,0.4396
+Permanent Facility Id,000746,9104,0.4283
+Permanent Facility Id,001635,9068,0.4266
+Permanent Facility Id,000367,9039,0.4252
+Permanent Facility Id,001324,8998,0.4233
+Permanent Facility Id,000829,8842,0.4159
+Permanent Facility Id,000885,8594,0.4043
+Permanent Facility Id,000043,8524,0.401
+Permanent Facility Id,000180,8432,0.3967
+Permanent Facility Id,000895,8374,0.3939
+Permanent Facility Id,000552,8167,0.3842
+Permanent Facility Id,001692,8161,0.3839
+Permanent Facility Id,001039,8038,0.3781
+Permanent Facility Id,000116,7830,0.3683
+Permanent Facility Id,001454,7787,0.3663
+Permanent Facility Id,000135,7766,0.3653
+Permanent Facility Id,000598,7477,0.3517
+Permanent Facility Id,001097,7441,0.35
+Permanent Facility Id,001737,7357,0.3461
+Permanent Facility Id,001320,7234,0.3403
+Permanent Facility Id,001129,7226,0.3399
+Permanent Facility Id,001186,7210,0.3392
+Permanent Facility Id,001099,7110,0.3345
+Permanent Facility Id,000551,6285,0.2957
+Permanent Facility Id,000989,6161,0.2898
+Permanent Facility Id,000103,6096,0.2868
+Permanent Facility Id,000066,6093,0.2866
+Permanent Facility Id,000192,6063,0.2852
+Permanent Facility Id,000267,5959,0.2803
+Permanent Facility Id,000977,5950,0.2799
+Permanent Facility Id,000490,5703,0.2683
+Permanent Facility Id,001309,5660,0.2663
+Permanent Facility Id,000678,5593,0.2631
+Permanent Facility Id,001072,5496,0.2585
+Permanent Facility Id,[MISSING],5333,0.2509
+Permanent Facility Id,001028,5041,0.2371
+Permanent Facility Id,000815,4843,0.2278
+Permanent Facility Id,001446,4707,0.2214
+Permanent Facility Id,000339,4552,0.2141
+Permanent Facility Id,000866,4499,0.2116
+Permanent Facility Id,001293,4492,0.2113
+Permanent Facility Id,000085,4485,0.211
+Permanent Facility Id,000889,4440,0.2089
+Permanent Facility Id,000216,4272,0.201
+Permanent Facility Id,000550,3952,0.1859
+Permanent Facility Id,000574,3885,0.1828
+Permanent Facility Id,001164,3857,0.1814
+Permanent Facility Id,000158,3710,0.1745
+Permanent Facility Id,000589,3621,0.1703
+Permanent Facility Id,000848,3608,0.1697
+Permanent Facility Id,000971,3557,0.1673
+Permanent Facility Id,000484,3466,0.163
+Permanent Facility Id,000727,3442,0.1619
+Permanent Facility Id,000042,3353,0.1577
+Permanent Facility Id,000752,3290,0.1548
+Permanent Facility Id,001047,3165,0.1489
+Permanent Facility Id,000583,3153,0.1483
+Permanent Facility Id,000146,2961,0.1393
+Permanent Facility Id,001098,2920,0.1374
+Permanent Facility Id,001046,2848,0.134
+Permanent Facility Id,000676,2800,0.1317
+Permanent Facility Id,000708,2705,0.1272
+Permanent Facility Id,000397,2661,0.1252
+Permanent Facility Id,001133,2617,0.1231
+Permanent Facility Id,000671,2510,0.1181
+Permanent Facility Id,000330,2350,0.1105
+Permanent Facility Id,015478,2303,0.1083
+Permanent Facility Id,000324,2187,0.1029
+Permanent Facility Id,000393,2143,0.1008
+Permanent Facility Id,000704,2086,0.0981
+Permanent Facility Id,001175,2054,0.0966
+Permanent Facility Id,000831,2043,0.0961
+Permanent Facility Id,001061,1936,0.0911
+Permanent Facility Id,000039,1845,0.0868
+Permanent Facility Id,001153,1772,0.0834
+Permanent Facility Id,000891,1576,0.0741
+Permanent Facility Id,000775,1420,0.0668
+Permanent Facility Id,000128,1238,0.0582
+Permanent Facility Id,000804,1195,0.0562
+Permanent Facility Id,000012,1182,0.0556
+Permanent Facility Id,010355,1138,0.0535
+Permanent Facility Id,000739,1129,0.0531
+Permanent Facility Id,000292,1117,0.0525
+Permanent Facility Id,000379,1106,0.052
+Permanent Facility Id,000098,1002,0.0471
+Permanent Facility Id,000118,962,0.0453
+Permanent Facility Id,000870,890,0.0419
+Permanent Facility Id,000383,784,0.0369
+Permanent Facility Id,000401,751,0.0353
+Permanent Facility Id,000325,741,0.0349
+Permanent Facility Id,000280,696,0.0327
+Permanent Facility Id,000362,681,0.032
+Permanent Facility Id,000303,635,0.0299
+Permanent Facility Id,000812,517,0.0243
+Permanent Facility Id,000798,509,0.0239
+Permanent Facility Id,009431,491,0.0231
+Permanent Facility Id,001486,482,0.0227
+Permanent Facility Id,001315,425,0.02
+Permanent Facility Id,010216,422,0.0199
+Permanent Facility Id,000340,419,0.0197
+Permanent Facility Id,009059,383,0.018
+Permanent Facility Id,000412,376,0.0177
+Permanent Facility Id,001138,367,0.0173
+Permanent Facility Id,001124,348,0.0164
+Permanent Facility Id,010223,335,0.0158
+Permanent Facility Id,001158,311,0.0146
+Permanent Facility Id,001460,284,0.0134
+Permanent Facility Id,000482,277,0.013
+Permanent Facility Id,000858,271,0.0127
+Permanent Facility Id,000873,205,0.0096
+Permanent Facility Id,000718,204,0.0096
+Permanent Facility Id,000565,181,0.0085
+Permanent Facility Id,000174,160,0.0075
+Permanent Facility Id,000165,152,0.0072
+Permanent Facility Id,015417,145,0.0068
+Permanent Facility Id,000111,138,0.0065
+Permanent Facility Id,015464,129,0.0061
+Permanent Facility Id,000377,112,0.0053
+Permanent Facility Id,000968,92,0.0043
+Permanent Facility Id,001002,86,0.004
+Permanent Facility Id,000170,85,0.004
+Permanent Facility Id,000037,68,0.0032
+Permanent Facility Id,015485,21,0.001
+Permanent Facility Id,000817,20,0.0009
+Facility Name,North Shore University Hospital,49154,2.3123
+Facility Name,Mount Sinai Hospital,48929,2.3017
+Facility Name,NYU Langone Hospitals,47610,2.2397
+Facility Name,New York-Presbyterian Hospital - Columbia Presbyterian Center,44387,2.0881
+Facility Name,Strong Memorial Hospital,40987,1.9281
+Facility Name,Long Island Jewish Medical Center,39632,1.8644
+Facility Name,NYU Langone Hospital-Long Island,36560,1.7199
+Facility Name,Albany Medical Center Hospital,36208,1.7033
+Facility Name,Montefiore Medical Center - Henry & Lucy Moses Div,34926,1.643
+Facility Name,Stony Brook University Hospital,34101,1.6042
+Facility Name,Lenox Hill Hospital,31167,1.4662
+Facility Name,Staten Island University Hosp-North,31088,1.4624
+Facility Name,Maimonides Medical Center,31076,1.4619
+Facility Name,NewYork-Presbyterian Brooklyn Methodist Hospital,28602,1.3455
+Facility Name,NYU Langone Hospital-Brooklyn,28281,1.3304
+Facility Name,Bellevue Hospital Center,28262,1.3295
+Facility Name,NewYork-Presbyterian/Queens,28247,1.3288
+Facility Name,Rochester General Hospital,27740,1.3049
+Facility Name,New York-Presbyterian Hospital - New York Weill Cornell Center,27619,1.2993
+Facility Name,Good Samaritan Hospital Medical Center,25904,1.2186
+Facility Name,Westchester Medical Center,25432,1.1964
+Facility Name,Mount Sinai West,25357,1.1928
+Facility Name,Montefiore Med Center - Jack D Weiler Hosp of A Einstein College Div,24944,1.1734
+Facility Name,South Shore University Hospital,24623,1.1583
+Facility Name,BronxCare Hospital Center,24366,1.1462
+Facility Name,White Plains Hospital Center,24149,1.136
+Facility Name,Memorial Hospital for Cancer and Allied Diseases,24048,1.1313
+Facility Name,Buffalo General Medical Center,23432,1.1023
+Facility Name,St. Peter's Hospital,21902,1.0303
+Facility Name,Vassar Brothers Medical Center,21892,1.0298
+Facility Name,University Hospital SUNY Health Science Center,21046,0.99
+Facility Name,Huntington Hospital,20943,0.9852
+Facility Name,Garnet Health Medical Center,20615,0.9698
+Facility Name,Elmhurst Hospital Center,20588,0.9685
+Facility Name,Jacobi Medical Center,20152,0.948
+Facility Name,Mount Sinai South Nassau,20036,0.9425
+Facility Name,Crouse Hospital,19934,0.9377
+Facility Name,St. Francis Hospital & Heart Center,19499,0.9173
+Facility Name,The Unity Hospital of Rochester,18785,0.8837
+Facility Name,Cohen Children's Medical Center,18675,0.8785
+Facility Name,Kings County Hospital Center,17857,0.84
+Facility Name,St. Joseph's Hospital Health Center,17661,0.8308
+Facility Name,Good Samaritan Hospital of Suffern,17438,0.8203
+Facility Name,Lincoln Medical & Mental Health Center,17376,0.8174
+Facility Name,Millard Fillmore Suburban Hospital,17375,0.8174
+Facility Name,Mercy Hospital of Buffalo,17184,0.8084
+Facility Name,Mount Sinai Morningside,16930,0.7964
+Facility Name,Highland Hospital,16924,0.7961
+Facility Name,New York-Presbyterian David H. Koch Center,15732,0.7401
+Facility Name,Jamaica Hospital Medical Center,15720,0.7395
+Facility Name,Montefiore Medical Center-Wakefield Hospital,15330,0.7212
+Facility Name,Erie County Medical Center,15272,0.7184
+Facility Name,Nassau University Medical Center,15203,0.7152
+Facility Name,Long Island Jewish Forest Hills,14916,0.7017
+Facility Name,SBH Health System,14116,0.664
+Facility Name,NYC Health + Hospitals/South Brooklyn Health,13918,0.6547
+Facility Name,Richmond University Medical Center,13613,0.6404
+Facility Name,Brookdale Hospital Medical Center,13601,0.6398
+Facility Name,United Health Services Hospitals Inc. - Wilson Medical Center,13068,0.6147
+Facility Name,John R. Oishei Children's Hospital,12859,0.6049
+Facility Name,Flushing Hospital Medical Center,12478,0.587
+Facility Name,Queens Hospital Center,12188,0.5733
+Facility Name,Wyckoff Heights Medical Center,12038,0.5663
+Facility Name,Glens Falls Hospital,11989,0.564
+Facility Name,New York-Presbyterian Hospital - Allen Hospital,11948,0.5621
+Facility Name,New York-Presbyterian Westchester,11835,0.5567
+Facility Name,Montefiore Nyack,11797,0.555
+Facility Name,Brooklyn Hospital Center - Downtown Campus,11749,0.5527
+Facility Name,Mercy Hospital,11595,0.5455
+Facility Name,Mount Sinai Beth Israel,11117,0.523
+Facility Name,Sisters of Charity Hospital,10951,0.5152
+Facility Name,St Catherine of Siena Hospital,10889,0.5122
+Facility Name,Peconic Bay Medical Center,10827,0.5093
+Facility Name,Harlem Hospital Center,10786,0.5074
+Facility Name,St Luke's Cornwall Hospital/Newburgh,10707,0.5037
+Facility Name,Saratoga Hospital,10411,0.4898
+Facility Name,Northern Westchester Hospital,10277,0.4835
+Facility Name,Long Island Jewish Valley Stream,10144,0.4772
+Facility Name,St. Charles Hospital,10125,0.4763
+Facility Name,Faxton-St Lukes Healthcare St Lukes Division,9961,0.4686
+Facility Name,UPSTATE University Hospital at Community General,9815,0.4617
+Facility Name,Hospital for Special Surgery,9768,0.4595
+Facility Name,Samaritan Hospital,9669,0.4549
+Facility Name,Mount Sinai Hospital - Mount Sinai Hospital of Queens,9652,0.4541
+Facility Name,New York-Presbyterian/Lower Manhattan Hospital,9344,0.4396
+Facility Name,Mary Imogene Bassett Hospital,9104,0.4283
+Facility Name,St Johns Episcopal Hospital So Shore,9068,0.4266
+Facility Name,Samaritan Medical Center,9039,0.4252
+Facility Name,Mount Sinai Brooklyn,8998,0.4233
+Facility Name,Ellis Hospital,8842,0.4159
+Facility Name,Long Island Community Hospital at NYU Langone Health,8594,0.4043
+Facility Name,Our Lady of Lourdes Memorial Hospital,8524,0.401
+Facility Name,Mid-Hudson Valley Division of Westchester Medical Center,8432,0.3967
+Facility Name,John T Mather Memorial Hospital of Port Jefferson New York Inc,8374,0.3939
+Facility Name,Plainview Hospital,8167,0.3842
+Facility Name,Woodhull Medical & Mental Health Center,8161,0.3839
+Facility Name,NewYork-Presbyterian/Hudson Valley Hospital,8038,0.3781
+Facility Name,Arnot Ogden Medical Center,7830,0.3683
+Facility Name,Metropolitan Hospital Center,7787,0.3663
+Facility Name,The University of Vermont Health Network - Champlain Valley Physicians Hospital,7766,0.3653
+Facility Name,St Elizabeth Medical Center,7477,0.3517
+Facility Name,SJRH - St Johns Division,7441,0.35
+Facility Name,Staten Island University Hospital Prince's Bay,7357,0.3461
+Facility Name,University Hospital of Brooklyn,7234,0.3403
+Facility Name,Phelps Hospital,7226,0.3399
+Facility Name,North Central Bronx Hospital,7210,0.3392
+Facility Name,SJRH - Park Care Pavilion,7110,0.3345
+Facility Name,St. Joseph Hospital,6285,0.2957
+Facility Name,HealthAlliance Hospital Mary's Avenue Campus,6161,0.2898
+Facility Name,UPMC Chautauqua at WCA,6096,0.2868
+Facility Name,Olean General Hospital,6093,0.2866
+Facility Name,Northern Dutchess Hospital,6063,0.2852
+Facility Name,Kenmore Mercy Hospital,5959,0.2803
+Facility Name,Cayuga Medical Center at Ithaca,5950,0.2799
+Facility Name,Glen Cove Hospital,5703,0.2683
+Facility Name,Interfaith Medical Center,5660,0.2663
+Facility Name,F.F. Thompson Hospital,5593,0.2631
+Facility Name,Montefiore New Rochelle Hospital,5496,0.2585
+Facility Name,Redacted for Confidentiality,5333,0.2509
+Facility Name,Newark-Wayne Community Hospital,5041,0.2371
+Facility Name,Canton-Potsdam Hospital,4843,0.2278
+Facility Name,NYU Langone Orthopedic Hospital,4707,0.2214
+Facility Name,United Memorial Medical Center North Street Campus,4552,0.2141
+Facility Name,Corning Hospital,4499,0.2116
+Facility Name,Maimonides Midwood Community Hospital,4492,0.2113
+Facility Name,Auburn Community Hospital,4485,0.211
+Facility Name,Stony Brook Southampton Hospital,4440,0.2089
+Facility Name,Roswell Park Cancer Institute,4272,0.201
+Facility Name,Syosset Hospital,3952,0.1859
+Facility Name,Niagara Falls Memorial Medical Center,3885,0.1828
+Facility Name,Guthrie Cortland Medical Center,3710,0.1745
+Facility Name,"Rome Memorial Hospital, Inc",3621,0.1703
+Facility Name,Ellis Hospital - Bellevue Woman's Care Center Division,3608,0.1697
+Facility Name,Garnet Health Medical Center - Catskills,3557,0.1673
+Facility Name,St. Mary's Healthcare,3466,0.163
+Facility Name,Oswego Hospital,3442,0.1619
+Facility Name,United Health Services Hospitals Inc. - Binghamton General Hospital,3353,0.1577
+Facility Name,Putnam Hospital,3290,0.1548
+Facility Name,New York-Presbyterian Westchester Behavioral Health Center,3165,0.1489
+Facility Name,Mount St. Mary's Hospital and Health Center,3153,0.1483
+Facility Name,Columbia Memorial Hospital,2961,0.1393
+Facility Name,St. Joseph's Medical Center,2920,0.1374
+Facility Name,Winifred Masterson Burke Rehabilitation Hospital,2848,0.134
+Facility Name,Clifton Springs Hospital and Clinic,2800,0.1317
+Facility Name,Bon Secours Community Hospital,2705,0.1272
+Facility Name,Oneida Health Hospital,2661,0.1252
+Facility Name,St. Joseph's MC-St. Vincent's Westchester Division,2617,0.1231
+Facility Name,Geneva General Hospital,2510,0.1181
+Facility Name,Nathan Littauer Hospital,2350,0.1105
+Facility Name,Wynn Hospital,2303,0.1083
+Facility Name,Adirondack Medical Center-Saranac Lake Site,2187,0.1029
+Facility Name,Nicholas H. Noyes Memorial Hospital,2143,0.1008
+Facility Name,St Anthony Community Hospital,2086,0.0981
+Facility Name,Calvary Hospital Inc,2054,0.0966
+Facility Name,Sunnyview Hospital and Rehabilitation Center,2043,0.0961
+Facility Name,Montefiore Mount Vernon Hospital,1936,0.0911
+Facility Name,Memorial Hosp of Wm F & Gertrude F Jones A/K/A Jones Memorial Hosp,1845,0.0868
+Facility Name,Wyoming County Community Hospital,1772,0.0834
+Facility Name,Stony Brook Eastern Long Island Hospital,1576,0.0741
+Facility Name,Helen Hayes Hospital,1420,0.0668
+Facility Name,Chenango Memorial Hospital Inc,1238,0.0582
+Facility Name,Massena Hospital,1195,0.0562
+Facility Name,Lakeview Center for Mental Health and Wellness,1182,0.0556
+Facility Name,David H. Koch Center For Cancer Care,1138,0.0535
+Facility Name,A.O. Fox Memorial Hospital,1129,0.0531
+Facility Name,Sisters of Charity Hospital - St. Joseph Campus,1117,0.0525
+Facility Name,Carthage Area Hospital Inc,1106,0.052
+Facility Name,"Brooks-TLC Hospital System, Inc.",1002,0.0471
+Facility Name,St. Joseph's Hospital,962,0.0453
+Facility Name,St. James Hospital,890,0.0419
+Facility Name,Lewis County General Hospital,784,0.0369
+Facility Name,The University of Vermont Health Network - Alice Hyde Medical Center,762,0.0358
+Facility Name,Community Memorial Hospital Inc,751,0.0353
+Facility Name,Bertrand Chaffee Hospital,696,0.0327
+Facility Name,Little Falls Hospital,681,0.032
+Facility Name,The University of Vermont Health Network - Elizabethtown Community Hospital,635,0.0299
+Facility Name,Gouverneur Hospital,517,0.0243
+Facility Name,Claxton-Hepburn Medical Center,509,0.0239
+Facility Name,St. Peter's Addiction Recovery Center,491,0.0231
+Facility Name,Henry J. Carter Specialty Hospital,482,0.0227
+Facility Name,Kingsbrook Jewish Medical Center,425,0.02
+Facility Name,Cobleskill Regional Hospital,422,0.0199
+Facility Name,United Memorial Medical Center Bank Street Campus,419,0.0197
+Facility Name,Crouse Hospital - Commonwealth Division,383,0.018
+Facility Name,Unity Specialty Hospital,376,0.0177
+Facility Name,Blythedale Children's Hospital,367,0.0173
+Facility Name,SJRH - Dobbs Ferry Pavillion,348,0.0164
+Facility Name,Calvary Hospital,335,0.0158
+Facility Name,Soldiers and Sailors Memorial Hospital of Yates County,311,0.0146
+Facility Name,New York Eye and Ear Infirmary of Mount Sinai,284,0.0134
+Facility Name,St. Mary's Healthcare - Amsterdam Memorial Campus,277,0.013
+Facility Name,Schuyler Hospital,271,0.0127
+Facility Name,Ira Davenport Memorial Hospital,205,0.0096
+Facility Name,Medina Memorial Hospital,204,0.0096
+Facility Name,Eastern Niagara Hospital - Lockport Division,181,0.0085
+Facility Name,Delaware Valley Hospital Inc,160,0.0075
+Facility Name,O'Connor Hospital,152,0.0072
+Facility Name,St. Peter's Hospital - SPARC,145,0.0068
+Facility Name,Westfield Memorial Hospital Inc,138,0.0065
+Facility Name,"Lockport Memorial Hospital, a Campus of Mount St Mary`s",129,0.0061
+Facility Name,"River Hospital, Inc.",112,0.0053
+Facility Name,Garnet Health Medical Center - Catskills - G. Hermann Site,92,0.0043
+Facility Name,Ellenville Regional Hospital,86,0.004
+Facility Name,Margaretville Hospital,85,0.004
+Facility Name,Cuba Memorial Hospital Inc,68,0.0032
+Facility Name,Clifton-Fine Hospital,20,0.0009
+Age Group,70 or Older,665216,31.2932
+Age Group,50 to 69,569293,26.7808
+Age Group,30 to 49,412490,19.4044
+Age Group,0 to 17,296035,13.9261
+Age Group,18 to 29,182720,8.5955
+Zip Code - 3 digits,112,255597,12.0238
+Zip Code - 3 digits,104,200175,9.4167
+Zip Code - 3 digits,117,181786,8.5516
+Zip Code - 3 digits,100,147046,6.9174
+Zip Code - 3 digits,113,109496,5.1509
+Zip Code - 3 digits,114,85672,4.0302
+Zip Code - 3 digits,115,85349,4.015
+Zip Code - 3 digits,OOS,62897,2.9588
+Zip Code - 3 digits,109,59064,2.7785
+Zip Code - 3 digits,105,56139,2.6409
+Zip Code - 3 digits,146,55729,2.6216
+Zip Code - 3 digits,142,55551,2.6132
+Zip Code - 3 digits,103,55210,2.5972
+Zip Code - 3 digits,125,43093,2.0272
+Zip Code - 3 digits,[MISSING],41883,1.9703
+Zip Code - 3 digits,140,37746,1.7757
+Zip Code - 3 digits,130,34788,1.6365
+Zip Code - 3 digits,119,32207,1.5151
+Zip Code - 3 digits,145,29966,1.4097
+Zip Code - 3 digits,120,28204,1.3268
+Zip Code - 3 digits,144,27535,1.2953
+Zip Code - 3 digits,110,26106,1.2281
+Zip Code - 3 digits,107,26046,1.2253
+Zip Code - 3 digits,121,24470,1.1511
+Zip Code - 3 digits,132,23682,1.1141
+Zip Code - 3 digits,128,21852,1.028
+Zip Code - 3 digits,136,21805,1.0258
+Zip Code - 3 digits,148,19076,0.8974
+Zip Code - 3 digits,111,18829,0.8858
+Zip Code - 3 digits,116,17603,0.8281
+Zip Code - 3 digits,141,17249,0.8114
+Zip Code - 3 digits,124,17120,0.8054
+Zip Code - 3 digits,134,17086,0.8038
+Zip Code - 3 digits,131,16200,0.7621
+Zip Code - 3 digits,147,14667,0.69
+Zip Code - 3 digits,123,14559,0.6849
+Zip Code - 3 digits,122,14189,0.6675
+Zip Code - 3 digits,133,13329,0.627
+Zip Code - 3 digits,137,12717,0.5982
+Zip Code - 3 digits,138,11790,0.5546
+Zip Code - 3 digits,127,11417,0.5371
+Zip Code - 3 digits,129,11348,0.5338
+Zip Code - 3 digits,126,10950,0.5151
+Zip Code - 3 digits,106,9189,0.4323
+Zip Code - 3 digits,135,8720,0.4102
+Zip Code - 3 digits,108,8526,0.4011
+Zip Code - 3 digits,118,8337,0.3922
+Zip Code - 3 digits,139,7678,0.3612
+Zip Code - 3 digits,143,7066,0.3324
+Zip Code - 3 digits,101,4544,0.2138
+Zip Code - 3 digits,149,4471,0.2103
+Gender,F,1158896,54.5169
+Gender,M,966555,45.4688
+Gender,U,303,0.0143
+Race,White,1117779,52.5827
+Race,Other Race,596340,28.0531
+Race,Black/African American,382208,17.9799
+Race,Multi-racial,29427,1.3843
+Ethnicity,Not Span/Hispanic,1501423,70.6301
+Ethnicity,Spanish/Hispanic,341056,16.044
+Ethnicity,Unknown,278426,13.0978
+Ethnicity,Multi-ethnic,4849,0.2281
+Type of Admission,Emergency,1410175,66.3376
+Type of Admission,Elective,356802,16.7847
+Type of Admission,Newborn,194249,9.1379
+Type of Admission,Urgent,153960,7.2426
+Type of Admission,Trauma,8067,0.3795
+Type of Admission,Not Available,2501,0.1177
+Patient Disposition,Home or Self Care,1405879,66.1355
+Patient Disposition,Home w/ Home Health Services,281903,13.2613
+Patient Disposition,Skilled Nursing Home,200275,9.4214
+Patient Disposition,Left Against Medical Advice,58445,2.7494
+Patient Disposition,Expired,53845,2.533
+Patient Disposition,Short-term Hospital,36246,1.7051
+Patient Disposition,Inpatient Rehabilitation Facility,35392,1.6649
+Patient Disposition,Hospice - Home,11159,0.5249
+Patient Disposition,Hospice - Medical Facility,9846,0.4632
+Patient Disposition,Psychiatric Hospital or Unit of Hosp,9726,0.4575
+Patient Disposition,Facility w/ Custodial/Supportive Care,6261,0.2945
+Patient Disposition,Another Type Not Listed,5161,0.2428
+Patient Disposition,Court/Law Enforcement,3843,0.1808
+Patient Disposition,Medicare Cert Long Term Care Hospital,2712,0.1276
+Patient Disposition,Cancer Center or Children's Hospital,1942,0.0914
+Patient Disposition,Hosp Basd Medicare Approved Swing Bed,1592,0.0749
+Patient Disposition,Medicaid Cert Nursing Facility,750,0.0353
+Patient Disposition,Federal Health Care Facility,572,0.0269
+Patient Disposition,Critical Access Hospital,205,0.0096
+APR Severity of Illness Description,Moderate,785246,36.9396
+APR Severity of Illness Description,Minor,627605,29.5239
+APR Severity of Illness Description,Major,504585,23.7368
+APR Severity of Illness Description,Extreme,207844,9.7774
+APR Severity of Illness Description,[MISSING],474,0.0223
+APR Risk of Mortality,Minor,1073037,50.4779
+APR Risk of Mortality,Moderate,455080,21.4079
+APR Risk of Mortality,Major,399457,18.7913
+APR Risk of Mortality,Extreme,197706,9.3005
+APR Risk of Mortality,[MISSING],474,0.0223
+APR Medical Surgical Description,Medical,1624519,76.4208
+APR Medical Surgical Description,Surgical,500761,23.5569
+APR Medical Surgical Description,Not Applicable,474,0.0223
+Payment Typology 1,Medicare,867570,40.8123
+Payment Typology 1,Medicaid,648713,30.5168
+Payment Typology 1,Private Health Insurance,299131,14.0718
+Payment Typology 1,Blue Cross/Blue Shield,207377,9.7555
+Payment Typology 1,Self-Pay,29079,1.3679
+Payment Typology 1,"Managed Care, Unspecified",27919,1.3134
+Payment Typology 1,Miscellaneous/Other,24073,1.1324
+Payment Typology 1,Federal/State/Local/VA,20518,0.9652
+Payment Typology 1,Department of Corrections,1374,0.0646
+Payment Typology 2,[MISSING],1114046,52.4071
+Payment Typology 2,Medicaid,421148,19.8117
+Payment Typology 2,Medicare,168786,7.9401
+Payment Typology 2,Private Health Insurance,147581,6.9425
+Payment Typology 2,Self-Pay,139109,6.544
+Payment Typology 2,Blue Cross/Blue Shield,109089,5.1318
+Payment Typology 2,Federal/State/Local/VA,11912,0.5604
+Payment Typology 2,Miscellaneous/Other,8285,0.3897
+Payment Typology 2,"Managed Care, Unspecified",5718,0.269
+Payment Typology 2,Department of Corrections,80,0.0038
+Payment Typology 3,[MISSING],1843136,86.705
+Payment Typology 3,Self-Pay,162952,7.6656
+Payment Typology 3,Medicaid,72766,3.4231
+Payment Typology 3,Private Health Insurance,18853,0.8869
+Payment Typology 3,Blue Cross/Blue Shield,13356,0.6283
+Payment Typology 3,Medicare,11614,0.5463
+Payment Typology 3,Federal/State/Local/VA,2175,0.1023
+Payment Typology 3,"Managed Care, Unspecified",641,0.0302
+Payment Typology 3,Miscellaneous/Other,239,0.0112
+Payment Typology 3,Department of Corrections,22,0.001
+Emergency Department Indicator,Y,1335889,62.8431
+Emergency Department Indicator,N,789865,37.1569
+Discharge Year,2023,2125754,100.0

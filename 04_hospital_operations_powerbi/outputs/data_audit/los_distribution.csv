@@ -1,0 +1,2 @@
+total_n,valid_n,minimum,mean_lower_bound,p25,median,p75,p95,p99,observed_upper_value,top_coded_n,top_coded_pct
+2125754,2125754,1.0,5.780398390406416,2.0,3.0,6.0,18.52799007642545,42.033166818659254,120.0,2290.0,0.10772648199180151

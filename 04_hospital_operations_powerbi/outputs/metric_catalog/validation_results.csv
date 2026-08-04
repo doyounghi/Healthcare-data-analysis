@@ -1,0 +1,12 @@
+validation_test,passed,details
+Metric IDs are unique,True,
+Metric names are populated,True,
+Calculation rules are populated,True,
+Suppression rules are valid,True,
+All required source fields are available,True,
+No unsupported metric claims,True,
+Category mappings are unique,True,
+Mapping actions are valid,True,
+Mapping target groups are populated,True,
+Mapping rationales are populated,True,
+Category mappings are approved,True,
