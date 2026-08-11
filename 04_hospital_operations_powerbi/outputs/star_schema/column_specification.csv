@@ -1,0 +1,64 @@
+table_name,column_name,data_type,column_role,source_fields,default_summarization,hidden_in_report,description,status
+FactDischarge,hospital_key,Whole number,Foreign key,Permanent Facility Id,Do not summarize,True,Resolves each discharge to DimHospital.,PLANNED
+FactDischarge,date_key,Whole number,Foreign key,Discharge Year,Do not summarize,True,Resolves each discharge to annual DimDate.,PLANNED
+FactDischarge,service_key,Whole number,Foreign key,APR DRG Code,Do not summarize,True,Resolves each discharge to DimService.,PLANNED
+FactDischarge,case_mix_key,Whole number,Foreign key,APR Severity of Illness Code|APR Risk of Mortality,Do not summarize,True,Resolves each discharge to DimCaseMix.,PLANNED
+FactDischarge,diagnosis_key,Whole number,Foreign key,CCSR Diagnosis Code,Do not summarize,True,Resolves each discharge to DimDiagnosis.,PLANNED
+FactDischarge,procedure_key,Whole number,Foreign key,CCSR Procedure Code,Do not summarize,True,Resolves each discharge to DimProcedure.,PLANNED
+FactDischarge,patient_segment_key,Whole number,Foreign key,Age Group|Gender|Race|Ethnicity,Do not summarize,True,Resolves each discharge to DimPatientSegment.,PLANNED
+FactDischarge,geography_key,Whole number,Foreign key,Zip Code - 3 digits,Do not summarize,True,Resolves each discharge to DimGeography.,PLANNED
+FactDischarge,payer_key,Whole number,Foreign key,Payment Typology 1,Do not summarize,True,Resolves each discharge to DimPayer.,PLANNED
+FactDischarge,admission_context_key,Whole number,Foreign key,Type of Admission|Patient Disposition|Emergency Department Indicator,Do not summarize,True,Resolves each discharge to DimAdmissionContext.,PLANNED
+FactDischarge,los_days_lower_bound,Whole number,Additive value,Length of Stay,Sum,True,Observable LOS lower bound after representing 120+ as 120.,PLANNED
+FactDischarge,is_top_coded_los,Whole number,Validity flag,Length of Stay,Sum,True,Equals 1 when the released LOS is top-coded; otherwise 0.,PLANNED
+FactDischarge,is_valid_los,Whole number,Validity flag,Length of Stay,Sum,True,Equals 1 when LOS is valid for LOS calculations.,PLANNED
+FactDischarge,total_charges,Fixed decimal number,Additive value,Total Charges,Sum,True,Valid positive released total charges.,PLANNED
+FactDischarge,is_valid_charge,Whole number,Validity flag,Total Charges,Sum,True,Equals 1 when Total Charges is numeric and positive.,PLANNED
+FactDischarge,total_costs,Fixed decimal number,Additive value,Total Costs,Sum,True,Valid positive released estimated total costs.,PLANNED
+FactDischarge,is_valid_cost,Whole number,Validity flag,Total Costs,Sum,True,Equals 1 when Total Costs is numeric and positive.,PLANNED
+FactDischarge,is_paired_financial_valid,Whole number,Validity flag,Total Charges|Total Costs,Sum,True,Equals 1 when charges and costs are both valid on the same discharge.,PLANNED
+FactDischarge,peer_expected_los_days,Decimal number,Additive benchmark value,Permanent Facility Id|APR DRG Code|APR Severity of Illness Code|Length of Stay,Sum,True,Leave-one-facility-out expected LOS lower bound. Not populated by this notebook.,DEFERRED_BENCHMARK_BUILD
+FactDischarge,los_peer_comparison_n,Whole number,Benchmark diagnostic,Permanent Facility Id|APR DRG Code|APR Severity of Illness Code|Length of Stay,Do not summarize,True,Comparison-discharge count at the selected peer level after excluding the benchmarked facility.,DEFERRED_BENCHMARK_BUILD
+FactDischarge,peer_expected_estimated_cost,Fixed decimal number,Additive benchmark value,Permanent Facility Id|APR DRG Code|APR Severity of Illness Code|Total Costs,Sum,True,Leave-one-facility-out peer-expected estimated cost. Not populated by this notebook.,DEFERRED_BENCHMARK_BUILD
+FactDischarge,los_peer_benchmark_level,Text,Benchmark diagnostic,Permanent Facility Id|APR DRG Code|APR Severity of Illness Code|Length of Stay,Do not summarize,True,"Indicates primary, APR-DRG fallback, or unavailable peer benchmark.",DEFERRED_BENCHMARK_BUILD
+FactDischarge,cost_peer_comparison_n,Whole number,Benchmark diagnostic,Permanent Facility Id|APR DRG Code|APR Severity of Illness Code|Total Costs,Do not summarize,True,Comparison-discharge count for the selected cost peer level after excluding the benchmarked facility.,DEFERRED_BENCHMARK_BUILD
+FactDischarge,cost_peer_benchmark_level,Text,Benchmark diagnostic,Permanent Facility Id|APR DRG Code|APR Severity of Illness Code|Total Costs,Do not summarize,True,"Indicates primary, APR-DRG fallback, or unavailable estimated-cost benchmark.",DEFERRED_BENCHMARK_BUILD
+DimHospital,hospital_key,Whole number,Primary key,Permanent Facility Id,Do not summarize,True,Model-generated hospital surrogate key.,PLANNED
+DimHospital,permanent_facility_id,Text,Natural key,Permanent Facility Id,Do not summarize,False,Released permanent facility identifier.,PLANNED
+DimHospital,operating_certificate_number,Text,Attribute,Operating Certificate Number,Do not summarize,False,Released operating certificate number.,PLANNED
+DimHospital,facility_name,Text,Attribute,Facility Name,Do not summarize,False,Released facility name.,PLANNED
+DimHospital,hospital_service_area,Text,Attribute,Hospital Service Area,Do not summarize,False,Hospital service area.,PLANNED
+DimHospital,hospital_county,Text,Attribute,Hospital County,Do not summarize,False,Hospital county.,PLANNED
+DimDate,date_key,Whole number,Primary key,Discharge Year,Do not summarize,True,Annual model key derived from discharge year.,PLANNED
+DimDate,discharge_year,Whole number,Natural key,Discharge Year,Do not summarize,False,Released discharge year.,PLANNED
+DimDate,year_label,Text,Attribute,Discharge Year,Do not summarize,False,Business-readable year label.,PLANNED
+DimService,service_key,Whole number,Primary key,APR DRG Code,Do not summarize,True,Model-generated service surrogate key.,PLANNED
+DimService,apr_drg_code,Text,Natural key,APR DRG Code,Do not summarize,False,APR-DRG code.,PLANNED
+DimService,apr_drg_description,Text,Attribute,APR DRG Description,Do not summarize,False,APR-DRG description.,PLANNED
+DimService,apr_mdc_code,Text,Attribute,APR MDC Code,Do not summarize,False,APR major diagnostic category code.,PLANNED
+DimService,apr_mdc_description,Text,Attribute,APR MDC Description,Do not summarize,False,APR major diagnostic category description.,PLANNED
+DimService,medical_surgical_classification,Text,Attribute,APR Medical Surgical Description,Do not summarize,False,Released APR medical/surgical classification.,PLANNED
+DimCaseMix,case_mix_key,Whole number,Primary key,APR Severity of Illness Code|APR Risk of Mortality,Do not summarize,True,Model-generated case-mix surrogate key.,PLANNED
+DimCaseMix,apr_severity_code,Whole number,Natural-key component,APR Severity of Illness Code,Do not summarize,False,Validated APR severity code from 1 through 4; also used as the descriptive severity index.,PLANNED
+DimCaseMix,apr_severity_description,Text,Attribute,APR Severity of Illness Description,Do not summarize,False,APR severity description.,PLANNED
+DimCaseMix,apr_mortality_risk,Text,Natural-key component,APR Risk of Mortality,Do not summarize,False,APR mortality-risk category.,PLANNED
+DimDiagnosis,diagnosis_key,Whole number,Primary key,CCSR Diagnosis Code,Do not summarize,True,Model-generated diagnosis surrogate key.,PLANNED
+DimDiagnosis,ccsr_diagnosis_code,Text,Natural key,CCSR Diagnosis Code,Do not summarize,False,Released CCSR diagnosis code.,PLANNED
+DimDiagnosis,ccsr_diagnosis_description,Text,Attribute,CCSR Diagnosis Description,Do not summarize,False,Released CCSR diagnosis description.,PLANNED
+DimProcedure,procedure_key,Whole number,Primary key,CCSR Procedure Code,Do not summarize,True,Model-generated procedure surrogate key.,PLANNED
+DimProcedure,ccsr_procedure_code,Text,Natural key,CCSR Procedure Code,Do not summarize,False,Released CCSR procedure code.,PLANNED
+DimProcedure,ccsr_procedure_description,Text,Attribute,CCSR Procedure Description,Do not summarize,False,Released CCSR procedure description.,PLANNED
+DimPatientSegment,patient_segment_key,Whole number,Primary key,Age Group|Gender|Race|Ethnicity,Do not summarize,True,Model-generated demographic-segment key.,PLANNED
+DimPatientSegment,age_group,Text,Natural-key component,Age Group,Do not summarize,False,Released age group.,PLANNED
+DimPatientSegment,gender,Text,Natural-key component,Gender,Do not summarize,False,Released gender category.,PLANNED
+DimPatientSegment,race,Text,Natural-key component,Race,Do not summarize,False,Released race category.,PLANNED
+DimPatientSegment,ethnicity,Text,Natural-key component,Ethnicity,Do not summarize,False,Released ethnicity category.,PLANNED
+DimGeography,geography_key,Whole number,Primary key,Zip Code - 3 digits,Do not summarize,True,Model-generated patient-geography key.,PLANNED
+DimGeography,patient_zip3,Text,Natural key,Zip Code - 3 digits,Do not summarize,False,Released three-digit patient ZIP geography.,PLANNED
+DimPayer,payer_key,Whole number,Primary key,Payment Typology 1,Do not summarize,True,Model-generated primary-payer key.,PLANNED
+DimPayer,payer_group,Text,Natural key,Payment Typology 1,Do not summarize,False,Approved mapped primary-payer group.,PLANNED
+DimAdmissionContext,admission_context_key,Whole number,Primary key,Type of Admission|Patient Disposition|Emergency Department Indicator,Do not summarize,True,Model-generated admission-context key.,PLANNED
+DimAdmissionContext,admission_type_group,Text,Natural-key component,Type of Admission,Do not summarize,False,Approved mapped admission-type group.,PLANNED
+DimAdmissionContext,disposition_group,Text,Natural-key component,Patient Disposition,Do not summarize,False,Approved mapped disposition group.,PLANNED
+DimAdmissionContext,ed_indicator_group,Text,Natural-key component,Emergency Department Indicator,Do not summarize,False,Approved mapped ED-indicator group.,PLANNED
+Measures,_measure_table_marker,Whole number,Technical placeholder,,Do not summarize,True,Placeholder column used only to host governed measures.,SESSION_6

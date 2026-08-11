@@ -1,0 +1,34 @@
+source_field,target_table,target_column,semantic_action,transformation_requirement
+Hospital Service Area,DimHospital,hospital_service_area,INCLUDE,Trim text and map nulls to Unknown.
+Hospital County,DimHospital,hospital_county,INCLUDE,Trim text and map nulls to Unknown.
+Operating Certificate Number,DimHospital,operating_certificate_number,INCLUDE,Retain as text to preserve formatting.
+Permanent Facility Id,DimHospital,permanent_facility_id,INCLUDE,Retain natural identifier and derive hospital_key.
+Facility Name,DimHospital,facility_name,INCLUDE,Trim text; do not use as the hospital key.
+Age Group,DimPatientSegment,age_group,INCLUDE,Apply the approved category mapping.
+Zip Code - 3 digits,DimGeography,patient_zip3,INCLUDE,Retain as text and preserve masked/unknown values.
+Gender,DimPatientSegment,gender,INCLUDE,Trim and preserve released categories.
+Race,DimPatientSegment,race,INCLUDE,Trim and preserve released categories.
+Ethnicity,DimPatientSegment,ethnicity,INCLUDE,Trim and preserve released categories.
+Length of Stay,FactDischarge,los_days_lower_bound,INCLUDE,Parse valid values; represent 120+ as 120 and create flags.
+Type of Admission,DimAdmissionContext,admission_type_group,INCLUDE,Apply the approved category mapping.
+Patient Disposition,DimAdmissionContext,disposition_group,INCLUDE,Apply approved mapping; descriptive use only.
+Discharge Year,DimDate,discharge_year,INCLUDE,Convert to whole number and derive date_key.
+CCSR Diagnosis Code,DimDiagnosis,ccsr_diagnosis_code,INCLUDE,Retain as text and derive diagnosis_key.
+CCSR Diagnosis Description,DimDiagnosis,ccsr_diagnosis_description,INCLUDE,Trim text.
+CCSR Procedure Code,DimProcedure,ccsr_procedure_code,INCLUDE,Retain as text and derive procedure_key.
+CCSR Procedure Description,DimProcedure,ccsr_procedure_description,INCLUDE,Trim text.
+APR DRG Code,DimService,apr_drg_code,INCLUDE,Retain as text and derive service_key.
+APR DRG Description,DimService,apr_drg_description,INCLUDE,Trim text.
+APR MDC Code,DimService,apr_mdc_code,INCLUDE,Retain as text.
+APR MDC Description,DimService,apr_mdc_description,INCLUDE,Trim text.
+APR Severity of Illness Code,DimCaseMix,apr_severity_code,INCLUDE,"Parse as a whole number from 1 through 4, validate against the severity description, and derive case_mix_key."
+APR Severity of Illness Description,DimCaseMix,apr_severity_description,INCLUDE,Apply the approved category mapping.
+APR Risk of Mortality,DimCaseMix,apr_mortality_risk,INCLUDE,Apply the approved category mapping.
+APR Medical Surgical Description,DimService,medical_surgical_classification,INCLUDE,Trim and preserve released categories.
+Payment Typology 1,DimPayer,payer_group,INCLUDE,Apply the approved primary-payer mapping.
+Payment Typology 2,,,STAGING_ONLY,Retain in staging; secondary-payer modeling requires a separate role-playing or bridge-table design.
+Payment Typology 3,,,STAGING_ONLY,Retain in staging; tertiary-payer modeling requires a separate role-playing or bridge-table design.
+Birth Weight,,,STAGING_ONLY,Retain in staging until a validated newborn-specific metric or segment is approved.
+Emergency Department Indicator,DimAdmissionContext,ed_indicator_group,INCLUDE,Apply the approved category mapping.
+Total Charges,FactDischarge,total_charges,INCLUDE,Parse numeric positive values and create validity flag.
+Total Costs,FactDischarge,total_costs,INCLUDE,Parse numeric positive values and create validity flag.

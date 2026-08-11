@@ -1,0 +1,9 @@
+policy_id,policy,implementation_stage
+INTEGER_SURROGATE_KEYS,All dimension relationships use whole-number surrogate keys.,Session 5
+UNKNOWN_KEY_ZERO,"Key 0 represents an unresolved, missing, suppressed, or unavailable dimension member.",Session 5
+PRESERVE_FACT_ROWS,Missing dimension values map to key 0 rather than removing the discharge.,Session 5
+NATURAL_KEYS_VISIBLE,Released business identifiers remain available as descriptive dimension attributes.,Session 5
+TECHNICAL_KEYS_HIDDEN,Surrogate and foreign keys are hidden from report users.,Session 6
+NO_FACT_IDENTIFIER,The model does not invent a durable patient or discharge identifier.,Current design
+ANNUAL_DATE_KEY,The initial date key represents discharge year only.,Session 5
+FUTURE_MULTIYEAR_REVIEW,"Before appending additional years, test dimension attribute stability and key reuse across years.",Future multi-year build

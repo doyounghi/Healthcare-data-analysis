@@ -1,0 +1,20 @@
+validation_test,passed,details
+Table names are unique,True,
+Model columns are unique within tables,True,
+All source fields are explicitly classified,True,Unmapped: ; Unexpected: 
+Metric-specific model rules reference catalog metrics,True,
+Required model columns exist,True,{}
+Source-field mappings are unique,True,
+Semantic actions are valid,True,
+Staging-only exclusions are documented,True,
+All metric source dependencies are supported,True,
+Relationship endpoints exist,True,
+Every fact foreign key has one relationship,True,
+Every dimension relates directly to the fact,True,
+Relationships target FactDischarge,True,
+Relationships are one-to-many,True,
+Relationships use single-direction filtering,True,
+All relationships are active,True,
+Unknown-member key is consistently zero,True,
+All relationship tables are defined,True,
+Extended-Stay Rate pending status is preserved,True,

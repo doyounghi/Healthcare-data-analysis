@@ -1,0 +1,10 @@
+file_name,row_count,output_path
+design_standards.csv,12,outputs\star_schema\design_standards.csv
+table_specification.csv,12,outputs\star_schema\table_specification.csv
+column_specification.csv,63,outputs\star_schema\column_specification.csv
+source_to_model_mapping.csv,33,outputs\star_schema\source_to_model_mapping.csv
+relationship_specification.csv,10,outputs\star_schema\relationship_specification.csv
+key_policy.csv,8,outputs\star_schema\key_policy.csv
+metric_support_matrix.csv,32,outputs\star_schema\metric_support_matrix.csv
+schema_validation_results.csv,19,outputs\star_schema\schema_validation_results.csv
+star_schema.md,,docs\star_schema.md

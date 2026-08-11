@@ -1,5 +1,5 @@
 suppression_rule_id,applies_to,rule,zero_allowed,implementation_target,limitation
-COUNT_1_TO_10,Displayed count,Do not suppress displayed counts.,True,Power BI measure and public exports,Complementary suppression may be required when totals allow a suppressed value to be inferred.
+COUNT_1_TO_10,Displayed discharge count,Suppress displayed discharge counts between 1 and 10. Display zero when the true count is zero.,True,Power BI measure and public exports,Complementary suppression may be required when totals allow a suppressed value to be inferred.
 NONE,Non-patient operational count,No small-cell suppression is applied based solely on the number of facilities.,True,Power BI measure and public exports,This does not override disclosure review for related patient-level measures.
 DENOMINATOR_LT_11,Continuous summary or aggregate amount,Suppress when the contributing discharge count is below 11.,True,Power BI measure and public exports,The threshold protects small cells but does not eliminate all differencing risk.
 RATE_SMALL_CELL,Rate or percentage,"Suppress when the denominator is below 11, when the numerator is between 1 and 10, or when the denominator minus numerator is between 1 and 10.",True,Power BI measure and public exports,Dashboard totals and cross-filtering require inference testing.

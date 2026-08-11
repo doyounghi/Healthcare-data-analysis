@@ -5,6 +5,7 @@ Calculation rules are populated,True,
 Suppression rules are valid,True,
 All required source fields are available,True,
 No unsupported metric claims,True,
+Small discharge counts are suppressed,True,suppress displayed discharge counts between 1 and 10. display zero when the true count is zero.
 Category mappings are unique,True,
 Mapping actions are valid,True,
 Mapping target groups are populated,True,

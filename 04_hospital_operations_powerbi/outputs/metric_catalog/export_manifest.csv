@@ -1,0 +1,9 @@
+file_name,row_count,output_path
+metric_catalog.csv,32,outputs/metric_catalog/metric_catalog.csv
+category_mapping.csv,51,outputs/metric_catalog/category_mapping.csv
+benchmark_specification.csv,5,outputs/metric_catalog/benchmark_specification.csv
+suppression_policy.csv,4,outputs/metric_catalog/suppression_policy.csv
+design_standards.csv,10,outputs/metric_catalog/design_standards.csv
+benchmark_field_validation.csv,15,outputs/metric_catalog/benchmark_field_validation.csv
+metric_field_validation.csv,32,outputs/metric_catalog/metric_field_validation.csv
+validation_results.csv,12,outputs/metric_catalog/validation_results.csv

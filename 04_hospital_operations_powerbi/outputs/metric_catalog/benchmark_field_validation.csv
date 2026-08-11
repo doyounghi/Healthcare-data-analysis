@@ -1,0 +1,16 @@
+source_field,available
+APR DRG Code,True
+APR DRG Description,True
+APR Risk of Mortality,True
+APR Severity of Illness Code,True
+APR Severity of Illness Description,True
+Discharge Year,True
+Emergency Department Indicator,True
+Facility Name,True
+Length of Stay,True
+Patient Disposition,True
+Payment Typology 1,True
+Permanent Facility Id,True
+Total Charges,True
+Total Costs,True
+Type of Admission,True

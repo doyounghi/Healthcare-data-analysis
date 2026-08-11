@@ -1,0 +1,33 @@
+metric_id,metric_name,metric_group,required_fields,unsupported_fields,source_fields_supported,implementation_status
+discharge_count,Discharges,Volume,,,True,DESIGN_SUPPORTED
+facility_count,Facilities,Volume,Permanent Facility Id,,True,DESIGN_SUPPORTED
+total_los_days_lower_bound,Total LOS Days — Lower Bound,Length of Stay,Length of Stay,,True,DESIGN_SUPPORTED
+average_los_lower_bound,Average LOS — Lower Bound,Length of Stay,Length of Stay,,True,DESIGN_SUPPORTED
+median_los_lower_bound,Median LOS,Length of Stay,Length of Stay,,True,DESIGN_SUPPORTED
+los_interquartile_range,LOS Interquartile Range,Length of Stay,Length of Stay,,True,DESIGN_SUPPORTED
+p95_los_lower_bound,P95 LOS,Length of Stay,Length of Stay,,True,DESIGN_SUPPORTED
+top_coded_los_count,Top-Coded LOS Discharges,Length of Stay,Length of Stay,,True,DESIGN_SUPPORTED
+top_coded_los_rate,Top-Coded LOS Rate,Length of Stay,Length of Stay,,True,DESIGN_SUPPORTED
+extended_stay_rate,Extended-Stay Rate,Length of Stay,Length of Stay,,True,PENDING_THRESHOLD
+total_charges,Total Charges,Financial,Total Charges,,True,DESIGN_SUPPORTED
+average_charge_per_discharge,Average Charge per Discharge,Financial,Total Charges,,True,DESIGN_SUPPORTED
+median_charge_per_discharge,Median Charge per Discharge,Financial,Total Charges,,True,DESIGN_SUPPORTED
+total_estimated_costs,Total Estimated Costs,Financial,Total Costs,,True,DESIGN_SUPPORTED
+average_estimated_cost_per_discharge,Average Estimated Cost per Discharge,Financial,Total Costs,,True,DESIGN_SUPPORTED
+median_estimated_cost_per_discharge,Median Estimated Cost per Discharge,Financial,Total Costs,,True,DESIGN_SUPPORTED
+charge_to_cost_ratio,Charge-to-Cost Ratio,Financial,Total Charges|Total Costs,,True,DESIGN_SUPPORTED
+estimated_cost_per_inpatient_day,Estimated Cost per Inpatient Day,Financial,Length of Stay|Total Costs,,True,DESIGN_SUPPORTED
+ed_origin_discharge_rate,ED-Origin Discharge Rate,Admission Context,Emergency Department Indicator,,True,DESIGN_SUPPORTED
+emergency_admission_rate,Emergency Admission Rate,Admission Context,Type of Admission,,True,DESIGN_SUPPORTED
+major_extreme_severity_rate,Major or Extreme Severity Rate,Case Mix,APR Severity of Illness Description,,True,DESIGN_SUPPORTED
+major_extreme_mortality_risk_rate,Major or Extreme Mortality-Risk Rate,Case Mix,APR Risk of Mortality,,True,DESIGN_SUPPORTED
+home_discharge_rate,Home Discharge Rate,Outcomes,Patient Disposition,,True,DESIGN_SUPPORTED
+in_hospital_mortality_rate,In-Hospital Mortality Rate,Outcomes,Patient Disposition,,True,DESIGN_SUPPORTED
+average_apr_severity_index,Average APR Severity Index,Case Mix,APR Severity of Illness Code,,True,DESIGN_SUPPORTED
+disposition_share,Disposition Share,Outcomes,Patient Disposition,,True,DESIGN_SUPPORTED
+peer_expected_los_days,Peer-Expected LOS Days,Benchmarking,APR DRG Code|APR Severity of Illness Code|Length of Stay|Permanent Facility Id,,True,DESIGN_SUPPORTED_CALCULATION_DEFERRED
+los_actual_to_peer_expected_ratio,LOS Actual-to-Peer-Expected Ratio,Benchmarking,APR DRG Code|APR Severity of Illness Code|Length of Stay|Permanent Facility Id,,True,DESIGN_SUPPORTED_CALCULATION_DEFERRED
+excess_los_days_lower_bound,Excess LOS Days — Lower Bound,Benchmarking,APR DRG Code|APR Severity of Illness Code|Length of Stay|Permanent Facility Id,,True,DESIGN_SUPPORTED_CALCULATION_DEFERRED
+peer_expected_estimated_cost,Peer-Expected Estimated Cost,Benchmarking,APR DRG Code|APR Severity of Illness Code|Permanent Facility Id|Total Costs,,True,DESIGN_SUPPORTED_CALCULATION_DEFERRED
+estimated_cost_actual_to_peer_expected_ratio,Estimated Cost Actual-to-Peer-Expected Ratio,Benchmarking,APR DRG Code|APR Severity of Illness Code|Permanent Facility Id|Total Costs,,True,DESIGN_SUPPORTED_CALCULATION_DEFERRED
+excess_estimated_cost,Excess Estimated Cost,Benchmarking,APR DRG Code|APR Severity of Illness Code|Permanent Facility Id|Total Costs,,True,DESIGN_SUPPORTED_CALCULATION_DEFERRED

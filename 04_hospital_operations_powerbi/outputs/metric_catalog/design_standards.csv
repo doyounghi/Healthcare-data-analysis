@@ -1,0 +1,11 @@
+standard_id,decision,rationale
+SOURCE_GRAIN,One row represents one inpatient discharge.,The public file does not support unique-patient tracking.
+TIME_GRAIN,Initial reporting is annual.,Only discharge year is available in the audited file.
+LOS_TOP_CODE,Values recorded as 120+ are represented as 120 only when a numeric lower bound is required.,The exact LOS above the threshold is unknown.
+LOS_LABEL,LOS totals and means using top-coded observations must be labeled lower-bound estimates.,Treating 120+ as exactly 120 understates utilization.
+FINANCIAL_VALIDITY,"Missing, nonnumeric, and nonpositive financial values are excluded from per-discharge financial denominators.",Invalid financial records should not distort averages.
+RATIO_AGGREGATION,Ratios use ratio-of-sums.,A mean of row-level ratios creates inappropriate weighting.
+ROBUST_STATISTICS,Means are reported with medians and upper percentiles.,"LOS, charges, and estimated costs are right-skewed."
+PEER_BASELINE,Primary descriptive peers use APR-DRG and severity.,These fields provide an initial observable case-complexity comparison.
+FACILITY_EXCLUSION,A facility is excluded from the peer mean used to benchmark that facility.,A facility should not materially influence its own benchmark.
+PRIVACY,Visible cells with counts from 1 through 10 are suppressed.,This is a conservative project reporting standard.

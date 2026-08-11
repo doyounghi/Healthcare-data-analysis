@@ -1,0 +1,13 @@
+standard_id,decision,rationale
+FACT_GRAIN,FactDischarge contains one row per released inpatient discharge.,This matches the audited source grain.
+NO_PATIENT_KEY,The model will not create or imply a unique-patient key.,The public file does not support patient-level linkage.
+STAR_SCHEMA,Dimensions relate directly to FactDischarge.,This avoids snowflaking and ambiguous filtering.
+RELATIONSHIP_DIRECTION,"Relationships are active, one-to-many, and single-directional from dimension to fact.",This provides predictable Power BI filter behavior.
+SURROGATE_KEYS,Whole-number surrogate keys are used for model relationships.,Integer keys support model compression and separate relationships from released business identifiers.
+UNKNOWN_MEMBER,Surrogate key 0 is reserved for Unknown / Not Available.,Missing dimension values must not cause discharge rows to be dropped.
+TIME_GRAIN,DimDate initially contains one row per available discharge year.,The audited source supports annual—not monthly—analysis.
+PRIMARY_PAYER,The initial semantic model uses Payment Typology 1.,Secondary and tertiary payer fields would require role-playing or bridge-table design not required by the approved metrics.
+PATIENT_GEOGRAPHY,DimGeography represents released patient ZIP3 geography.,Hospital county and service area remain attributes of DimHospital.
+POST_OUTCOME_CONTEXT,Patient disposition may be used for descriptive slicing but not as an input to the primary expected-LOS or expected-cost benchmark.,Disposition may reflect events occurring during or after the hospitalization.
+PREDICTION_OUTPUT_EXTENSION,Validated model predictions will be stored separately from descriptive peer-benchmark values and versioned during modeling.,"Peer-expected LOS must not be confused with model-predicted LOS, and model version and scoring date must remain traceable."
+BENCHMARK_COLUMNS,Peer-expected LOS and estimated-cost fields are planned in FactDischarge but remain deferred until benchmark computation.,Notebook 03 defines storage requirements without claiming that the benchmark has been calculated.
