@@ -1,0 +1,10 @@
+table_name,natural_key,attribute,inconsistent_key_n,passed
+DimHospital,permanent_facility_id,facility_name,0,True
+DimHospital,permanent_facility_id,hospital_service_area,0,True
+DimHospital,permanent_facility_id,hospital_county,0,True
+DimService,apr_drg_code|apr_mdc_code,apr_drg_description,0,True
+DimService,apr_drg_code|apr_mdc_code,apr_mdc_description,0,True
+DimService,apr_drg_code|apr_mdc_code,medical_surgical_classification,0,True
+DimCaseMix,apr_severity_code|apr_mortality_risk,apr_severity_description,0,True
+DimDiagnosis,ccsr_diagnosis_code,ccsr_diagnosis_description,0,True
+DimProcedure,ccsr_procedure_code,ccsr_procedure_description,0,True

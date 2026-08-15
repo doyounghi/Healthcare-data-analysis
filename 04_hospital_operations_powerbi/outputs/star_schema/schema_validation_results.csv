@@ -6,6 +6,8 @@ Metric-specific model rules reference catalog metrics,True,
 Required model columns exist,True,{}
 Source-field mappings are unique,True,
 Semantic actions are valid,True,
+DimService uses validated composite natural key,True,
+DimService composite-key columns are explicitly identified,True,apr_drg_code|apr_mdc_code
 Staging-only exclusions are documented,True,
 All metric source dependencies are supported,True,
 Relationship endpoints exist,True,

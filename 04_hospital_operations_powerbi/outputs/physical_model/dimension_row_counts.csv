@@ -1,0 +1,11 @@
+table_name,row_count
+DimHospital,208
+DimDate,2
+DimService,483
+DimCaseMix,17
+DimDiagnosis,483
+DimProcedure,321
+DimPatientSegment,203
+DimGeography,51
+DimPayer,10
+DimAdmissionContext,201

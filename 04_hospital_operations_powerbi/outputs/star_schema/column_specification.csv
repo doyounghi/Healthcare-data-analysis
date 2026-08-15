@@ -1,7 +1,7 @@
 table_name,column_name,data_type,column_role,source_fields,default_summarization,hidden_in_report,description,status
 FactDischarge,hospital_key,Whole number,Foreign key,Permanent Facility Id,Do not summarize,True,Resolves each discharge to DimHospital.,PLANNED
 FactDischarge,date_key,Whole number,Foreign key,Discharge Year,Do not summarize,True,Resolves each discharge to annual DimDate.,PLANNED
-FactDischarge,service_key,Whole number,Foreign key,APR DRG Code,Do not summarize,True,Resolves each discharge to DimService.,PLANNED
+FactDischarge,service_key,Whole number,Foreign key,APR DRG Code|APR MDC Code,Do not summarize,True,Resolves each discharge to DimService using the APR-DRG and APR MDC composite natural key.,PLANNED
 FactDischarge,case_mix_key,Whole number,Foreign key,APR Severity of Illness Code|APR Risk of Mortality,Do not summarize,True,Resolves each discharge to DimCaseMix.,PLANNED
 FactDischarge,diagnosis_key,Whole number,Foreign key,CCSR Diagnosis Code,Do not summarize,True,Resolves each discharge to DimDiagnosis.,PLANNED
 FactDischarge,procedure_key,Whole number,Foreign key,CCSR Procedure Code,Do not summarize,True,Resolves each discharge to DimProcedure.,PLANNED
@@ -25,17 +25,16 @@ FactDischarge,cost_peer_comparison_n,Whole number,Benchmark diagnostic,Permanent
 FactDischarge,cost_peer_benchmark_level,Text,Benchmark diagnostic,Permanent Facility Id|APR DRG Code|APR Severity of Illness Code|Total Costs,Do not summarize,True,"Indicates primary, APR-DRG fallback, or unavailable estimated-cost benchmark.",DEFERRED_BENCHMARK_BUILD
 DimHospital,hospital_key,Whole number,Primary key,Permanent Facility Id,Do not summarize,True,Model-generated hospital surrogate key.,PLANNED
 DimHospital,permanent_facility_id,Text,Natural key,Permanent Facility Id,Do not summarize,False,Released permanent facility identifier.,PLANNED
-DimHospital,operating_certificate_number,Text,Attribute,Operating Certificate Number,Do not summarize,False,Released operating certificate number.,PLANNED
 DimHospital,facility_name,Text,Attribute,Facility Name,Do not summarize,False,Released facility name.,PLANNED
 DimHospital,hospital_service_area,Text,Attribute,Hospital Service Area,Do not summarize,False,Hospital service area.,PLANNED
 DimHospital,hospital_county,Text,Attribute,Hospital County,Do not summarize,False,Hospital county.,PLANNED
 DimDate,date_key,Whole number,Primary key,Discharge Year,Do not summarize,True,Annual model key derived from discharge year.,PLANNED
 DimDate,discharge_year,Whole number,Natural key,Discharge Year,Do not summarize,False,Released discharge year.,PLANNED
 DimDate,year_label,Text,Attribute,Discharge Year,Do not summarize,False,Business-readable year label.,PLANNED
-DimService,service_key,Whole number,Primary key,APR DRG Code,Do not summarize,True,Model-generated service surrogate key.,PLANNED
-DimService,apr_drg_code,Text,Natural key,APR DRG Code,Do not summarize,False,APR-DRG code.,PLANNED
+DimService,service_key,Whole number,Primary key,APR DRG Code|APR MDC Code,Do not summarize,True,Model-generated service surrogate key derived from the APR-DRG and APR MDC composite natural key.,PLANNED
+DimService,apr_drg_code,Text,Natural key component,APR DRG Code,Do not summarize,False,APR-DRG component of the DimService composite natural key.,PLANNED
 DimService,apr_drg_description,Text,Attribute,APR DRG Description,Do not summarize,False,APR-DRG description.,PLANNED
-DimService,apr_mdc_code,Text,Attribute,APR MDC Code,Do not summarize,False,APR major diagnostic category code.,PLANNED
+DimService,apr_mdc_code,Text,Natural key component,APR MDC Code,Do not summarize,False,APR MDC component of the DimService composite natural key.,PLANNED
 DimService,apr_mdc_description,Text,Attribute,APR MDC Description,Do not summarize,False,APR major diagnostic category description.,PLANNED
 DimService,medical_surgical_classification,Text,Attribute,APR Medical Surgical Description,Do not summarize,False,Released APR medical/surgical classification.,PLANNED
 DimCaseMix,case_mix_key,Whole number,Primary key,APR Severity of Illness Code|APR Risk of Mortality,Do not summarize,True,Model-generated case-mix surrogate key.,PLANNED

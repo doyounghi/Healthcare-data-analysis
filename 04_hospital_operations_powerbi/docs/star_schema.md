@@ -34,6 +34,8 @@ flowchart TD
 | FACT_GRAIN | FactDischarge contains one row per released inpatient discharge. | This matches the audited source grain. |
 | NO_PATIENT_KEY | The model will not create or imply a unique-patient key. | The public file does not support patient-level linkage. |
 | STAR_SCHEMA | Dimensions relate directly to FactDischarge. | This avoids snowflaking and ambiguous filtering. |
+| SERVICE_GRAIN | DimService uses APR-DRG Code and APR MDC Code as a composite natural key. | Physical validation showed that APR-DRG Code alone does not uniquely determine APR MDC. The composite APR-DRG and APR MDC key resolves the observed one-to-many mapping while preserving both classifications. |
+| HOSPITAL_GRAIN | DimHospital uses Permanent Facility Id as its natural key. Operating Certificate Number remains staging-only. | Physical validation identified a Permanent Facility Id with multiple non-null operating certificate numbers. PFI remains the facility-level identifier, while operating certificate number is not treated as a stable descriptive attribute. |
 | RELATIONSHIP_DIRECTION | Relationships are active, one-to-many, and single-directional from dimension to fact. | This provides predictable Power BI filter behavior. |
 | SURROGATE_KEYS | Whole-number surrogate keys are used for model relationships. | Integer keys support model compression and separate relationships from released business identifiers. |
 | UNKNOWN_MEMBER | Surrogate key 0 is reserved for Unknown / Not Available. | Missing dimension values must not cause discharge rows to be dropped. |
@@ -51,7 +53,7 @@ flowchart TD
 | FactDischarge | Fact | One row per released inpatient discharge |  |  | Stores discharge-level foreign keys, LOS, financial amounts, validity flags, and later benchmark values. | No durable public discharge or patient identifier exists. |
 | DimHospital | Dimension | One row per permanent facility identifier | hospital_key | permanent_facility_id | Hospital and released hospital geography. | Future multi-year loads must test whether hospital attributes change over time. |
 | DimDate | Dimension | One row per available discharge year | date_key | discharge_year | Annual reporting context. | This does not support monthly trends. |
-| DimService | Dimension | One row per APR-DRG code | service_key | apr_drg_code | APR-DRG, MDC, and medical/surgical service classification. | Code-to-description consistency must be validated during the physical build. |
+| DimService | Dimension | One row per APR-DRG code and APR MDC code combination | service_key | apr_drg_code\|apr_mdc_code | APR-DRG, MDC, and medical/surgical service classification. | APR-DRG Code alone does not uniquely determine APR MDC in the audited source. The validated composite natural key is APR-DRG Code plus APR MDC Code. |
 | DimCaseMix | Dimension | One row per APR severity and mortality-risk combination | case_mix_key | apr_severity_code\|apr_mortality_risk | Released severity and mortality-risk classifications. | These classifications provide context but do not capture all case-complexity differences. |
 | DimDiagnosis | Dimension | One row per released CCSR diagnosis code | diagnosis_key | ccsr_diagnosis_code | Released diagnosis classification. | The public classification is not a complete clinical history. |
 | DimProcedure | Dimension | One row per released CCSR procedure code | procedure_key | ccsr_procedure_code | Released procedure classification. | Missing procedure categories remain represented. |
@@ -67,7 +69,7 @@ flowchart TD
 | --- | --- | --- | --- | --- | --- |
 | FactDischarge | hospital_key | Whole number | Foreign key | Permanent Facility Id | PLANNED |
 | FactDischarge | date_key | Whole number | Foreign key | Discharge Year | PLANNED |
-| FactDischarge | service_key | Whole number | Foreign key | APR DRG Code | PLANNED |
+| FactDischarge | service_key | Whole number | Foreign key | APR DRG Code\|APR MDC Code | PLANNED |
 | FactDischarge | case_mix_key | Whole number | Foreign key | APR Severity of Illness Code\|APR Risk of Mortality | PLANNED |
 | FactDischarge | diagnosis_key | Whole number | Foreign key | CCSR Diagnosis Code | PLANNED |
 | FactDischarge | procedure_key | Whole number | Foreign key | CCSR Procedure Code | PLANNED |
@@ -91,17 +93,16 @@ flowchart TD
 | FactDischarge | cost_peer_benchmark_level | Text | Benchmark diagnostic | Permanent Facility Id\|APR DRG Code\|APR Severity of Illness Code\|Total Costs | DEFERRED_BENCHMARK_BUILD |
 | DimHospital | hospital_key | Whole number | Primary key | Permanent Facility Id | PLANNED |
 | DimHospital | permanent_facility_id | Text | Natural key | Permanent Facility Id | PLANNED |
-| DimHospital | operating_certificate_number | Text | Attribute | Operating Certificate Number | PLANNED |
 | DimHospital | facility_name | Text | Attribute | Facility Name | PLANNED |
 | DimHospital | hospital_service_area | Text | Attribute | Hospital Service Area | PLANNED |
 | DimHospital | hospital_county | Text | Attribute | Hospital County | PLANNED |
 | DimDate | date_key | Whole number | Primary key | Discharge Year | PLANNED |
 | DimDate | discharge_year | Whole number | Natural key | Discharge Year | PLANNED |
 | DimDate | year_label | Text | Attribute | Discharge Year | PLANNED |
-| DimService | service_key | Whole number | Primary key | APR DRG Code | PLANNED |
-| DimService | apr_drg_code | Text | Natural key | APR DRG Code | PLANNED |
+| DimService | service_key | Whole number | Primary key | APR DRG Code\|APR MDC Code | PLANNED |
+| DimService | apr_drg_code | Text | Natural key component | APR DRG Code | PLANNED |
 | DimService | apr_drg_description | Text | Attribute | APR DRG Description | PLANNED |
-| DimService | apr_mdc_code | Text | Attribute | APR MDC Code | PLANNED |
+| DimService | apr_mdc_code | Text | Natural key component | APR MDC Code | PLANNED |
 | DimService | apr_mdc_description | Text | Attribute | APR MDC Description | PLANNED |
 | DimService | medical_surgical_classification | Text | Attribute | APR Medical Surgical Description | PLANNED |
 | DimCaseMix | case_mix_key | Whole number | Primary key | APR Severity of Illness Code\|APR Risk of Mortality | PLANNED |
@@ -150,7 +151,7 @@ flowchart TD
 | --- | --- | --- | --- | --- |
 | Hospital Service Area | DimHospital | hospital_service_area | INCLUDE | Trim text and map nulls to Unknown. |
 | Hospital County | DimHospital | hospital_county | INCLUDE | Trim text and map nulls to Unknown. |
-| Operating Certificate Number | DimHospital | operating_certificate_number | INCLUDE | Retain as text to preserve formatting. |
+| Operating Certificate Number | Staging |  | STAGING_ONLY | Retained for source validation and lineage only. Not promoted to DimHospital because one Permanent Facility Id may have multiple operating certificate numbers in the audited source. |
 | Permanent Facility Id | DimHospital | permanent_facility_id | INCLUDE | Retain natural identifier and derive hospital_key. |
 | Facility Name | DimHospital | facility_name | INCLUDE | Trim text; do not use as the hospital key. |
 | Age Group | DimPatientSegment | age_group | INCLUDE | Apply the approved category mapping. |
@@ -166,9 +167,9 @@ flowchart TD
 | CCSR Diagnosis Description | DimDiagnosis | ccsr_diagnosis_description | INCLUDE | Trim text. |
 | CCSR Procedure Code | DimProcedure | ccsr_procedure_code | INCLUDE | Retain as text and derive procedure_key. |
 | CCSR Procedure Description | DimProcedure | ccsr_procedure_description | INCLUDE | Trim text. |
-| APR DRG Code | DimService | apr_drg_code | INCLUDE | Retain as text and derive service_key. |
+| APR DRG Code | DimService | apr_drg_code | INCLUDE | Retain as text and combine with APR MDC Code to derive service_key. |
 | APR DRG Description | DimService | apr_drg_description | INCLUDE | Trim text. |
-| APR MDC Code | DimService | apr_mdc_code | INCLUDE | Retain as text. |
+| APR MDC Code | DimService | apr_mdc_code | INCLUDE | Retain as text and combine with APR DRG Code to derive service_key. |
 | APR MDC Description | DimService | apr_mdc_description | INCLUDE | Trim text. |
 | APR Severity of Illness Code | DimCaseMix | apr_severity_code | INCLUDE | Parse as a whole number from 1 through 4, validate against the severity description, and derive case_mix_key. |
 | APR Severity of Illness Description | DimCaseMix | apr_severity_description | INCLUDE | Apply the approved category mapping. |
@@ -243,6 +244,8 @@ flowchart TD
 | Required model columns exist | True | {} |
 | Source-field mappings are unique | True |  |
 | Semantic actions are valid | True |  |
+| DimService uses validated composite natural key | True |  |
+| DimService composite-key columns are explicitly identified | True | apr_drg_code\|apr_mdc_code |
 | Staging-only exclusions are documented | True |  |
 | All metric source dependencies are supported | True |  |
 | Relationship endpoints exist | True |  |

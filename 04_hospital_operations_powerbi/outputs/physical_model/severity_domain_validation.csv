@@ -1,0 +1,6 @@
+apr_severity_code,apr_severity_description,discharge_n,code_valid,description_valid,missing_alignment_valid,passed
+1,Minor,627605,True,True,True,True
+2,Moderate,785246,True,True,True,True
+3,Major,504585,True,True,True,True
+4,Extreme,207844,True,True,True,True
+,Missing / Not Available,474,True,True,True,True

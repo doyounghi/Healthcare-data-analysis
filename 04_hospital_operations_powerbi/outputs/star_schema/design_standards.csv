@@ -2,6 +2,8 @@ standard_id,decision,rationale
 FACT_GRAIN,FactDischarge contains one row per released inpatient discharge.,This matches the audited source grain.
 NO_PATIENT_KEY,The model will not create or imply a unique-patient key.,The public file does not support patient-level linkage.
 STAR_SCHEMA,Dimensions relate directly to FactDischarge.,This avoids snowflaking and ambiguous filtering.
+SERVICE_GRAIN,DimService uses APR-DRG Code and APR MDC Code as a composite natural key.,Physical validation showed that APR-DRG Code alone does not uniquely determine APR MDC. The composite APR-DRG and APR MDC key resolves the observed one-to-many mapping while preserving both classifications.
+HOSPITAL_GRAIN,DimHospital uses Permanent Facility Id as its natural key. Operating Certificate Number remains staging-only.,"Physical validation identified a Permanent Facility Id with multiple non-null operating certificate numbers. PFI remains the facility-level identifier, while operating certificate number is not treated as a stable descriptive attribute."
 RELATIONSHIP_DIRECTION,"Relationships are active, one-to-many, and single-directional from dimension to fact.",This provides predictable Power BI filter behavior.
 SURROGATE_KEYS,Whole-number surrogate keys are used for model relationships.,Integer keys support model compression and separate relationships from released business identifiers.
 UNKNOWN_MEMBER,Surrogate key 0 is reserved for Unknown / Not Available.,Missing dimension values must not cause discharge rows to be dropped.

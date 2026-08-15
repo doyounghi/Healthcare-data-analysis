@@ -1,0 +1,15 @@
+validation_test,passed,details
+Source snapshot matches Notebook 01,True,
+Approved category mappings cover source values,True,
+Staging row count reconciles to source,True,2125754 vs 2125754
+Fact row count reconciles to source,True,2125754 vs 2125754
+Natural-key attributes are consistent,True,
+APR severity code/description domain is valid,True,
+Dimension primary keys are unique,True,
+Each dimension contains exactly one key 0 member,True,
+Fact foreign keys contain no null values,True,0
+Fact foreign keys contain no orphan values,True,
+Physical columns match Notebook 03,True,
+Physical datatypes match Notebook 03,True,
+LOS and financial flags are internally consistent,True,0
+Peer benchmark columns remain unpopulated,True,0

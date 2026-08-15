@@ -1,7 +1,7 @@
 source_field,target_table,target_column,semantic_action,transformation_requirement
 Hospital Service Area,DimHospital,hospital_service_area,INCLUDE,Trim text and map nulls to Unknown.
 Hospital County,DimHospital,hospital_county,INCLUDE,Trim text and map nulls to Unknown.
-Operating Certificate Number,DimHospital,operating_certificate_number,INCLUDE,Retain as text to preserve formatting.
+Operating Certificate Number,Staging,,STAGING_ONLY,Retained for source validation and lineage only. Not promoted to DimHospital because one Permanent Facility Id may have multiple operating certificate numbers in the audited source.
 Permanent Facility Id,DimHospital,permanent_facility_id,INCLUDE,Retain natural identifier and derive hospital_key.
 Facility Name,DimHospital,facility_name,INCLUDE,Trim text; do not use as the hospital key.
 Age Group,DimPatientSegment,age_group,INCLUDE,Apply the approved category mapping.
@@ -17,9 +17,9 @@ CCSR Diagnosis Code,DimDiagnosis,ccsr_diagnosis_code,INCLUDE,Retain as text and 
 CCSR Diagnosis Description,DimDiagnosis,ccsr_diagnosis_description,INCLUDE,Trim text.
 CCSR Procedure Code,DimProcedure,ccsr_procedure_code,INCLUDE,Retain as text and derive procedure_key.
 CCSR Procedure Description,DimProcedure,ccsr_procedure_description,INCLUDE,Trim text.
-APR DRG Code,DimService,apr_drg_code,INCLUDE,Retain as text and derive service_key.
+APR DRG Code,DimService,apr_drg_code,INCLUDE,Retain as text and combine with APR MDC Code to derive service_key.
 APR DRG Description,DimService,apr_drg_description,INCLUDE,Trim text.
-APR MDC Code,DimService,apr_mdc_code,INCLUDE,Retain as text.
+APR MDC Code,DimService,apr_mdc_code,INCLUDE,Retain as text and combine with APR DRG Code to derive service_key.
 APR MDC Description,DimService,apr_mdc_description,INCLUDE,Trim text.
 APR Severity of Illness Code,DimCaseMix,apr_severity_code,INCLUDE,"Parse as a whole number from 1 through 4, validate against the severity description, and derive case_mix_key."
 APR Severity of Illness Description,DimCaseMix,apr_severity_description,INCLUDE,Apply the approved category mapping.

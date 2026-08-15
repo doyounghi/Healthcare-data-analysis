@@ -1,0 +1,3 @@
+validation_test,passed,details
+Source filename matches audited snapshot,True,sparcs_inpatient_2023.csv
+Source SHA-256 matches audited snapshot,True,d69e4b9e47fd2992c323c858cde788578b085e2ba7e0eab7ee8d961db0df97cb

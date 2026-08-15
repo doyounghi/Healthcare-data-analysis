@@ -1,0 +1,11 @@
+relationship_name,dimension_table,fact_column,orphan_row_n,passed
+DimHospital[hospital_key] -> FactDischarge[hospital_key],DimHospital,hospital_key,0,True
+DimDate[date_key] -> FactDischarge[date_key],DimDate,date_key,0,True
+DimService[service_key] -> FactDischarge[service_key],DimService,service_key,0,True
+DimCaseMix[case_mix_key] -> FactDischarge[case_mix_key],DimCaseMix,case_mix_key,0,True
+DimDiagnosis[diagnosis_key] -> FactDischarge[diagnosis_key],DimDiagnosis,diagnosis_key,0,True
+DimProcedure[procedure_key] -> FactDischarge[procedure_key],DimProcedure,procedure_key,0,True
+DimPatientSegment[patient_segment_key] -> FactDischarge[patient_segment_key],DimPatientSegment,patient_segment_key,0,True
+DimGeography[geography_key] -> FactDischarge[geography_key],DimGeography,geography_key,0,True
+DimPayer[payer_key] -> FactDischarge[payer_key],DimPayer,payer_key,0,True
+DimAdmissionContext[admission_context_key] -> FactDischarge[admission_context_key],DimAdmissionContext,admission_context_key,0,True

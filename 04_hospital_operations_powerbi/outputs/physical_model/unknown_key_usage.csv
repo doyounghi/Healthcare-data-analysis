@@ -1,0 +1,11 @@
+dimension_table,fact_foreign_key,unknown_key,unknown_fact_row_n,unknown_fact_row_pct
+DimHospital,hospital_key,0,5333,0.2509
+DimDate,date_key,0,0,0.0
+DimService,service_key,0,0,0.0
+DimCaseMix,case_mix_key,0,474,0.0223
+DimDiagnosis,diagnosis_key,0,0,0.0
+DimProcedure,procedure_key,0,611024,28.7439
+DimPatientSegment,patient_segment_key,0,0,0.0
+DimGeography,geography_key,0,41883,1.9703
+DimPayer,payer_key,0,0,0.0
+DimAdmissionContext,admission_context_key,0,0,0.0

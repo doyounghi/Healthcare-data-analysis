@@ -1,0 +1,11 @@
+table_name,primary_key,row_count,distinct_key_n,null_key_n,unknown_key_n,passed
+DimHospital,hospital_key,208,208,0,1,True
+DimDate,date_key,2,2,0,1,True
+DimService,service_key,483,483,0,1,True
+DimCaseMix,case_mix_key,17,17,0,1,True
+DimDiagnosis,diagnosis_key,483,483,0,1,True
+DimProcedure,procedure_key,321,321,0,1,True
+DimPatientSegment,patient_segment_key,203,203,0,1,True
+DimGeography,geography_key,51,51,0,1,True
+DimPayer,payer_key,10,10,0,1,True
+DimAdmissionContext,admission_context_key,201,201,0,1,True

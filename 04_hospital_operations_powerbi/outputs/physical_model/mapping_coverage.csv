@@ -1,0 +1,8 @@
+source_field,observed_category_n,unmapped_category_n,unmapped_row_n,passed
+APR Risk of Mortality,5,0,0,True
+APR Severity of Illness Description,5,0,0,True
+Age Group,5,0,0,True
+Emergency Department Indicator,2,0,0,True
+Patient Disposition,19,0,0,True
+Payment Typology 1,9,0,0,True
+Type of Admission,6,0,0,True

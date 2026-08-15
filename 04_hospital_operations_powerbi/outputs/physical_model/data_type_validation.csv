@@ -1,0 +1,62 @@
+table_name,column_name,expected_type,actual_type,passed
+FactDischarge,hospital_key,Whole number,BIGINT,True
+FactDischarge,date_key,Whole number,INTEGER,True
+FactDischarge,service_key,Whole number,BIGINT,True
+FactDischarge,case_mix_key,Whole number,BIGINT,True
+FactDischarge,diagnosis_key,Whole number,BIGINT,True
+FactDischarge,procedure_key,Whole number,BIGINT,True
+FactDischarge,patient_segment_key,Whole number,BIGINT,True
+FactDischarge,geography_key,Whole number,BIGINT,True
+FactDischarge,payer_key,Whole number,BIGINT,True
+FactDischarge,admission_context_key,Whole number,BIGINT,True
+FactDischarge,los_days_lower_bound,Whole number,BIGINT,True
+FactDischarge,is_top_coded_los,Whole number,INTEGER,True
+FactDischarge,is_valid_los,Whole number,INTEGER,True
+FactDischarge,total_charges,Fixed decimal number,"DECIMAL(18,2)",True
+FactDischarge,is_valid_charge,Whole number,INTEGER,True
+FactDischarge,total_costs,Fixed decimal number,"DECIMAL(18,2)",True
+FactDischarge,is_valid_cost,Whole number,INTEGER,True
+FactDischarge,is_paired_financial_valid,Whole number,INTEGER,True
+FactDischarge,peer_expected_los_days,Decimal number,DOUBLE,True
+FactDischarge,los_peer_comparison_n,Whole number,BIGINT,True
+FactDischarge,peer_expected_estimated_cost,Fixed decimal number,"DECIMAL(18,2)",True
+FactDischarge,los_peer_benchmark_level,Text,VARCHAR,True
+FactDischarge,cost_peer_comparison_n,Whole number,BIGINT,True
+FactDischarge,cost_peer_benchmark_level,Text,VARCHAR,True
+DimHospital,hospital_key,Whole number,BIGINT,True
+DimHospital,permanent_facility_id,Text,VARCHAR,True
+DimHospital,facility_name,Text,VARCHAR,True
+DimHospital,hospital_service_area,Text,VARCHAR,True
+DimHospital,hospital_county,Text,VARCHAR,True
+DimDate,date_key,Whole number,INTEGER,True
+DimDate,discharge_year,Whole number,INTEGER,True
+DimDate,year_label,Text,VARCHAR,True
+DimService,service_key,Whole number,BIGINT,True
+DimService,apr_drg_code,Text,VARCHAR,True
+DimService,apr_drg_description,Text,VARCHAR,True
+DimService,apr_mdc_code,Text,VARCHAR,True
+DimService,apr_mdc_description,Text,VARCHAR,True
+DimService,medical_surgical_classification,Text,VARCHAR,True
+DimCaseMix,case_mix_key,Whole number,BIGINT,True
+DimCaseMix,apr_severity_code,Whole number,INTEGER,True
+DimCaseMix,apr_severity_description,Text,VARCHAR,True
+DimCaseMix,apr_mortality_risk,Text,VARCHAR,True
+DimDiagnosis,diagnosis_key,Whole number,BIGINT,True
+DimDiagnosis,ccsr_diagnosis_code,Text,VARCHAR,True
+DimDiagnosis,ccsr_diagnosis_description,Text,VARCHAR,True
+DimProcedure,procedure_key,Whole number,BIGINT,True
+DimProcedure,ccsr_procedure_code,Text,VARCHAR,True
+DimProcedure,ccsr_procedure_description,Text,VARCHAR,True
+DimPatientSegment,patient_segment_key,Whole number,BIGINT,True
+DimPatientSegment,age_group,Text,VARCHAR,True
+DimPatientSegment,gender,Text,VARCHAR,True
+DimPatientSegment,race,Text,VARCHAR,True
+DimPatientSegment,ethnicity,Text,VARCHAR,True
+DimGeography,geography_key,Whole number,BIGINT,True
+DimGeography,patient_zip3,Text,VARCHAR,True
+DimPayer,payer_key,Whole number,BIGINT,True
+DimPayer,payer_group,Text,VARCHAR,True
+DimAdmissionContext,admission_context_key,Whole number,BIGINT,True
+DimAdmissionContext,admission_type_group,Text,VARCHAR,True
+DimAdmissionContext,disposition_group,Text,VARCHAR,True
+DimAdmissionContext,ed_indicator_group,Text,VARCHAR,True

@@ -1,0 +1,12 @@
+table_name,internal_row_count,parquet_row_count,row_count_matches,column_schema_matches,passed
+FactDischarge,2125754,2125754,True,True,True
+DimHospital,208,208,True,True,True
+DimDate,2,2,True,True,True
+DimService,483,483,True,True,True
+DimCaseMix,17,17,True,True,True
+DimDiagnosis,483,483,True,True,True
+DimProcedure,321,321,True,True,True
+DimPatientSegment,203,203,True,True,True
+DimGeography,51,51,True,True,True
+DimPayer,10,10,True,True,True
+DimAdmissionContext,201,201,True,True,True
