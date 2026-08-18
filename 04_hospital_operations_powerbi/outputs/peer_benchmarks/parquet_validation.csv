@@ -1,0 +1,3 @@
+validation_test,passed,details
+Exported benchmark fact row count matches internal table,True,2125754 vs 2125754
+Exported benchmark fact schema matches internal table,True,

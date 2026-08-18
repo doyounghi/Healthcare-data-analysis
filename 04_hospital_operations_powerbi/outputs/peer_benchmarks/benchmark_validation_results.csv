@@ -1,0 +1,13 @@
+validation_test,passed,details
+Notebook 02 validation passed,True,
+Notebook 03 validation passed,True,
+Notebook 04 physical validation passed,True,
+Input benchmark columns were empty,True,
+Benchmark context preserves fact row count,True,2125754 vs 2125754
+Benchmarked fact preserves fact row count,True,2125754 vs 2125754
+Non-benchmark fact columns are unchanged,True,0 input-only; 0 output-only
+Benchmark selection logic has no violations,True,0
+Direct mathematical reconciliation passes,True,12 sample comparisons
+Fact schema remains unchanged,True,
+At least one LOS benchmark is available,True,2120362
+At least one estimated-cost benchmark is available,True,2120362

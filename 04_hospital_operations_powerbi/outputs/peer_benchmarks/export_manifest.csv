@@ -1,0 +1,12 @@
+file_name,artifact_type,row_count,file_size_mb,output_path
+FactDischarge.parquet,Benchmarked fact table,2125754,48.74,outputs/peer_benchmarks/tables/FactDischarge.parquet
+benchmark_standards.csv,Validation or diagnostic output,11,0.0019,outputs/peer_benchmarks/benchmark_standards.csv
+benchmark_specification_snapshot.csv,Validation or diagnostic output,5,0.0015,outputs/peer_benchmarks/benchmark_specification_snapshot.csv
+benchmark_eligibility.csv,Validation or diagnostic output,1,0.0002,outputs/peer_benchmarks/benchmark_eligibility.csv
+benchmark_coverage.csv,Validation or diagnostic output,8,0.0005,outputs/peer_benchmarks/benchmark_coverage.csv
+benchmark_peer_size_summary.csv,Validation or diagnostic output,4,0.0003,outputs/peer_benchmarks/benchmark_peer_size_summary.csv
+manual_reconciliation.csv,Validation or diagnostic output,12,0.001,outputs/peer_benchmarks/manual_reconciliation.csv
+selection_logic_validation.csv,Validation or diagnostic output,1,0.0004,outputs/peer_benchmarks/selection_logic_validation.csv
+benchmark_validation_results.csv,Validation or diagnostic output,12,0.0007,outputs/peer_benchmarks/benchmark_validation_results.csv
+parquet_validation.csv,Validation or diagnostic output,2,0.0002,outputs/peer_benchmarks/parquet_validation.csv
+peer_benchmarks.md,Documentation,,0.0058,docs/peer_benchmarks.md

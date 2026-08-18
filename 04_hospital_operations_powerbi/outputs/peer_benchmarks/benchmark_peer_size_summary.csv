@@ -1,0 +1,5 @@
+benchmark_metric,benchmark_level,benchmarked_row_n,min_peer_n,median_peer_n,p95_peer_n,max_peer_n
+Estimated Cost,APR-DRG,2570,30,375.0,4731.399999999998,164903
+Estimated Cost,APR-DRG × Severity,2117792,30,5162.0,118935.0,122766
+LOS,APR-DRG,2570,30,375.0,4731.399999999998,164903
+LOS,APR-DRG × Severity,2117792,30,5162.0,118935.0,122766

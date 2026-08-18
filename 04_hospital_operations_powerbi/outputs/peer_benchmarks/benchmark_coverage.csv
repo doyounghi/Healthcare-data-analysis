@@ -1,0 +1,9 @@
+benchmark_metric,benchmark_level,benchmark_status,row_n,row_pct
+Estimated Cost,APR-DRG,Fallback benchmark available,2570,0.1209
+Estimated Cost,APR-DRG × Severity,Primary benchmark available,2117792,99.6255
+Estimated Cost,Unavailable,Insufficient comparison volume,59,0.0028
+Estimated Cost,Unavailable,Unresolved hospital,5333,0.2509
+LOS,APR-DRG,Fallback benchmark available,2570,0.1209
+LOS,APR-DRG × Severity,Primary benchmark available,2117792,99.6255
+LOS,Unavailable,Insufficient comparison volume,59,0.0028
+LOS,Unavailable,Unresolved hospital,5333,0.2509
