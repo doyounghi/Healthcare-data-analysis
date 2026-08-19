@@ -1,6 +1,6 @@
 # Hospital Operations and Cost Efficiency Analytics
 
-A healthcare analytics project using New York State SPARCS inpatient discharge data to design transparent hospital-utilization benchmarks, governed operational metrics, and a Power BI-ready star schema.
+A healthcare analytics project using New York State SPARCS inpatient discharge data to design, build, and validate transparent hospital-utilization benchmarks, governed operational metrics, and a Power BI-ready star schema.
 
 Although this project uses hospital data, the core workflow is transferable to other settings where organizations need to compare operational performance across entities with different case or customer mixes.
 
@@ -10,8 +10,8 @@ The goal is to identify hospitals and service lines with unusually high utilizat
 
 The project combines:
 
-* Python for data auditing, metric design, feature engineering, and later model development
-* Transparent peer benchmarking for operational comparison
+* Python and DuckDB for data auditing, metric design, transformation, validation, and later model development
+* Transparent leave-one-facility-out peer benchmarking for operational comparison
 * Machine learning for later retrospective case-mix-adjusted length-of-stay estimation
 * Power BI for semantic modeling and executive reporting
 * Microsoft Fabric as a planned scalable ingestion, transformation, scoring, and deployment architecture
@@ -54,7 +54,7 @@ Export the dataset as CSV, rename it if necessary, and place it at:
 data/raw/sparcs_inpatient_2023.csv
 ```
 
-The audit notebook expects that exact filename and path.
+The audit and physical-model notebooks expect that exact filename and path.
 
 ## Business Question
 
@@ -69,7 +69,7 @@ Supporting questions include:
 
 ## Analytical Scope
 
-The current design supports:
+The current implementation supports:
 
 * Inpatient discharge volume
 * Total and distributional LOS analysis
@@ -78,7 +78,9 @@ The current design supports:
 * Severity-of-illness and mortality-risk distributions
 * Payer, demographic, disposition, and geographic context
 * Charges and released estimated costs
-* Leave-one-facility-out peer benchmarks
+* Leave-one-facility-out LOS and estimated-cost peer benchmarks
+* Primary APR-DRG × severity benchmarks with APR-DRG fallback
+* Power BI-ready dimensional tables and benchmarked fact-table exports
 * Future retrospective case-mix-adjusted expected LOS
 * Power BI semantic-model design
 * Conservative small-cell reporting controls
@@ -126,7 +128,7 @@ Later modeling and visualization work may add packages such as `numpy`, `scikit-
 
 ## Project Workflow
 
-The completed design-stage workflow covers:
+The completed workflow currently covers:
 
 * Source-file and schema auditing
 * Missingness and cardinality profiling
@@ -141,18 +143,28 @@ The completed design-stage workflow covers:
 * Small-cell suppression rules
 * Logical star-schema and relationship design
 * Source-to-model lineage
-* Machine-readable validation and documentation exports
+* Physical staging and dimensional-model construction
+* Natural-key, surrogate-key, foreign-key, datatype, and row-count validation
+* Power BI-ready Parquet export
+* Leave-one-facility-out LOS and estimated-cost benchmark calculation
+* Primary-versus-fallback benchmark assignment
+* Benchmark coverage and peer-size diagnostics
+* Independent mathematical reconciliation of benchmark calculations
+* Machine-readable validation and business-readable documentation exports
 
 Planned later stages include:
 
-* Reproducible data cleaning and dimensional-table construction
-* Peer-benchmark calculation
-* DAX measure implementation
-* Power BI report development
+* Explicit DAX measure implementation
+* Power BI semantic-model construction and relationship verification
+* Small-cell suppression implementation in Power BI
+* Semantic-model memory and performance testing
+* Power BI executive and operational report development
 * Retrospective expected-LOS model development and validation
+* Model calibration and subgroup validation
 * Versioned model scoring outputs
-* Model-performance and stability monitoring
+* Multi-year compatibility testing
 * Microsoft Fabric architecture and deployment design
+* Deferred peer-median contextual benchmarks
 
 ## Notebook 01: SPARCS Data and Schema Audit
 
@@ -180,19 +192,14 @@ Length of stay is strongly right-skewed:
 
 * Lower-bound mean LOS: approximately 5.78 days
 * Median LOS: 3 days
-* Approximately 2,290 records are released as `120 +`
+* 2,290 records are released as `120 +`
 * Top-coded records represent approximately 0.108% of the dataset
 
 When a numeric value is needed, `120 +` is represented as an observable lower bound of 120 days. It must not be interpreted as an exact 120-day stay.
 
 ### Financial Findings
 
-Charges and estimated costs are also strongly right-skewed:
-
-* Mean total charges: approximately $83,340
-* Median total charges: approximately $43,901
-* Mean estimated costs: approximately $25,155
-* Median estimated costs: approximately $13,234
+Charges and estimated costs are also strongly right-skewed.
 
 `Total Charges` represents billed charges, not reimbursement or revenue.
 
@@ -259,7 +266,7 @@ Notebook 01 does not perform:
 
 Notebook 02 converts the audit findings into formal specifications for operational metrics, denominator rules, category mappings, peer benchmarks, and reporting suppression.
 
-It defines how metrics should be calculated but does not yet calculate hospital performance from the raw discharge file.
+It defines how metrics should be calculated but does not calculate hospital performance from the raw discharge file.
 
 ### Main Work Completed
 
@@ -270,7 +277,7 @@ It defines how metrics should be calculated but does not yet calculate hospital 
 * Defined valid-record, denominator, exclusion, and display rules
 * Added robust LOS statistics, including median, IQR, and P95
 * Defined financial, admission-context, case-mix, disposition, and outcome metrics
-* Created approved category-mapping specifications
+* Created and approved category-mapping specifications
 * Defined leave-one-facility-out LOS and estimated-cost peer benchmarks
 * Separated descriptive peer expectations from later model predictions
 * Defined conservative small-cell suppression controls
@@ -278,7 +285,7 @@ It defines how metrics should be calculated but does not yet calculate hospital 
 
 ### Metric Framework
 
-The metric catalog currently contains 32 governed metrics across:
+The metric catalog contains 32 governed metrics across:
 
 * Volume
 * Length of stay
@@ -329,7 +336,9 @@ APR-DRG Code
 
 If the fallback group also contains fewer than 30 comparison discharges, the peer expectation remains missing.
 
-Each facility is excluded from its own comparison benchmark. This prevents the focal facility from materially influencing the expected value used to evaluate it.
+Each facility is excluded from its own comparison benchmark. This prevents the focal facility from influencing the expected value used to evaluate it.
+
+LOS and estimated-cost comparison populations are handled independently according to their governed validity rules.
 
 The initial peer expectation is a descriptive baseline. It is not a machine-learning prediction, clinical expectation, formal risk-adjusted quality measure, or causal estimate.
 
@@ -365,6 +374,7 @@ design_standards.csv
 benchmark_field_validation.csv
 metric_field_validation.csv
 validation_results.csv
+export_manifest.csv
 ```
 
 It also generates:
@@ -389,20 +399,21 @@ Notebook 02 does not perform:
 
 Notebook 03 converts the audited fields and approved analytical specifications into a documented logical star schema for Power BI.
 
-It designs the semantic model but does not physically construct Power Query tables, create DAX measures, or build report pages.
+It designs the semantic model but does not physically construct the tables, create DAX measures, or build report pages.
 
 ### Main Work Completed
 
 * Loaded and validated Notebook 01 and Notebook 02 outputs
+* Confirmed required metrics and primary benchmark specifications
 * Defined the one-discharge-per-row `FactDischarge` grain
 * Defined dimension-table grains and business roles
-* Classified all 33 audited source fields as included or staging-only
+* Classified every audited source field as included or staging-only
 * Defined source-to-model lineage
 * Specified whole-number surrogate keys
 * Reserved key `0` for Unknown or Not Available members
 * Defined active one-to-many, single-direction relationships
-* Confirmed model support for all 32 catalog metrics
-* Defined deferred storage requirements for peer benchmarks
+* Confirmed required metric dependencies are represented in the model
+* Defined storage requirements for LOS and estimated-cost peer benchmarks
 * Documented a later versioned model-prediction extension
 * Exported machine-readable schema and validation artifacts
 
@@ -435,6 +446,16 @@ All descriptive dimensions filter `FactDischarge` through active, one-to-many, s
 The model does not invent a durable patient or longitudinal discharge identifier. Missing, suppressed, or unresolved dimension values map to surrogate key `0` so fact rows are preserved.
 
 Released natural identifiers remain available as descriptive attributes, while technical surrogate and foreign keys are intended to be hidden from report users.
+
+`DimService` uses the composite natural key:
+
+```text
+APR-DRG Code × APR MDC Code
+```
+
+This physical dimension grain is required because APR-DRG alone does not uniquely determine APR-MDC in the validated 2023 source.
+
+The service-dimension grain does not change the analytical peer-benchmark grain, which remains APR-DRG × severity with APR-DRG fallback.
 
 ### Deferred Prediction Extension
 
@@ -482,9 +503,9 @@ It also generates:
 docs/star_schema.md
 ```
 
-### Remaining Physical Validations
+### Physical Validations Implemented Downstream
 
-The following checks are deferred until the dimensional tables are constructed:
+Notebook 04 subsequently validates the physical implementation for:
 
 * Dimension-key uniqueness
 * Natural-key-to-description consistency
@@ -493,20 +514,274 @@ The following checks are deferred until the dimensional tables are constructed:
 * Unknown-member assignment
 * Data-type conversion
 * Financial and LOS validity flags
-* Actual Power BI relationship cardinality
-* Semantic-model memory usage
+* Exported Parquet row and schema reconciliation
+
+Actual Power BI relationship behavior and semantic-model memory usage remain downstream.
 
 ### What This Notebook Does Not Do
 
 Notebook 03 does not build:
 
-* Power Query transformations
 * Physical fact or dimension tables
 * DAX measures
 * Power BI report pages
 * Hospital rankings
 * Predictive models
 * Fabric pipelines
+
+## Notebook 04: Physical Data Model Build and Validation
+
+Notebook 04 converts the approved logical schema into a reproducible physical star schema and validates that the implementation preserves the governed source grain, transformation rules, and schema specifications.
+
+### Main Work Completed
+
+* Loaded and validated committed outputs from Notebooks 01–03
+* Confirmed the raw file matches the Notebook 01 SHA-256 source snapshot
+* Confirmed source schema and row count match the audit
+* Applied only approved Notebook 02 category mappings
+* Validated complete mapping coverage before transformation
+* Standardized text and missing-value handling
+* Parsed LOS while preserving `120 +` as an observable 120-day lower bound
+* Created LOS top-code and validity flags
+* Parsed positive charges and estimated costs and created financial validity flags
+* Retained repeated released-value rows rather than treating them as proven duplicates
+* Validated natural-key-to-description consistency before constructing dimensions
+* Built all 10 approved physical dimensions
+* Assigned deterministic whole-number surrogate keys
+* Reserved surrogate key `0` for Unknown / Not Available
+* Built `FactDischarge` with 2,125,754 rows
+* Preserved complete source-to-fact row reconciliation
+* Validated dimension-key uniqueness and foreign-key integrity
+* Validated physical columns and datatypes against Notebook 03
+* Created six typed peer-benchmark placeholder columns
+* Exported and re-read Power BI-ready compressed Parquet tables
+* Generated physical-model documentation
+
+### Physical Model
+
+The physical build contains:
+
+```text
+FactDischarge           2,125,754 rows
+DimHospital                   208 rows
+DimDate                         2 rows
+DimService                    483 rows
+DimCaseMix                     17 rows
+DimDiagnosis                  483 rows
+DimProcedure                  321 rows
+DimPatientSegment            203 rows
+DimGeography                  51 rows
+DimPayer                       10 rows
+DimAdmissionContext           201 rows
+```
+
+All 10 dimensions contain exactly one key-`0` Unknown / Not Available member.
+
+The fact table contains no null foreign keys and no orphan foreign keys.
+
+### Validation Highlights
+
+Notebook 04 validates:
+
+* Raw-source snapshot reproducibility
+* Approved mapping coverage
+* Source-to-staging row reconciliation
+* Source-to-fact row reconciliation
+* Natural-key attribute consistency
+* APR severity code/description domain consistency
+* Dimension primary-key uniqueness
+* Unknown-member policy
+* Foreign-key completeness
+* Physical column agreement with Notebook 03
+* Physical datatype agreement with Notebook 03
+* LOS and financial flag consistency
+* Parquet row-count and schema reconciliation
+
+All physical-model validation gates pass in Notebook 04.
+
+### Outputs Created
+
+Notebook 04 exports Power BI-ready tables to:
+
+```text
+outputs/physical_model/tables/
+```
+
+including:
+
+```text
+FactDischarge.parquet
+DimHospital.parquet
+DimDate.parquet
+DimService.parquet
+DimCaseMix.parquet
+DimDiagnosis.parquet
+DimProcedure.parquet
+DimPatientSegment.parquet
+DimGeography.parquet
+DimPayer.parquet
+DimAdmissionContext.parquet
+```
+
+Validation and documentation artifacts are exported to:
+
+```text
+outputs/physical_model/
+docs/physical_data_model.md
+```
+
+### What This Notebook Does Not Do
+
+Notebook 04 does not:
+
+* Calculate descriptive peer expectations
+* Calculate final business KPIs
+* Implement DAX
+* Build Power BI report pages
+* Train predictive models
+* Create patient or longitudinal identifiers
+* Perform causal analysis
+
+The six peer-benchmark columns are intentionally left empty for Notebook 05.
+
+## Notebook 05: Leave-One-Facility-Out Peer Benchmark Calculation and Validation
+
+Notebook 05 implements the governed descriptive peer-benchmark methodology defined in Notebook 02 and populates the six benchmark columns reserved in the physical fact table by Notebooks 03 and 04.
+
+### Main Work Completed
+
+* Loaded and validated committed outputs from Notebooks 02–04
+* Confirmed all Notebook 04 benchmark placeholders were initially empty
+* Loaded the validated physical star schema from Parquet
+* Recovered facility, APR-DRG, and severity context from the dimensions
+* Profiled LOS and estimated-cost benchmark eligibility
+* Calculated leave-one-facility-out APR-DRG × severity LOS expectations
+* Calculated APR-DRG LOS fallback expectations
+* Calculated leave-one-facility-out APR-DRG × severity estimated-cost expectations
+* Calculated APR-DRG estimated-cost fallback expectations
+* Enforced a minimum of 30 comparison discharges after focal-facility exclusion
+* Resolved primary, fallback, and unavailable benchmark levels independently for LOS and cost
+* Populated all six governed benchmark fields
+* Preserved all 2,125,754 fact rows and every non-benchmark fact value
+* Validated benchmark-level selection logic
+* Reconciled benchmark calculations through an independent query path
+* Validated fact-table schema preservation
+* Exported and re-read the benchmarked compressed Parquet fact table
+* Generated benchmark coverage and peer-size diagnostics
+* Generated business-readable benchmark methodology documentation
+
+### Implemented Benchmark Logic
+
+Primary peer group:
+
+```text
+APR-DRG Code × APR Severity of Illness Code
+```
+
+Fallback peer group:
+
+```text
+APR-DRG Code
+```
+
+For every focal hospital:
+
+1. All eligible records from that hospital are excluded from its own comparison population.
+2. The primary peer expectation is used when at least 30 comparison discharges remain.
+3. The APR-DRG fallback is used when the primary group is insufficient but the fallback contains at least 30 comparison discharges.
+4. Otherwise, the expectation remains unavailable.
+5. LOS and estimated-cost eligibility are evaluated independently.
+6. Unavailable expected values remain null rather than zero.
+
+Hospital key `0` does not receive a leave-one-facility-out benchmark.
+
+### Benchmark Coverage
+
+The benchmarked fact table contains 2,125,754 rows.
+
+For both LOS and estimated cost:
+
+* 2,120,362 rows receive a benchmark: approximately 99.7463%
+* 2,117,792 rows use the primary APR-DRG × severity benchmark: approximately 99.6255%
+* 2,570 rows use the APR-DRG fallback: approximately 0.1209%
+* 5,392 rows are unavailable: approximately 0.2537%
+
+Of the unavailable rows:
+
+* 5,333 have an unresolved hospital
+* 59 have insufficient comparison volume
+
+The primary benchmark therefore covers nearly the entire released dataset while preserving an explicit fallback and unavailable state.
+
+### Downstream Measures Supported
+
+The benchmarked fact table can support governed measures such as:
+
+* Peer-Expected LOS Days
+* LOS Actual-to-Peer-Expected Ratio
+* Excess LOS Days — Lower Bound
+* Peer-Expected Estimated Cost
+* Estimated Cost Actual-to-Peer-Expected Ratio
+* Excess Estimated Cost
+
+These measures are not yet implemented as DAX in these notebooks.
+
+### Validation Highlights
+
+Notebook 05 validates that:
+
+* Notebook 02, 03, and 04 validation gates have passed
+* Benchmark context preserves the 2,125,754-row fact grain
+* Benchmarked `FactDischarge` preserves the same row count
+* Non-benchmark fact columns remain unchanged
+* Benchmark-selection logic has no violations
+* Direct mathematical reconciliation passes for sampled comparisons
+* The fact-table schema remains unchanged
+* Both LOS and estimated-cost benchmarks have nonzero coverage
+* Exported Parquet row counts and schema reconcile to the in-memory build
+
+### Outputs Created
+
+Notebook 05 exports the benchmarked fact table to:
+
+```text
+outputs/peer_benchmarks/tables/FactDischarge.parquet
+```
+
+Key diagnostic and validation outputs include:
+
+```text
+benchmark_standards.csv
+benchmark_specification_snapshot.csv
+benchmark_eligibility.csv
+benchmark_coverage.csv
+benchmark_peer_size_summary.csv
+manual_reconciliation.csv
+selection_logic_validation.csv
+benchmark_validation_results.csv
+parquet_validation.csv
+export_manifest.csv
+```
+
+It also generates:
+
+```text
+docs/peer_benchmarks.md
+```
+
+Notebook 04 outputs remain the immutable pre-benchmark physical layer.
+
+### What This Notebook Does Not Do
+
+Notebook 05 does not perform:
+
+* Machine-learning prediction
+* Formal clinical risk adjustment
+* Causal attribution
+* Hospital-quality grading
+* Clinical recommendation
+* DAX implementation
+* Power BI report construction
 
 ## Project Structure
 
@@ -518,15 +793,23 @@ Notebook 03 does not build:
 ├── docs/
 │   ├── project_charter.md
 │   ├── metric_catalog.md
-│   └── star_schema.md
+│   ├── star_schema.md
+│   ├── physical_data_model.md
+│   └── peer_benchmarks.md
 ├── notebooks/
 │   ├── 01_data_audit.ipynb
 │   ├── 02_metric_catalog_and_benchmark_design.ipynb
-│   └── 03_star_schema_design.ipynb
+│   ├── 03_star_schema_design.ipynb
+│   ├── 04_physical_data_model_build.ipynb
+│   └── 05_peer_benchmark_calculation.ipynb
 ├── outputs/
 │   ├── data_audit/
 │   ├── metric_catalog/
-│   └── star_schema/
+│   ├── star_schema/
+│   ├── physical_model/
+│   │   └── tables/
+│   └── peer_benchmarks/
+│       └── tables/
 ├── .gitignore
 └── README.md
 ```
@@ -539,11 +822,17 @@ For a complete clean run, execute the notebooks in numerical order:
 01_data_audit.ipynb
 02_metric_catalog_and_benchmark_design.ipynb
 03_star_schema_design.ipynb
+04_physical_data_model_build.ipynb
+05_peer_benchmark_calculation.ipynb
 ```
 
 Notebook 02 depends on exported audit outputs from Notebook 01.
 
 Notebook 03 depends on the audited schema and validated metric-catalog outputs from Notebooks 01 and 02.
+
+Notebook 04 depends on committed specifications and validation outputs from Notebooks 01–03 and independently verifies that the raw source still matches the audited snapshot before constructing the physical model.
+
+Notebook 05 depends on the governed benchmark specification, logical schema, and validated physical Parquet outputs from Notebooks 02–04.
 
 The notebooks use dynamic project-root detection based on `docs/project_charter.md`, so paths resolve relative to the repository rather than through hard-coded user-specific locations.
 
@@ -568,13 +857,13 @@ Important limitations include:
 * The data represent released discharge records rather than unique patients
 * No readmission or longitudinal patient analysis is possible
 * Monthly analysis is unavailable because only discharge year is present
-* LOS values released as `120 +` are right-censored
+* LOS values released as `120 +` are right-censored and are represented only as observable lower bounds when numeric analysis is required
 * Charges are not reimbursement, revenue, or profit
 * Estimated costs are not audited hospital expenses
 * APR-DRG and severity do not capture every case-mix difference
 * Hospital structural characteristics are not yet incorporated
 * Peer benchmarks are descriptive rather than formal clinical risk adjustment
-* Peer differences do not prove inefficiency, preventability, or causality
+* Peer differences do not prove inefficiency, preventability, poor quality, or causality
 * Multi-year schema compatibility and future-year stability have not yet been established
 * The current project phase does not include a completed Power BI report or validated predictive model
 
@@ -582,18 +871,21 @@ Important limitations include:
 
 Planned work includes:
 
-* Constructing the physical fact and dimension tables
-* Calculating leave-one-facility-out peer benchmarks
 * Defining and implementing explicit DAX measures
-* Building Power BI executive and operational report pages
+* Implementing conservative small-cell suppression logic in Power BI
+* Building and validating the Power BI semantic model
+* Verifying relationship cardinality and filter direction in Power BI
+* Testing semantic-model memory and performance
+* Building executive and operational report pages
+* Reconciling Power BI measures to independent Python calculations
 * Developing baseline and candidate expected-LOS models
 * Comparing models using identical validation data
 * Evaluating calibration and subgroup performance
 * Producing versioned prediction outputs
-* Reconciling Power BI measures to independent Python calculations
 * Evaluating multi-year data compatibility
 * Designing the Desktop-to-Fabric deployment path
+* Defining aggregation rules before implementing deferred peer-median contextual benchmarks
 
 ## Final Project Statement
 
-This project builds an end-to-end hospital operations analytics solution that combines Python, transparent benchmarking, semantic modeling, machine learning, Microsoft Fabric, and Power BI to identify excess inpatient resource utilization after accounting for observable case complexity.
+This project builds an end-to-end hospital operations analytics solution that combines reproducible Python and DuckDB data engineering, governed metrics, validated star-schema modeling, transparent leave-one-facility-out benchmarking, planned machine learning, Microsoft Fabric, and Power BI to identify inpatient resource-utilization patterns after accounting for observable case complexity.
