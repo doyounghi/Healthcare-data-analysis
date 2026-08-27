@@ -1,5 +1,6 @@
 standard_id,decision,rationale
 SOURCE_GRAIN_PRESERVED,Every released source row is retained in FactDischarge.,The audited grain is one released inpatient discharge.
+SNAPSHOT_SOURCE_ROW_KEY,FactDischarge persists a unique source-row ordinal scoped to the audited snapshot.,The key supports reproducible downstream joins without implying patient identity or longitudinal discharge linkage.
 NO_DUPLICATE_REMOVAL,Repeated released-value patterns are not removed.,No durable public discharge identifier exists to prove that repeated rows are erroneous duplicates.
 TEXT_NORMALIZATION,Text values are trimmed and blank strings become null.,This prevents whitespace from creating artificial dimension members.
 APPROVED_MAPPINGS_ONLY,Only category mappings approved in Notebook 02 are applied.,The physical build must not introduce undocumented business grouping logic.

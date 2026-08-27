@@ -1,0 +1,20 @@
+validation_test,passed,details
+Notebook 02 validation passed,True,
+Notebook 03 validation passed,True,
+Notebook 04 physical validation passed,True,
+Notebook 04 Parquet validation passed,True,
+Notebook 05 benchmark validation passed,True,
+Notebook 05 Parquet validation passed,True,
+Modeling source preserves fact row count,True,2125754 vs 2125754
+Source record key is complete and unique,True,"{'row_count': 2125754, 'nonnull_key_n': 2125754, 'distinct_key_n': 2125754}"
+Feature specification covers all primary and forbidden fields,True,31
+Development validation passed,True,
+Hospital-held-out folds cover every development row,True,3 folds
+All candidate OOF predictions are complete and positive,True,
+All governed candidate families were evaluated,True,STATEWIDE_MEDIAN|APR_DRG_MEDIAN|APR_DRG_SEVERITY_MEDIAN|STATEWIDE_MEAN|APR_DRG_MEAN|APR_DRG_SEVERITY_MEAN|RIDGE_REGRESSION|POISSON_REGRESSION|TWEEDIE_REGRESSION|RANDOM_FOREST|XGBOOST
+Provisional shortlist exists,True,XGBOOST|RIDGE_REGRESSION|RANDOM_FOREST
+Exported subgroup diagnostics meet minimum reporting size,True,minimum n=11; rows=1118
+Low-volume subgroup diagnostics are summarized without group values,True,28
+Top-code sensitivity produced,True,6
+Hospital/disposition sensitivity produced,True,4
+Prediction contract separates modeled from peer expected LOS,True,

@@ -9,6 +9,7 @@ FactDischarge,patient_segment_key,Whole number,Foreign key,Age Group|Gender|Race
 FactDischarge,geography_key,Whole number,Foreign key,Zip Code - 3 digits,Do not summarize,True,Resolves each discharge to DimGeography.,PLANNED
 FactDischarge,payer_key,Whole number,Foreign key,Payment Typology 1,Do not summarize,True,Resolves each discharge to DimPayer.,PLANNED
 FactDischarge,admission_context_key,Whole number,Foreign key,Type of Admission|Patient Disposition|Emergency Department Indicator,Do not summarize,True,Resolves each discharge to DimAdmissionContext.,PLANNED
+FactDischarge,source_record_key,Whole number,Technical row key,,Do not summarize,True,Unique row ordinal scoped to the audited source snapshot. It is not a patient identifier or durable discharge identifier.,PLANNED
 FactDischarge,los_days_lower_bound,Whole number,Additive value,Length of Stay,Sum,True,Observable LOS lower bound after representing 120+ as 120.,PLANNED
 FactDischarge,is_top_coded_los,Whole number,Validity flag,Length of Stay,Sum,True,Equals 1 when the released LOS is top-coded; otherwise 0.,PLANNED
 FactDischarge,is_valid_los,Whole number,Validity flag,Length of Stay,Sum,True,Equals 1 when LOS is valid for LOS calculations.,PLANNED

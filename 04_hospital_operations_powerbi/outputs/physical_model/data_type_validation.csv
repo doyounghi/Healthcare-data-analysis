@@ -9,6 +9,7 @@ FactDischarge,patient_segment_key,Whole number,BIGINT,True
 FactDischarge,geography_key,Whole number,BIGINT,True
 FactDischarge,payer_key,Whole number,BIGINT,True
 FactDischarge,admission_context_key,Whole number,BIGINT,True
+FactDischarge,source_record_key,Whole number,BIGINT,True
 FactDischarge,los_days_lower_bound,Whole number,BIGINT,True
 FactDischarge,is_top_coded_los,Whole number,INTEGER,True
 FactDischarge,is_valid_los,Whole number,INTEGER,True

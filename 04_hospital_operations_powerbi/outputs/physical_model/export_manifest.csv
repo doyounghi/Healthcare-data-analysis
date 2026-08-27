@@ -1,5 +1,5 @@
 file_name,artifact_type,table_name,row_count,file_size_mb,output_path
-FactDischarge.parquet,Physical model table,FactDischarge,2125754,28.02,outputs/physical_model/tables/FactDischarge.parquet
+FactDischarge.parquet,Physical model table,FactDischarge,2125754,30.11,outputs/physical_model/tables/FactDischarge.parquet
 DimHospital.parquet,Physical model table,DimHospital,208,0.01,outputs/physical_model/tables/DimHospital.parquet
 DimDate.parquet,Physical model table,DimDate,2,0.0,outputs/physical_model/tables/DimDate.parquet
 DimService.parquet,Physical model table,DimService,483,0.01,outputs/physical_model/tables/DimService.parquet
@@ -10,7 +10,7 @@ DimPatientSegment.parquet,Physical model table,DimPatientSegment,203,0.0,outputs
 DimGeography.parquet,Physical model table,DimGeography,51,0.0,outputs/physical_model/tables/DimGeography.parquet
 DimPayer.parquet,Physical model table,DimPayer,10,0.0,outputs/physical_model/tables/DimPayer.parquet
 DimAdmissionContext.parquet,Physical model table,DimAdmissionContext,201,0.0,outputs/physical_model/tables/DimAdmissionContext.parquet
-transformation_standards.csv,Validation output,,11,0.0017,outputs/physical_model/transformation_standards.csv
+transformation_standards.csv,Validation output,,12,0.0019,outputs/physical_model/transformation_standards.csv
 source_snapshot_validation.csv,Validation output,,2,0.0002,outputs/physical_model/source_snapshot_validation.csv
 mapping_coverage.csv,Validation output,,7,0.0003,outputs/physical_model/mapping_coverage.csv
 staging_profile.csv,Validation output,,1,0.0003,outputs/physical_model/staging_profile.csv
@@ -20,7 +20,7 @@ dimension_row_counts.csv,Validation output,,10,0.0002,outputs/physical_model/dim
 dimension_key_validation.csv,Validation output,,10,0.0005,outputs/physical_model/dimension_key_validation.csv
 orphan_validation.csv,Validation output,,10,0.001,outputs/physical_model/orphan_validation.csv
 unknown_key_usage.csv,Validation output,,10,0.0005,outputs/physical_model/unknown_key_usage.csv
-data_type_validation.csv,Validation output,,61,0.0032,outputs/physical_model/data_type_validation.csv
+data_type_validation.csv,Validation output,,62,0.0033,outputs/physical_model/data_type_validation.csv
 physical_validation_results.csv,Validation output,,14,0.0007,outputs/physical_model/physical_validation_results.csv
 parquet_validation.csv,Validation output,,11,0.0005,outputs/physical_model/parquet_validation.csv
-physical_data_model.md,Documentation,,,0.0052,docs/physical_data_model.md
+physical_data_model.md,Documentation,,,0.0054,docs/physical_data_model.md

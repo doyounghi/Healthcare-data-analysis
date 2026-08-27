@@ -1,0 +1,5 @@
+model_name,subgroup_dimension,suppressed_group_n
+APR_DRG_SEVERITY_MEAN,apr_drg_code,11
+APR_DRG_SEVERITY_MEAN,hospital_key,3
+XGBOOST,apr_drg_code,11
+XGBOOST,hospital_key,3

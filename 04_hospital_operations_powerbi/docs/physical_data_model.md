@@ -17,6 +17,7 @@ This document describes the reproducible physical implementation of the approved
 | standard_id | decision | rationale |
 | --- | --- | --- |
 | SOURCE_GRAIN_PRESERVED | Every released source row is retained in FactDischarge. | The audited grain is one released inpatient discharge. |
+| SNAPSHOT_SOURCE_ROW_KEY | FactDischarge persists a unique source-row ordinal scoped to the audited snapshot. | The key supports reproducible downstream joins without implying patient identity or longitudinal discharge linkage. |
 | NO_DUPLICATE_REMOVAL | Repeated released-value patterns are not removed. | No durable public discharge identifier exists to prove that repeated rows are erroneous duplicates. |
 | TEXT_NORMALIZATION | Text values are trimmed and blank strings become null. | This prevents whitespace from creating artificial dimension members. |
 | APPROVED_MAPPINGS_ONLY | Only category mappings approved in Notebook 02 are applied. | The physical build must not introduce undocumented business grouping logic. |
@@ -74,14 +75,14 @@ This document describes the reproducible physical implementation of the approved
 | Fact foreign keys contain no orphan values | True |  |
 | Physical columns match Notebook 03 | True |  |
 | Physical datatypes match Notebook 03 | True |  |
-| LOS and financial flags are internally consistent | True | 0 |
+| Source row keys, LOS flags, and financial flags are internally consistent | True | 0 |
 | Peer benchmark columns remain unpopulated | True | 0 |
 
 ## Power BI-Ready Parquet Tables
 
 | table_name | row_count | file_size_mb | output_path |
 | --- | --- | --- | --- |
-| FactDischarge | 2125754 | 28.02 | outputs/physical_model/tables/FactDischarge.parquet |
+| FactDischarge | 2125754 | 30.11 | outputs/physical_model/tables/FactDischarge.parquet |
 | DimHospital | 208 | 0.01 | outputs/physical_model/tables/DimHospital.parquet |
 | DimDate | 2 | 0.0 | outputs/physical_model/tables/DimDate.parquet |
 | DimService | 483 | 0.01 | outputs/physical_model/tables/DimService.parquet |

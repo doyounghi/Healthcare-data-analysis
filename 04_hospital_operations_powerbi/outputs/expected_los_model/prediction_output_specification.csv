@@ -1,0 +1,10 @@
+column_name,data_type,required,description
+source_record_key,Whole number,True,Technical row key scoped only to the source snapshot; not a patient or durable longitudinal discharge identifier.
+source_snapshot_id,Text,True,Identifier derived from the audited source snapshot.
+model_version,Text,True,Version identifier for the finalized expected-LOS model.
+scoring_timestamp,Timestamp,True,Timestamp at which the source snapshot was scored.
+model_predicted_los_days,Decimal number,True,Raw-day model prediction from the finalized conditional-mean expected-LOS model.
+prediction_status,Text,True,Coverage/scoring status for the source row.
+missing_prediction_reason,Text,True,Reason prediction is unavailable when the row is not scored.
+model_predicted_p50_los,Decimal number,False,Optional validated conditional-median LOS estimate.
+model_predicted_p90_los,Decimal number,False,Optional validated conditional-P90 LOS estimate.

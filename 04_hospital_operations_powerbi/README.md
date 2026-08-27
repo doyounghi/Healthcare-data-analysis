@@ -81,7 +81,7 @@ The current implementation supports:
 * Leave-one-facility-out LOS and estimated-cost peer benchmarks
 * Primary APR-DRG × severity benchmarks with APR-DRG fallback
 * Power BI-ready dimensional tables and benchmarked fact-table exports
-* Future retrospective case-mix-adjusted expected LOS
+* Development-stage retrospective case-mix-adjusted expected-LOS modeling
 * Power BI semantic-model design
 * Conservative small-cell reporting controls
 
@@ -121,10 +121,10 @@ source .venv/bin/activate
 Install the packages required by the current notebooks:
 
 ```bash
-pip install pandas duckdb jupyter
+python -m pip install -r requirements.txt
 ```
 
-Later modeling and visualization work may add packages such as `numpy`, `scikit-learn`, gradient-boosting libraries, and plotting libraries.
+The requirements file records the package versions used for the committed notebook run. Notebook 06 also exports `environment_versions.csv` with its executed runtime versions.
 
 ## Project Workflow
 
@@ -148,6 +148,9 @@ The completed workflow currently covers:
 * Power BI-ready Parquet export
 * Leave-one-facility-out LOS and estimated-cost benchmark calculation
 * Primary-versus-fallback benchmark assignment
+* Hospital-held-out expected-LOS candidate evaluation
+* Leakage-controlled primary, sensitivity, and forbidden-feature contracts
+* Privacy-safe subgroup diagnostics with an 11-discharge export threshold
 * Benchmark coverage and peer-size diagnostics
 * Independent mathematical reconciliation of benchmark calculations
 * Machine-readable validation and business-readable documentation exports
@@ -783,6 +786,31 @@ Notebook 05 does not perform:
 * DAX implementation
 * Power BI report construction
 
+## Notebook 06: Expected Length-of-Stay Model Development and Validation
+
+Notebook 06 develops retrospective case-mix-adjusted expected-LOS candidates using governed outputs from Notebooks 01–05. It is a model-development artifact, not a finalized production model.
+
+### Main Work Completed
+
+* Defines explicit primary, sensitivity-only, and forbidden-feature contracts
+* Uses the persisted snapshot-scoped `source_record_key` for reproducible sampling and future scoring joins
+* Uses three-fold hospital-held-out cross-validation for the primary comparison
+* Compares transparent statewide and APR-DRG baselines with Ridge, Poisson, Tweedie, Random Forest, and XGBoost candidates
+* Evaluates MAE, median absolute error, RMSE, aggregate calibration, runtime, and improvement over the strong APR-DRG × severity baseline
+* Separates hospital-identity and discharge-disposition sensitivity from primary validation
+* Retains `120 +` LOS values as observable 120-day lower bounds and reports top-code sensitivity
+* Omits detailed subgroup results below 11 discharges and exports only aggregate suppression counts
+* Records executed Python and library versions
+* Produces a provisional shortlist and prediction-output contract for Notebook 07
+
+### Outputs Created
+
+Notebook 06 exports aggregate development diagnostics to `outputs/expected_los_model/` and generates `docs/expected_los_modeling.md`. Detailed subgroup results are privacy-filtered before export; patient-level predictions and fitted model artifacts are intentionally deferred.
+
+### Scope Boundary
+
+The notebook does not claim future-year stability, causal effects, admission-time clinical prediction, or a finalized/versioned production model.
+
 ## Project Structure
 
 ```text
@@ -795,22 +823,26 @@ Notebook 05 does not perform:
 │   ├── metric_catalog.md
 │   ├── star_schema.md
 │   ├── physical_data_model.md
-│   └── peer_benchmarks.md
+│   ├── peer_benchmarks.md
+│   └── expected_los_modeling.md
 ├── notebooks/
 │   ├── 01_data_audit.ipynb
 │   ├── 02_metric_catalog_and_benchmark_design.ipynb
 │   ├── 03_star_schema_design.ipynb
 │   ├── 04_physical_data_model_build.ipynb
-│   └── 05_peer_benchmark_calculation.ipynb
+│   ├── 05_peer_benchmark_calculation.ipynb
+│   └── 06_expected_los_modeling.ipynb
 ├── outputs/
 │   ├── data_audit/
 │   ├── metric_catalog/
 │   ├── star_schema/
 │   ├── physical_model/
 │   │   └── tables/
-│   └── peer_benchmarks/
-│       └── tables/
+│   ├── peer_benchmarks/
+│   │   └── tables/
+│   └── expected_los_model/
 ├── .gitignore
+├── requirements.txt
 └── README.md
 ```
 
@@ -824,6 +856,7 @@ For a complete clean run, execute the notebooks in numerical order:
 03_star_schema_design.ipynb
 04_physical_data_model_build.ipynb
 05_peer_benchmark_calculation.ipynb
+06_expected_los_modeling.ipynb
 ```
 
 Notebook 02 depends on exported audit outputs from Notebook 01.
@@ -834,13 +867,15 @@ Notebook 04 depends on committed specifications and validation outputs from Note
 
 Notebook 05 depends on the governed benchmark specification, logical schema, and validated physical Parquet outputs from Notebooks 02–04.
 
+Notebook 06 depends on the audited snapshot metadata, schema and physical validations, benchmark validations, benchmarked fact table, and physical dimensions produced by Notebooks 01–05.
+
 The notebooks use dynamic project-root detection based on `docs/project_charter.md`, so paths resolve relative to the repository rather than through hard-coded user-specific locations.
 
 ## Privacy and Reporting Standards
 
 The source is publicly released and de-identified, but the project applies conservative reporting controls.
 
-Planned dashboard controls include:
+Current export controls and planned dashboard controls include:
 
 * Suppressing or masking displayed groups with fewer than 11 discharges
 * Reducing reconstruction risk from totals where practical
@@ -865,7 +900,7 @@ Important limitations include:
 * Peer benchmarks are descriptive rather than formal clinical risk adjustment
 * Peer differences do not prove inefficiency, preventability, poor quality, or causality
 * Multi-year schema compatibility and future-year stability have not yet been established
-* The current project phase does not include a completed Power BI report or validated predictive model
+* The current project phase does not include a completed Power BI report or a finalized, versioned predictive model
 
 ## Planned Next Steps
 
@@ -878,14 +913,14 @@ Planned work includes:
 * Testing semantic-model memory and performance
 * Building executive and operational report pages
 * Reconciling Power BI measures to independent Python calculations
-* Developing baseline and candidate expected-LOS models
-* Comparing models using identical validation data
-* Evaluating calibration and subgroup performance
-* Producing versioned prediction outputs
+* Reviewing the provisional expected-LOS shortlist and complexity tradeoffs
+* Freezing the approved feature and model-version contract
+* Refitting the selected approach and producing versioned prediction outputs
+* Validating prediction coverage and scoring-output reconciliation
 * Evaluating multi-year data compatibility
 * Designing the Desktop-to-Fabric deployment path
 * Defining aggregation rules before implementing deferred peer-median contextual benchmarks
 
 ## Final Project Statement
 
-This project builds an end-to-end hospital operations analytics solution that combines reproducible Python and DuckDB data engineering, governed metrics, validated star-schema modeling, transparent leave-one-facility-out benchmarking, planned machine learning, Microsoft Fabric, and Power BI to identify inpatient resource-utilization patterns after accounting for observable case complexity.
+This project builds an end-to-end hospital operations analytics solution that combines reproducible Python and DuckDB data engineering, governed metrics, validated star-schema modeling, transparent leave-one-facility-out benchmarking, development-stage expected-LOS modeling, Microsoft Fabric, and Power BI to identify inpatient resource-utilization patterns after accounting for observable case complexity.

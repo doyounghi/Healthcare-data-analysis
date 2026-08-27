@@ -1,0 +1,13 @@
+model_name,candidate_type,target_estimand,included
+STATEWIDE_MEDIAN,Transparent baseline,Conditional median baseline,True
+APR_DRG_MEDIAN,Transparent baseline,Conditional median baseline,True
+APR_DRG_SEVERITY_MEDIAN,Transparent median baseline,Conditional median baseline,True
+STATEWIDE_MEAN,Transparent mean baseline,Conditional mean baseline,True
+APR_DRG_MEAN,Transparent mean baseline,Conditional mean baseline,True
+APR_DRG_SEVERITY_MEAN,Strong transparent mean baseline,Conditional mean baseline,True
+RIDGE_REGRESSION,Statistical / ML,Raw-scale conditional mean approximation,True
+POISSON_REGRESSION,Statistical / ML,Conditional mean,True
+TWEEDIE_REGRESSION,Statistical / ML,Conditional mean,True
+RANDOM_FOREST,Statistical / ML,Conditional mean approximation,True
+XGBOOST,Statistical / ML,Conditional mean approximation,True
+QUANTILE_P50_P90,Optional deferred,Conditional quantiles,False

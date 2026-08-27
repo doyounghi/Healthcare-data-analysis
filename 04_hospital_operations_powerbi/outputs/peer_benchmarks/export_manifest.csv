@@ -1,5 +1,5 @@
 file_name,artifact_type,row_count,file_size_mb,output_path
-FactDischarge.parquet,Benchmarked fact table,2125754,48.74,outputs/peer_benchmarks/tables/FactDischarge.parquet
+FactDischarge.parquet,Benchmarked fact table,2125754,50.82,outputs/peer_benchmarks/tables/FactDischarge.parquet
 benchmark_standards.csv,Validation or diagnostic output,11,0.0019,outputs/peer_benchmarks/benchmark_standards.csv
 benchmark_specification_snapshot.csv,Validation or diagnostic output,5,0.0015,outputs/peer_benchmarks/benchmark_specification_snapshot.csv
 benchmark_eligibility.csv,Validation or diagnostic output,1,0.0002,outputs/peer_benchmarks/benchmark_eligibility.csv

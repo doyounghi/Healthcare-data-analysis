@@ -1,3 +1,4 @@
 data/raw/*
 !data/raw/.gitkeep
 outputs/data_audit/*.duckdb
+outputs/**/_work/

@@ -11,5 +11,5 @@ Fact foreign keys contain no null values,True,0
 Fact foreign keys contain no orphan values,True,
 Physical columns match Notebook 03,True,
 Physical datatypes match Notebook 03,True,
-LOS and financial flags are internally consistent,True,0
+"Source row keys, LOS flags, and financial flags are internally consistent",True,0
 Peer benchmark columns remain unpopulated,True,0

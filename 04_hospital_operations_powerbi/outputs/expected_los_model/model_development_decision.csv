@@ -1,0 +1,7 @@
+decision_item,value,interpretation
+Provisional statistical/ML candidate,XGBOOST,Best statistical/ML candidate under the multi-metric hospital-held-out ranking.
+Provisional candidate MAE,3.284980,Hospital-held-out OOF MAE.
+Strong baseline MAE,3.336727,APR-DRG × severity mean OOF MAE.
+MAE improvement vs strong baseline,1.5508%,Positive means lower MAE than the strong baseline.
+Provisional aggregate A/E,1.001034,Aggregate actual LOS divided by aggregate OOF predicted LOS.
+Ready for Notebook 07 review,Yes,Notebook 07 decides whether incremental value justifies complexity.

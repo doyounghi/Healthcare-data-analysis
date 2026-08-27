@@ -1,0 +1,4 @@
+validation_fold,validation_rows,validation_hospitals,validation_mean_los,validation_median_los
+1,83335,69,5.69207415851683,3.0
+2,83331,69,5.988539679111015,3.0
+3,83334,69,5.665394676842586,3.0

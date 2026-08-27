@@ -1,0 +1,19 @@
+file_name,artifact_type,row_count,file_size_mb,output_path
+environment_versions.csv,Model development output,6,0.0001,outputs/expected_los_model/environment_versions.csv
+source_record_key_validation.csv,Model development output,1,0.0001,outputs/expected_los_model/source_record_key_validation.csv
+modeling_population_summary.csv,Model development output,1,0.0002,outputs/expected_los_model/modeling_population_summary.csv
+feature_specification.csv,Model development output,31,0.0032,outputs/expected_los_model/feature_specification.csv
+model_candidate_specification.csv,Model development output,12,0.0009,outputs/expected_los_model/model_candidate_specification.csv
+fold_hospital_summary.csv,Model development output,3,0.0002,outputs/expected_los_model/fold_hospital_summary.csv
+cross_validation_fold_metrics.csv,Model development output,33,0.0069,outputs/expected_los_model/cross_validation_fold_metrics.csv
+oof_prediction_validation.csv,Model development output,11,0.0003,outputs/expected_los_model/oof_prediction_validation.csv
+model_comparison.csv,Model development output,11,0.0028,outputs/expected_los_model/model_comparison.csv
+model_shortlist.csv,Model development output,3,0.001,outputs/expected_los_model/model_shortlist.csv
+subgroup_performance.csv,Model development output,1118,0.2055,outputs/expected_los_model/subgroup_performance.csv
+subgroup_suppression_summary.csv,Model development output,4,0.0002,outputs/expected_los_model/subgroup_suppression_summary.csv
+top_code_sensitivity.csv,Model development output,6,0.0013,outputs/expected_los_model/top_code_sensitivity.csv
+hospital_disposition_sensitivity.csv,Model development output,4,0.0012,outputs/expected_los_model/hospital_disposition_sensitivity.csv
+model_development_decision.csv,Model development output,6,0.0006,outputs/expected_los_model/model_development_decision.csv
+prediction_output_specification.csv,Model development output,9,0.0009,outputs/expected_los_model/prediction_output_specification.csv
+modeling_validation_results.csv,Model development output,19,0.0013,outputs/expected_los_model/modeling_validation_results.csv
+expected_los_modeling.md,Documentation,,0.0076,docs/expected_los_modeling.md

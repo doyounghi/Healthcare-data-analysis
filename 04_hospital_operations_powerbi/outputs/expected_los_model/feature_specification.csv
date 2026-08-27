@@ -1,0 +1,32 @@
+feature_name,source_table,role,included_primary,rationale
+apr_drg_code,DimService,Primary feature,True,Core discharge clinical/service classification.
+apr_mdc_code,DimService,Primary feature,True,Broad diagnostic-category context.
+medical_surgical_classification,DimService,Primary feature,True,Medical-versus-surgical context.
+apr_severity_code,DimCaseMix,Primary feature,True,Governed severity-of-illness case-mix measure.
+apr_mortality_risk,DimCaseMix,Primary feature,True,Released mortality-risk case-complexity context.
+ccsr_diagnosis_code,DimDiagnosis,Primary feature,True,Diagnosis-category case-mix context.
+age_group,DimPatientSegment,Primary feature,True,Approved age case-mix context.
+gender,DimPatientSegment,Primary feature,True,Released demographic context.
+payer_group,DimPayer,Primary feature,True,Approved payer-mix context.
+admission_type_group,DimAdmissionContext,Primary feature,True,Admission context.
+ed_indicator_group,DimAdmissionContext,Primary feature,True,Emergency-department admission context.
+ccsr_procedure_code,DimProcedure,Forbidden primary,False,May reflect care delivered during the stay.
+cost_peer_benchmark_level,FactDischarge,Forbidden primary,False,"Peer-benchmark diagnostic, not a predictive feature."
+cost_peer_comparison_n,FactDischarge,Forbidden primary,False,"Peer-benchmark diagnostic, not a predictive feature."
+disposition_group,DimAdmissionContext,Forbidden primary,False,Downstream of the inpatient stay; sensitivity only.
+facility_name,DimHospital,Forbidden primary,False,Hospital identity can absorb facility performance differences.
+hospital_county,DimHospital,Forbidden primary,False,"Hospital geography is reserved for diagnostics, not the primary model."
+hospital_key,FactDischarge,Forbidden primary,False,Used only to define hospital-held-out folds and sensitivity identity.
+hospital_service_area,DimHospital,Forbidden primary,False,"Hospital geography is reserved for diagnostics, not the primary model."
+is_top_coded_los,FactDischarge,Forbidden primary,False,Derived from the target; diagnostics only.
+is_valid_los,FactDischarge,Forbidden primary,False,Target-availability flag used only for population eligibility.
+los_days_lower_bound,FactDischarge,Forbidden primary,False,Model target; prohibited as an input feature.
+los_peer_benchmark_level,FactDischarge,Forbidden primary,False,"Peer-benchmark diagnostic, not a predictive feature."
+los_peer_comparison_n,FactDischarge,Forbidden primary,False,"Peer-benchmark diagnostic, not a predictive feature."
+peer_expected_estimated_cost,FactDischarge,Forbidden primary,False,"Descriptive financial benchmark, not a predictive feature."
+peer_expected_los_days,FactDischarge,Forbidden primary,False,Descriptive peer expectation must remain analytically independent.
+permanent_facility_id,DimHospital,Forbidden primary,False,Hospital identity can absorb facility performance differences.
+source_record_key,FactDischarge,Forbidden primary,False,Technical key only; never a predictive feature.
+total_charges,FactDischarge,Forbidden primary,False,Downstream financial/resource-use field.
+total_costs,FactDischarge,Forbidden primary,False,Downstream financial/resource-use field.
+hospital_identity_sensitivity,Derived from hospital_key,Sensitivity only,False,Evaluates hospital-identity dependence outside primary validation.

@@ -77,6 +77,7 @@ flowchart TD
 | FactDischarge | geography_key | Whole number | Foreign key | Zip Code - 3 digits | PLANNED |
 | FactDischarge | payer_key | Whole number | Foreign key | Payment Typology 1 | PLANNED |
 | FactDischarge | admission_context_key | Whole number | Foreign key | Type of Admission\|Patient Disposition\|Emergency Department Indicator | PLANNED |
+| FactDischarge | source_record_key | Whole number | Technical row key |  | PLANNED |
 | FactDischarge | los_days_lower_bound | Whole number | Additive value | Length of Stay | PLANNED |
 | FactDischarge | is_top_coded_los | Whole number | Validity flag | Length of Stay | PLANNED |
 | FactDischarge | is_valid_los | Whole number | Validity flag | Length of Stay | PLANNED |
